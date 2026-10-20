@@ -27,6 +27,8 @@ your own language under it.
 Subpair has no account, no analytics and no server of its own. Subtitle text only goes to the bridge on your own computer,
 and from there only to the translator you choose.
 
+Step-by-step setup, including the translation bridge: https://wonjoonseol-ws.github.io/subpair/
+
 Screenshots: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0.
 
 ## Category

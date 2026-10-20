@@ -27,6 +27,8 @@ Subpair는 두 언어의 자막을 함께 보여 주어, 영상을 보면서 언
 Subpair에는 계정, 분석 도구, 자체 서버가 없습니다. 자막 텍스트는 내 컴퓨터의 브리지로만 가고,
 그 다음에는 내가 고른 번역기로만 갑니다.
 
+번역 브리지를 포함한 단계별 설정 안내: https://wonjoonseol-ws.github.io/subpair/ko/
+
 스크린샷: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0.
 
 ## 카테고리

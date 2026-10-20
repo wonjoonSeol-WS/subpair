@@ -27,6 +27,8 @@ Subpairは2つの言語の字幕を同時に表示し、動画を見ながら言
 Subpairにはアカウントも分析ツールも独自のサーバーもありません。字幕のテキストは自分のパソコンのブリッジにだけ送られ、
 そこから先は自分が選んだ翻訳エンジンにだけ送られます。
 
+翻訳ブリッジを含むセットアップ手順: https://wonjoonseol-ws.github.io/subpair/ja/
+
 スクリーンショット: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0。
 
 ## カテゴリー
