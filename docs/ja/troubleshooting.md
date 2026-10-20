@@ -54,3 +54,7 @@ lang_order: 3
 - 手動で起動したブリッジ：そのターミナルに出力されます。
 - Windowsのスタートアップタスク：`%LOCALAPPDATA%\subpair\bridge.log`、または`-Log`で指定したファイル。
 - 拡張機能：NetflixまたはJellyfinのタブで開いたブラウザーの開発者コンソール（行は`[Subpair]`で始まります）。
+
+## どれにも当てはまらないとき
+
+[GitHubでIssueを作成してください](https://github.com/wonjoonSeol-WS/subpair/issues)。使っているブラウザーとサイト（NetflixまたはJellyfin）、期待した動作と実際に起きたことを書き、あればコンソールの`[Subpair]`の行やブリッジのログも添えてください。

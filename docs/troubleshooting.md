@@ -66,3 +66,9 @@ The player shows the bridge's errors in your language. The ones that need you:
 - Bridge started by hand: in its terminal.
 - Windows startup task: `%LOCALAPPDATA%\subpair\bridge.log`, or the file given with `-Log`.
 - The extension: the browser's developer console of the Netflix or Jellyfin tab (lines start with `[Subpair]`).
+
+## None of the above?
+
+[Open an issue on GitHub](https://github.com/wonjoonSeol-WS/subpair/issues). Say which browser and site (Netflix or
+Jellyfin) you use, what you expected and what happened instead, and add the `[Subpair]` lines from the console or the
+bridge log if you have them.

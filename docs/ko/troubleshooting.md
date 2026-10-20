@@ -67,3 +67,8 @@ lang_order: 2
 - 직접 실행한 브리지: 그 터미널에 출력됩니다.
 - Windows 시작 작업: `%LOCALAPPDATA%\subpair\bridge.log` 또는 `-Log`로 지정한 파일.
 - 확장 프로그램: Netflix나 Jellyfin 탭의 브라우저 개발자 콘솔(줄이 `[Subpair]`로 시작합니다).
+
+## 위에 해당하는 것이 없을 때
+
+[GitHub에 이슈를 등록해 주세요](https://github.com/wonjoonSeol-WS/subpair/issues). 사용하는 브라우저와 사이트(Netflix 또는
+Jellyfin), 기대한 동작과 실제로 일어난 일을 적고, 있으면 콘솔의 `[Subpair]` 줄이나 브리지 로그도 함께 붙여 주세요.
