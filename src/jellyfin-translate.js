@@ -26,11 +26,12 @@ export const jellyfinLanguage = iso6392;
 export const hasSubtitleIn = (streams, lang) =>
   (streams || []).some((s) => s.Type === 'Subtitle' && !s.IsForced && normLang(s.Language) === normLang(lang));
 
-// Identifies a subtitle by its cues, so the same track still matches after Jellyfin serves it back re-encoded.
+// Identifies a translation by the text of its lines in order, so the same track still matches after Jellyfin serves it back
+// re-encoded, or after a sync tool has moved it.
 export function fingerprint(srtText) {
   let h = FNV_OFFSET;
   for (const c of parseSrt(srtText)) {
-    const line = `${Math.round(c.start * 1000)}|${Math.round(c.end * 1000)}|${c.text}\n`;
+    const line = `${c.text}\n`;
     for (let i = 0; i < line.length; i++) h = Math.imul(h ^ line.charCodeAt(i), FNV_PRIME) >>> 0;
   }
   return h.toString(16);

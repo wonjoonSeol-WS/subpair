@@ -130,11 +130,12 @@ test('a finished translation is uploaded once, as the bridge saved it, and remem
   assert.equal(state.marks.get('jf-abc123.ko').at, state.clock);
 });
 
-test('fingerprint ignores how the file is written (line endings, BOM, numbering) but not what it says', () => {
+test('fingerprint ignores how the file is written (line endings, BOM, numbering) and its timing, but not what it says', () => {
   const srt = srtOf(5, 'T');
   assert.equal(fingerprint(`\uFEFF${srt.replace(/\n/g, '\r\n')}`), fingerprint(srt));
+  assert.equal(fingerprint(srtOf(5, 'T', 10)), fingerprint(srt));                 // moved by a sync tool: the same translation
   assert.notEqual(fingerprint(srtOf(5, 'U')), fingerprint(srt));
-  assert.notEqual(fingerprint(srtOf(5, 'T', 1)), fingerprint(srt));
+  assert.notEqual(fingerprint(srtOf(4, 'T')), fingerprint(srt));
 });
 
 // Jellyfin double for the replace path: tracks live in `jf.tracks` (path -> text), MediaStreams are rebuilt from them
@@ -185,6 +186,17 @@ test('replace: the track holding the translation the bridge had saved is replace
   assert.deepEqual(jf.removed, [3], 'A was index 2 before the upload and 3 after it');
   assert.deepEqual([...jf.tracks.keys()], ['/media/0-first.kor.1.srt']);
   assert.deepEqual(state.statuses, ['Replaced the translation on Jellyfin']);
+});
+
+test('replace: a track a sync tool has moved since it was uploaded is still the earlier translation, and is replaced', async () => {
+  const { state, o } = setup();
+  const { jf, options } = jellyfin(state, [['/media/A.kor.srt', srtOf(10, 'OLD', 3)]]);      // the cue times moved by 3 s
+  Object.assign(o, options);
+  regenerate(state, o, srtOf(10, 'OLD'), srtOf(10, 'NEW'));
+  await createAutoSaver(o).start();
+  assert.equal(state.uploads.length, 1);
+  assert.equal(jf.removed.length, 1);
+  assert.ok(!jf.tracks.has('/media/A.kor.srt'));
 });
 
 test('replace: waits while the bridge still holds the earlier translation, then replaces it', async () => {

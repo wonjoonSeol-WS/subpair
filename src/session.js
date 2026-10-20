@@ -16,11 +16,18 @@ import { wantedSub } from './profile.js';
 export const tidy = (cues, lang, profile) =>
   cues.map((c) => ({ ...c, text: cleanText(c.text, { lang, joinLines: profile.joinLines, hideSpeaker: profile.hideSpeaker }) }));
 
-// A track is a copy of a translation when nearly all its cues start where a translated cue starts, with the same text.
+// A track is a copy of a translation when nearly all its lines are lines of that translation. Timing is not compared: a copy
+// a sync tool has moved is still the same translation.
 const COPY_SHARE = 0.95;
 function copies(track, translated) {
-  const byStart = new Map(translated.filter((c) => c.text).map((c) => [Math.round(c.start * 1000), c.text]));
-  return track.filter((c) => byStart.get(Math.round(c.start * 1000)) === c.text).length >= track.length * COPY_SHARE;
+  const left = new Map();
+  for (const c of translated) if (c.text) left.set(c.text, (left.get(c.text) || 0) + 1);
+  let same = 0;
+  for (const c of track) {
+    const n = left.get(c.text);
+    if (n) { left.set(c.text, n - 1); same++; }
+  }
+  return same >= track.length * COPY_SHARE;
 }
 
 // The .srt texts of every translation the bridge saved for a title and language pair, whichever translator made it.

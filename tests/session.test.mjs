@@ -62,6 +62,7 @@ test('on a site that keeps translations, a track that is one of the saved transl
     return a;
   };
   const srt = (...texts) => texts.map((text, i) => `${i + 1}\n00:00:0${i * 5},000 --> 00:00:0${i * 5 + 1},000\n${text}\n`).join('\n');
+  const moved = (...texts) => texts.map((text, i) => `${i + 1}\n00:00:1${i * 5},000 --> 00:00:1${i * 5 + 1},000\n${text}\n`).join('\n');
   const session = async (saved, ready) => {
     const tr = fakeTranslators(ready);
     const s = await run(keeping(), profile(['ja'], ['ko']), { makeTranslator: tr.makeTranslator, readSaved: async () => saved });
@@ -72,6 +73,9 @@ test('on a site that keeps translations, a track that is one of the saved transl
   assert.equal(own.s.subKind, 'translated');                     // so "Translate again" is offered
   assert.equal(own.s.hasWantedTrack, false);                     // and not "translate instead of the track"
   assert.equal(own.s.translator, own.built[0]);
+
+  const resynced = await session([moved('가', '나')]);               // the saved lines 10 s apart from the track's: a sync tool moved it
+  assert.equal(resynced.s.subKind, 'translated');
 
   const release = await session([srt('가요', '나나')]);            // same timing, its own words: a subtitle of the video
   assert.equal(release.s.subKind, 'track');
