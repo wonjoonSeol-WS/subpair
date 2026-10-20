@@ -151,3 +151,6 @@ kbd { display: inline-block; min-width: 30px; padding: 3px 9px; border-radius: 7
   font-weight: 500; }
 .chips li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
   margin-right: 8px; vertical-align: 2px; }
+
+/* Korean: break lines between words, not inside them */
+:lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
