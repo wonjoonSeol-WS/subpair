@@ -68,8 +68,19 @@ Shows two subtitle languages at the same time on video players (Netflix, Jellyfi
 ## Privacy policy URL
 https://wonjoonseol-ws.github.io/subpair/privacy.html
 
-## Screenshots to take (1280x800)
-1. Netflix or Jellyfin with both lines on the video.
-2. The bottom bar with the transcript panel.
-3. The quick menu (gear) open on Translator.
-4. The options page.
+## Screenshots and promo tiles
+Files in [screenshots/](screenshots/): 1280x800 24-bit PNG, Sintel (CC BY 3.0) playing on Jellyfin, menus in the listing's
+language. Upload them in this order: on Chrome per language under Localised screenshots and the English set under Global
+screenshots; on AMO the English set, with these captions.
+
+1. `all-1-two-lines.png`: Two subtitle lines at once: the language you are learning on top, yours below. Japanese words
+   are colored by part of speech.
+2. `<lang>-2-gear-menu.png`: The gear menu on the player: choose the translator and when to translate, or translate a
+   whole Jellyfin season.
+3. `<lang>-3-auto-pause.png`: Auto-pause stops at the end of every line, and the transcript panel follows along. Here
+   English with Japanese below.
+4. `<lang>-4-click-word.png`: Click a word to copy it for your dictionary or flashcards. Here Korean with English below.
+5. `<lang>-6-options.png`: Settings: languages with fallbacks, translator, layout and keys.
+
+Chrome promo tiles: `promo-small-440x280.png` and `promo-marquee-1400x560.png`, rendered at exactly that size from
+`tile-small.html` and `tile-marquee.html`.

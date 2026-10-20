@@ -67,8 +67,16 @@ Chrome: 교육. Firefox: 언어 지원 ("사진, 음악 및 동영상"에도 맞
 ## 개인정보처리방침 URL
 https://wonjoonseol-ws.github.io/subpair/ko/privacy.html
 
-## 찍을 스크린샷 (1280x800)
-1. 영상 위에 두 줄이 나온 Netflix 또는 Jellyfin.
-2. 대본 패널이 있는 하단 바.
-3. 번역기 화면이 열린 빠른 메뉴(톱니바퀴).
-4. 설정 페이지.
+## 스크린샷과 프로모션 타일
+[screenshots/](screenshots/)에 있는 파일: 1280x800 24비트 PNG, Jellyfin에서 재생한 Sintel(CC BY 3.0), 메뉴는 등록 정보의
+언어. 이 순서로 올립니다. Chrome에서는 언어별로 "현지화된 스크린샷"에, 영어 세트는 "전체 스크린샷"에 올리고, AMO에는
+영어 세트를 아래 설명과 함께 올립니다.
+
+1. `all-1-two-lines.png`: 자막 두 줄을 한 번에: 위에는 배우는 언어, 아래에는 내 언어. 일본어는 품사별로 색이 다릅니다.
+2. `<lang>-2-gear-menu.png`: 플레이어의 톱니바퀴 메뉴: 번역기와 번역 시점을 고르거나 Jellyfin 시즌 전체를 번역합니다.
+3. `<lang>-3-auto-pause.png`: 자동 일시정지는 줄이 끝날 때마다 멈추고, 대본 패널이 따라갑니다. 영어 아래에 일본어.
+4. `<lang>-4-click-word.png`: 단어를 클릭하면 사전이나 단어장에 넣기 좋게 복사됩니다. 한국어 아래에 영어.
+5. `<lang>-6-options.png`: 설정: 대체 언어를 포함한 언어, 번역기, 레이아웃, 단축키.
+
+Chrome 프로모션 타일: `promo-small-440x280.png`, `promo-marquee-1400x560.png`. `tile-small.html`, `tile-marquee.html`을
+정확히 그 크기로 렌더링한 것입니다.
