@@ -1,7 +1,7 @@
 title: Subpair
 description: Learn a language from the shows you watch. Two subtitle lines at once on Netflix and Jellyfin, with free local or AI translation. An open-source alternative to Language Reactor.
 repo_url: https://github.com/wonjoonSeol-WS/subpair
-subsync_repair_url: https://github.com/wonjoonSeol-WS/subsync-repair
+subsync_repair_url: https://github.com/wonjoonSeol-WS/subsync-repair/releases/latest
 # Store listings: fill in once published; until then the pages say "coming soon" and link the install guide.
 chrome_store_url: ""
 firefox_store_url: ""
