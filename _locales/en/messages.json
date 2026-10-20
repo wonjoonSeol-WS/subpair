@@ -1,0 +1,839 @@
+{
+  "extName": {
+    "message": "Subpair",
+    "description": "Extension name; not translated."
+  },
+  "extDescription": {
+    "message": "Two subtitle lines at once on Netflix and Jellyfin, with a transcript, line replay, auto-pause and optional local translation."
+  },
+  "cmdToggle": {
+    "message": "Turn Subpair on or off"
+  },
+  "actionOn": {
+    "message": "Subpair is on (click to turn off)"
+  },
+  "actionOff": {
+    "message": "Subpair is off (click to turn on)"
+  },
+  "badgeOff": {
+    "message": "OFF",
+    "description": "Toolbar badge while off; at most 4 characters."
+  },
+  "noticeOff": {
+    "message": "Subpair: off"
+  },
+  "noticeOffTitle": {
+    "message": "Turn Subpair back on (also the Subpair toolbar button, or Alt+Shift+S unless you changed it)"
+  },
+  "noticeAsk": {
+    "message": "Use Subpair on this server?"
+  },
+  "noticeAskTitle": {
+    "message": "Subpair will read this Jellyfin server's subtitles and may send them to your translator. Click to allow this server."
+  },
+  "noticeSetup": {
+    "message": "Subpair: choose your languages"
+  },
+  "noticeSetupTitle": {
+    "message": "Open the Subpair settings to choose the main and second subtitle language"
+  },
+  "btnPrev": {
+    "message": "Previous line"
+  },
+  "btnRepeat": {
+    "message": "Repeat line"
+  },
+  "btnNext": {
+    "message": "Next line"
+  },
+  "btnAutoPause": {
+    "message": "Auto-pause"
+  },
+  "btnPanel": {
+    "message": "Show or hide the transcript panel"
+  },
+  "btnSettings": {
+    "message": "Quick settings"
+  },
+  "btnOff": {
+    "message": "Turn Subpair off"
+  },
+  "withKeys": {
+    "message": "$1 ($2)",
+    "description": "A button name and its keyboard keys, e.g. Previous line (A)."
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "lineCopied": {
+    "message": "Line copied"
+  },
+  "dictCopied": {
+    "message": "Dictionary form copied"
+  },
+  "copyFailed": {
+    "message": "Could not copy"
+  },
+  "autoPauseOn": {
+    "message": "Auto-pause on"
+  },
+  "autoPauseOff": {
+    "message": "Auto-pause off"
+  },
+  "notSaved": {
+    "message": "Not saved: $1"
+  },
+  "profileGone": {
+    "message": "this profile no longer exists, choose one in the settings"
+  },
+  "noTranslation": {
+    "message": "No translation: $1"
+  },
+  "menuMain": {
+    "message": "Main subtitle"
+  },
+  "menuSecond": {
+    "message": "Second subtitle"
+  },
+  "menuTranslator": {
+    "message": "Translator"
+  },
+  "menuTiming": {
+    "message": "Subtitle timing"
+  },
+  "menuSize": {
+    "message": "Text size"
+  },
+  "menuPosition": {
+    "message": "Subtitle position"
+  },
+  "menuBackground": {
+    "message": "Subtitle background"
+  },
+  "menuAutoPause": {
+    "message": "Auto-pause"
+  },
+  "menuPanel": {
+    "message": "Transcript panel"
+  },
+  "menuMore": {
+    "message": "More settings..."
+  },
+  "menuBack": {
+    "message": "Back"
+  },
+  "on": {
+    "message": "On"
+  },
+  "off": {
+    "message": "Off"
+  },
+  "none": {
+    "message": "None"
+  },
+  "mainLine": {
+    "message": "Main line"
+  },
+  "secondLine": {
+    "message": "Second line"
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "stepLess": {
+    "message": "$1: less"
+  },
+  "stepMore": {
+    "message": "$1: more"
+  },
+  "px": {
+    "message": "$1 px"
+  },
+  "seconds": {
+    "message": "$1 s"
+  },
+  "spaceFromPicture": {
+    "message": "Space from the picture"
+  },
+  "spaceBetweenLines": {
+    "message": "Space between lines"
+  },
+  "pictureAboveBar": {
+    "message": "Where the picture sits above the bar:"
+  },
+  "backgroundNote": {
+    "message": "Applies to text on the video. The bottom bar has its own look."
+  },
+  "wantedMissing": {
+    "message": "$1 is wanted but not showing: $2. Choose it again to retry."
+  },
+  "noTrackNoTranslator": {
+    "message": "no track in this video and no translator for it"
+  },
+  "useTrackAgain": {
+    "message": "Use the $1 subtitle track again"
+  },
+  "translateInstead": {
+    "message": "Translate from the main line instead"
+  },
+  "translateInsteadNote": {
+    "message": "for a bad or out-of-sync track"
+  },
+  "whenToTranslate": {
+    "message": "When to translate"
+  },
+  "translateAgain": {
+    "message": "Translate this title again"
+  },
+  "translateAgainNote": {
+    "message": "replaces the saved one"
+  },
+  "clickAgain": {
+    "message": "click again to start"
+  },
+  "noTrackInVideo": {
+    "message": "no track in this video"
+  },
+  "translated": {
+    "message": "translated"
+  },
+  "langTranslated": {
+    "message": "$1 (translated)"
+  },
+  "langNotAvailable": {
+    "message": "$1 (not available)"
+  },
+  "langInsteadOf": {
+    "message": "$1 instead of $2"
+  },
+  "subtitleTrack": {
+    "message": "subtitle track"
+  },
+  "automatic": {
+    "message": "Automatic"
+  },
+  "automaticFirstReady": {
+    "message": "Automatic (the first one that is ready)"
+  },
+  "summaryWhole": {
+    "message": "$1, whole title"
+  },
+  "summaryWholeProgress": {
+    "message": "$1, whole title $2/$3"
+  },
+  "summarySaved": {
+    "message": "$1, saved translation"
+  },
+  "summaryFailed": {
+    "message": "$1, failed"
+  },
+  "summaryLive": {
+    "message": "$1, live"
+  },
+  "modeAuto": {
+    "message": "Automatic"
+  },
+  "modeLive": {
+    "message": "Live (a few lines ahead)"
+  },
+  "modeProcess": {
+    "message": "Whole title now"
+  },
+  "placeOverlay": {
+    "message": "On the video"
+  },
+  "placeBar": {
+    "message": "In a bottom bar"
+  },
+  "placeSummaryBar": {
+    "message": "Bottom bar"
+  },
+  "placeSummaryOverlay": {
+    "message": "On the video, $1 px from the picture"
+  },
+  "alignCenter": {
+    "message": "Center"
+  },
+  "alignTop": {
+    "message": "Top"
+  },
+  "alignBottom": {
+    "message": "Bottom"
+  },
+  "bgNone": {
+    "message": "None (outlined text)"
+  },
+  "bgTranslucent": {
+    "message": "Dark, see-through"
+  },
+  "bgSolid": {
+    "message": "Solid black"
+  },
+  "backendEztrans": {
+    "message": "ezTrans (local, Windows, Japanese to Korean only)"
+  },
+  "backendClaude": {
+    "message": "Claude (claude -p, uses your Claude Code login)"
+  },
+  "backendApi": {
+    "message": "Anthropic API (needs ANTHROPIC_API_KEY for the bridge)"
+  },
+  "backendOpenai": {
+    "message": "OpenAI-compatible (OpenAI, Gemini, DeepSeek, Ollama...; address in bridge/config.json)"
+  },
+  "nameOpenai": {
+    "message": "OpenAI-compatible"
+  },
+  "modelHintClaude": {
+    "message": "haiku, sonnet, opus or a full model id"
+  },
+  "modelHintApi": {
+    "message": "a model id, such as claude-haiku-5-5"
+  },
+  "modelHintOpenai": {
+    "message": "a model id your provider offers"
+  },
+  "trOff": {
+    "message": "translation is off"
+  },
+  "trBridgeDown": {
+    "message": "translation bridge is not running (npm run bridge)"
+  },
+  "trNoneReady": {
+    "message": "no translator is ready for $1 to $2"
+  },
+  "trCannot": {
+    "message": "$1 cannot translate $2 to $3 (or is not set up)"
+  },
+  "trSavedLoaded": {
+    "message": "Saved $1 translation loaded"
+  },
+  "trSavedPartial": {
+    "message": "Saved $1 translation only fits $2 of $3 lines, translating the rest"
+  },
+  "trSaved": {
+    "message": "Translation saved for this title"
+  },
+  "trSaveFailed": {
+    "message": "Could not save the translation: $1"
+  },
+  "trFailed": {
+    "message": "Translation failed: $1"
+  },
+  "trLost": {
+    "message": "Lost contact with the translation bridge"
+  },
+  "trStopped": {
+    "message": "Translation stopped"
+  },
+  "trProgress": {
+    "message": "Translating $1/$2"
+  },
+  "trReady": {
+    "message": "Translation ready"
+  },
+  "trNotLoaded": {
+    "message": "Translation finished but could not be loaded"
+  },
+  "trPaused": {
+    "message": "Translation paused, retrying: $1"
+  },
+  "trLive": {
+    "message": "Translating live"
+  },
+  "noAnswer": {
+    "message": "no answer"
+  },
+  "saveDone": {
+    "message": "Saved the translation to Jellyfin"
+  },
+  "saveReplaced": {
+    "message": "Replaced the translation on Jellyfin"
+  },
+  "saveNewOldKept": {
+    "message": "Saved the new translation to Jellyfin; the old one could not be removed (status $1, needs an administrator)"
+  },
+  "saveKeptForeign": {
+    "message": "Kept the subtitle that is on Jellyfin: Subpair did not make it"
+  },
+  "saveNoPermission": {
+    "message": "Could not save to Jellyfin: this account is not allowed to manage subtitles"
+  },
+  "saveFailedStatus": {
+    "message": "Could not save to Jellyfin (status $1)"
+  },
+  "saveFailedDetail": {
+    "message": "Could not save to Jellyfin (status $1: $2)"
+  },
+  "saveFailedError": {
+    "message": "Could not save to Jellyfin: $1"
+  },
+  "saveStoppedReload": {
+    "message": "Stopped saving: the extension was reloaded"
+  },
+  "optTitle": {
+    "message": "Subpair settings"
+  },
+  "optSave": {
+    "message": "Save settings"
+  },
+  "optFirstRun": {
+    "message": "Welcome. Choose the language of the main line (the subtitles you read along with, for example the language you are learning) and of the second line (your own language), then press Save settings."
+  },
+  "optChangedElsewhere": {
+    "message": "These settings were changed in the player while this page was open. Saving now replaces those changes."
+  },
+  "optLoadThem": {
+    "message": "Load them instead"
+  },
+  "optProfile": {
+    "message": "Profile"
+  },
+  "optActiveProfile": {
+    "message": "Active profile"
+  },
+  "optName": {
+    "message": "Name"
+  },
+  "optNewProfile": {
+    "message": "New profile"
+  },
+  "optDuplicate": {
+    "message": "Duplicate"
+  },
+  "optDelete": {
+    "message": "Delete"
+  },
+  "optLanguages": {
+    "message": "Languages"
+  },
+  "optLanguagesHint": {
+    "message": "Pick a first choice and, if you like, fallbacks. The first language that has a subtitle track in the video is used."
+  },
+  "optMainLine": {
+    "message": "Main line"
+  },
+  "optMainLineHint": {
+    "message": "(the subtitles you read along with)"
+  },
+  "optSecondLine": {
+    "message": "Second line"
+  },
+  "optSecondLineHint": {
+    "message": "(a track in this language, or a translation of the main line)"
+  },
+  "optSlotFirst": {
+    "message": "first choice"
+  },
+  "optSlotFallback": {
+    "message": "fallback"
+  },
+  "optSlotFallback2": {
+    "message": "second fallback"
+  },
+  "optChooseLanguage": {
+    "message": "(choose a language)"
+  },
+  "optNoLanguage": {
+    "message": "(none)"
+  },
+  "optTranslation": {
+    "message": "Translation"
+  },
+  "optTranslationHint": {
+    "message": "When a Netflix or Jellyfin title has no track in your first second-line language, the main line is translated by a small local program (the bridge, started with npm run bridge in the Subpair folder). Translations are saved per title and reused next time. If the bridge is off, the next second-line language that exists is used instead."
+  },
+  "optTranslator": {
+    "message": "Translator"
+  },
+  "optWhen": {
+    "message": "When to translate"
+  },
+  "optWhenAuto": {
+    "message": "Automatic (ezTrans a few lines ahead, the others the whole title first)"
+  },
+  "optWhenLive": {
+    "message": "Live, a few lines ahead of the video"
+  },
+  "optWhenProcess": {
+    "message": "Whole title first, then show"
+  },
+  "optWhenOff": {
+    "message": "Never"
+  },
+  "optBridge": {
+    "message": "Bridge address"
+  },
+  "optBridgeHint": {
+    "message": "(this computer only)"
+  },
+  "optModelsHint": {
+    "message": "Model for each translator. Empty uses the bridge's own setting (shown in grey when the bridge is running). API keys and the OpenAI-compatible address stay in the bridge's bridge/config.json, never in the browser."
+  },
+  "optModelFor": {
+    "message": "$1 model"
+  },
+  "optBridgeDefault": {
+    "message": "bridge default: $1"
+  },
+  "optLayout": {
+    "message": "Layout"
+  },
+  "optMainFont": {
+    "message": "Main font (px)"
+  },
+  "optSubFont": {
+    "message": "Second font (px)"
+  },
+  "optMainLines": {
+    "message": "Main lines reserved"
+  },
+  "optSubLines": {
+    "message": "Second lines reserved"
+  },
+  "optHalves": {
+    "message": "(halves allowed)"
+  },
+  "optPosition": {
+    "message": "Subtitle position"
+  },
+  "optBackground": {
+    "message": "Background behind text on the video"
+  },
+  "optGap": {
+    "message": "Space from the picture (px)"
+  },
+  "optGapHint": {
+    "message": "(on the video)"
+  },
+  "optLineGap": {
+    "message": "Space between lines (px)"
+  },
+  "optAlign": {
+    "message": "Picture position"
+  },
+  "optAlignHint": {
+    "message": "(bottom bar only: where the picture sits above it)"
+  },
+  "optJoinLines": {
+    "message": "Show each subtitle on one line (join the line breaks the subtitle file puts inside a cue)"
+  },
+  "optHideSpeaker": {
+    "message": "Hide speaker names at the start of a line, like （田中） or (Alice)"
+  },
+  "optPanelTimes": {
+    "message": "Show timestamps in the transcript panel"
+  },
+  "optPanel": {
+    "message": "Show the transcript panel on the right (normal view; in fullscreen it has its own on/off, starting off)"
+  },
+  "optAutoPause": {
+    "message": "Auto-pause at the end of every main line"
+  },
+  "optColors": {
+    "message": "Word colors"
+  },
+  "optColorsHint": {
+    "message": "Colors words by part of speech. Japanese only for now (needs the Japanese analyzer). Click a word to copy it, Ctrl+click for its dictionary form, Alt+click for the whole line."
+  },
+  "optColorize": {
+    "message": "Color words by part of speech"
+  },
+  "optNouns": {
+    "message": "Nouns"
+  },
+  "optVerbs": {
+    "message": "Verbs"
+  },
+  "optAdjectives": {
+    "message": "Adjectives"
+  },
+  "optAdverbs": {
+    "message": "Adverbs"
+  },
+  "optParticles": {
+    "message": "Particles"
+  },
+  "optShortcuts": {
+    "message": "Shortcuts"
+  },
+  "optShortcutsHint": {
+    "message": "Click a box and press a key to add it; Backspace removes the last one. Keys pressed with Ctrl, Alt, Shift or Cmd are left to the page. Turning Subpair on and off has its own shortcut (Alt+Shift+S): change it in the browser's extension shortcut settings."
+  },
+  "optKeyPrev": {
+    "message": "Previous line"
+  },
+  "optKeyRepeat": {
+    "message": "Repeat line"
+  },
+  "optKeyNext": {
+    "message": "Next line"
+  },
+  "optKeyAutoPause": {
+    "message": "Toggle auto-pause"
+  },
+  "optServers": {
+    "message": "Jellyfin servers"
+  },
+  "optServersHint": {
+    "message": "Subpair works on a Jellyfin server only after you allow it (the \"Use Subpair on this server?\" button in the player). These are the servers you allowed."
+  },
+  "optServersNone": {
+    "message": "None yet."
+  },
+  "optRemove": {
+    "message": "Remove"
+  },
+  "optBackup": {
+    "message": "Backup"
+  },
+  "optBackupHint": {
+    "message": "Settings are saved with the Save button at the top."
+  },
+  "optExport": {
+    "message": "Export all profiles"
+  },
+  "optImport": {
+    "message": "Import profiles"
+  },
+  "optSaved": {
+    "message": "Saved"
+  },
+  "optSavedWith": {
+    "message": "Saved ($1)"
+  },
+  "optNotSaved": {
+    "message": "Not saved: $1"
+  },
+  "optNotAllowed": {
+    "message": "$1 $2 is not allowed, set to $3"
+  },
+  "optWasEmpty": {
+    "message": "was empty"
+  },
+  "optLocalOnly": {
+    "message": "too big for sync, saved on this browser only"
+  },
+  "optNoMain": {
+    "message": "choose a main language, nothing is shown until then"
+  },
+  "optBadBridge": {
+    "message": "the bridge address must be http://127.0.0.1 or http://localhost, reset to the default"
+  },
+  "optBadModel": {
+    "message": "\"$1\" is not a model name, the $2 model was cleared"
+  },
+  "optKeyClash": {
+    "message": "$1 is set for both \"$2\" and \"$3\""
+  },
+  "optKeepOne": {
+    "message": "Keep at least one profile"
+  },
+  "optImported": {
+    "message": "Imported"
+  },
+  "optImportFailed": {
+    "message": "Import failed: $1"
+  },
+  "optImportNoProfiles": {
+    "message": "no profiles in this file"
+  },
+  "optImportConfirm": {
+    "message": "Replace all $1 profile(s) with the $2 in this file?"
+  },
+  "optNewProfileName": {
+    "message": "New profile"
+  },
+  "optCopySuffix": {
+    "message": "$1 copy"
+  },
+  "bridgeErr_forbidden_host": {
+    "message": "forbidden host"
+  },
+  "bridgeErr_forbidden_origin": {
+    "message": "forbidden origin"
+  },
+  "bridgeErr_not_found": {
+    "message": "not found"
+  },
+  "bridgeErr_method_not_allowed": {
+    "message": "method not allowed"
+  },
+  "bridgeErr_bad_request_target": {
+    "message": "bad request target"
+  },
+  "bridgeErr_bad_url_escape": {
+    "message": "bad URL escape"
+  },
+  "bridgeErr_body_too_large": {
+    "message": "request body too large"
+  },
+  "bridgeErr_body_not_json": {
+    "message": "body must be a JSON object"
+  },
+  "bridgeErr_to_required": {
+    "message": "to (the target language) is required"
+  },
+  "bridgeErr_bad_language": {
+    "message": "$1 must be a language code such as ja or ko"
+  },
+  "bridgeErr_unknown_backend": {
+    "message": "unknown backend"
+  },
+  "bridgeErr_bad_backend_name": {
+    "message": "bad backend name"
+  },
+  "bridgeErr_bad_model": {
+    "message": "model must be 1 to 100 letters, digits or . : / - _"
+  },
+  "bridgeErr_bad_key": {
+    "message": "key must be 1 to $1 letters, digits, - or _"
+  },
+  "bridgeErr_bad_texts": {
+    "message": "$1 must be an array of at most $2 strings of at most $3 characters"
+  },
+  "bridgeErr_bad_cues": {
+    "message": "cues must be an array of 1 to $1 cues"
+  },
+  "bridgeErr_bad_cue": {
+    "message": "each cue needs text (a string) and numeric start and end seconds, start <= end"
+  },
+  "bridgeErr_same_language": {
+    "message": "source and target language are the same"
+  },
+  "bridgeErr_pair_unsupported": {
+    "message": "$1 only does $2, not $3 -> $4"
+  },
+  "bridgeErr_needs_model": {
+    "message": "$1 needs a model: send one with the request or set $1.model in bridge/config.json"
+  },
+  "bridgeErr_backend_not_ready": {
+    "message": "$1 is not set up"
+  },
+  "bridgeErr_eztrans_not_configured": {
+    "message": "ezTrans or Luna's helper was not found (eztrans.helper / eztrans.dir in bridge/config.json)"
+  },
+  "bridgeErr_claude_missing": {
+    "message": "the claude command did not run (install Claude Code and log in, or set claude.command in bridge/config.json)"
+  },
+  "bridgeErr_api_key_missing": {
+    "message": "no Anthropic API key (ANTHROPIC_API_KEY or bridge/config.json api.key)"
+  },
+  "bridgeErr_openai_not_configured": {
+    "message": "OpenAI-compatible backend is not set up (openai.baseUrl and, for hosted services, OPENAI_API_KEY or openai.key in bridge/config.json)"
+  },
+  "bridgeErr_too_many_requests": {
+    "message": "too many translations in progress, try again shortly"
+  },
+  "bridgeErr_line_not_found": {
+    "message": "unknown or expired request"
+  },
+  "bridgeErr_too_many_jobs": {
+    "message": "$1 titles are already being translated, try again later"
+  },
+  "bridgeErr_job_running": {
+    "message": "this title is already being translated with this backend and model; try again when it is done"
+  },
+  "bridgeErr_lines_failed": {
+    "message": "$1 lines could not be translated; the saved translation was kept"
+  },
+  "bridgeErr_not_saved": {
+    "message": "not saved"
+  },
+  "bridgeErr_upstream_rate_limited": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_upstream_error": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_timeout": {
+    "message": "$1: $2 did not answer within $3 ms"
+  },
+  "bridgeErr_refused": {
+    "message": "$1: Anthropic API declined to translate this part"
+  },
+  "bridgeErr_refused_for": {
+    "message": "$1: Anthropic API declined to translate this part ($2)"
+  },
+  "bridgeErr_max_tokens": {
+    "message": "$1: Anthropic API reply hit max_tokens ($2); raise api.maxTokens or lower api.batch"
+  },
+  "bridgeErr_no_content": {
+    "message": "$1: OpenAI-compatible API: no message content in the reply"
+  },
+  "bridgeErr_claude_failed": {
+    "message": "$1: claude exited $2: $3"
+  },
+  "bridgeErr_claude_timeout": {
+    "message": "$1: claude timed out after $2 ms"
+  },
+  "bridgeErr_claude_output_too_big": {
+    "message": "$1: claude wrote more than $2 bytes"
+  },
+  "bridgeErr_cmd_unsafe": {
+    "message": "$1: cannot run $2 safely through cmd.exe (argument $3); use the .exe installer or point the command at an .exe"
+  },
+  "bridgeErr_eztrans_start_failed": {
+    "message": "$1: eztrans helper could not start: $2"
+  },
+  "bridgeErr_eztrans_exited": {
+    "message": "$1: eztrans helper exited ($2)"
+  },
+  "bridgeErr_eztrans_gone": {
+    "message": "$1: eztrans helper exited"
+  },
+  "bridgeErr_eztrans_no_pipe": {
+    "message": "$1: eztrans helper did not open its pipe"
+  },
+  "bridgeErr_eztrans_not_running": {
+    "message": "$1: eztrans helper is not running"
+  },
+  "bridgeErr_eztrans_pipe_closed": {
+    "message": "$1: eztrans helper closed the pipe"
+  },
+  "bridgeErr_eztrans_timeout": {
+    "message": "$1: eztrans did not answer in time"
+  },
+  "bridgeErr_eztrans_bad_reply": {
+    "message": "$1: eztrans sent a reply length of $2"
+  },
+  "bridgeErr_backend_failed": {
+    "message": "$1: $2"
+  },
+  "bridgeErr_internal_error": {
+    "message": "$1"
+  },
+  "bridgeBadUrl": {
+    "message": "the bridge address or route is not allowed"
+  },
+  "bridgeTimedOut": {
+    "message": "the bridge did not answer within $1 ms"
+  },
+  "bridgeUnreachable": {
+    "message": "cannot reach the bridge ($1)"
+  },
+  "noWorkerAnswer": {
+    "message": "no answer from the extension worker"
+  },
+  "seasonTranslate": {
+    "message": "Translate the whole season"
+  },
+  "seasonTranslateNote": {
+    "message": "one episode after another, saved for later"
+  },
+  "seasonProgress": {
+    "message": "$1/$2 episodes"
+  },
+  "seasonStop": {
+    "message": "Stop translating the season"
+  },
+  "seasonStarted": {
+    "message": "Translating the whole season in the background"
+  },
+  "seasonDone": {
+    "message": "Season translated: $1 of $2 episodes"
+  },
+  "nextQueued": {
+    "message": "Translating the next episode in the background"
+  }
+}

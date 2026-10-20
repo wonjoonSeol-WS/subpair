@@ -1,0 +1,12 @@
+title: Subpair
+description: Two subtitle lines at once on Netflix and Jellyfin
+markdown: kramdown
+kramdown:
+  input: GFM
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+exclude:
+  - README.md

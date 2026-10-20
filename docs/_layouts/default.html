@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="icon" href="{{ '/assets/icon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  {% assign versions = site.pages | where: "ref", page.ref | sort: "lang_order" %}
+  {% assign nav = site.pages | where: "lang", page.lang | where_exp: "p", "p.nav" | sort: "order" %}
+  <header>
+    <a class="brand" href="{{ '/' | relative_url }}{% if page.lang != 'en' %}{{ page.lang }}/{% endif %}">
+      <img src="{{ '/assets/icon.svg' | relative_url }}" alt="" width="28" height="28"> {{ site.title }}
+    </a>
+    <nav>
+      {% for p in nav %}<a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav }}</a>{% endfor %}
+    </nav>
+    <nav class="languages" aria-label="Language">
+      {% for v in versions %}<a href="{{ v.url | relative_url }}" lang="{{ v.lang }}"{% if v.lang == page.lang %} aria-current="true"{% endif %}>{{ v.language }}</a>{% endfor %}
+    </nav>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer>MIT License. Subpair is not affiliated with Netflix or Jellyfin.</footer>
+  <script type="module">
+    const blocks = document.querySelectorAll('pre > code.language-mermaid');
+    if (blocks.length) {
+      for (const code of blocks) {
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+        code.parentElement.replaceWith(div);
+      }
+      const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs');
+      const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default' });
+      await mermaid.run({ querySelector: '.mermaid' });
+    }
+  </script>
+</body>
+</html>

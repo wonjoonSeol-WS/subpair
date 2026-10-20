@@ -1,0 +1,32 @@
+{
+  "limits": {
+    "maxText": 40,
+    "maxLines": 8,
+    "maxContext": 3,
+    "maxCues": 12,
+    "maxJobs": 3,
+    "maxRunningJobs": 2,
+    "maxClients": 4,
+    "bodyBytesLine": 2000,
+    "bodyBytesJobs": 8000,
+    "lineWaitMs": 2000,
+    "lineResultTtlMs": 2000,
+    "lineAbandonMs": 2000,
+    "maxPendingLines": 4
+  },
+  "llm": {
+    "retries": 2,
+    "retryBaseMs": 1,
+    "retryMaxMs": 5
+  },
+  "eztrans": {
+    "loadMs": 0,
+    "startTimeoutMs": 5000,
+    "connectRetryMs": 20,
+    "requestTimeoutMs": 400
+  },
+  "claude": {
+    "command": "node",
+    "timeoutMs": 20000
+  }
+}

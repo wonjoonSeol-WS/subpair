@@ -1,0 +1,38 @@
+{
+  "//": [
+    "Copy this file to bridge/config.json and change what you need; every setting you leave out comes from",
+    "config.defaults.json, and a key that is not there is an error (keys starting with // are comments).",
+    "config.json may hold API keys: keep it out of git.",
+    "port: the extension's options page must use the same address (http://127.0.0.1:<port>).",
+    "storeDir: where translations are saved. Empty means the per-user data folder (Windows %LOCALAPPDATA%\\subpair,",
+    "macOS ~/Library/Application Support/subpair, Linux $XDG_DATA_HOME/subpair or ~/.local/share/subpair). A relative",
+    "path is relative to this folder (bridge/).",
+    "allowedOrigins: the browser extensions that may call the bridge. Empty allows any extension. To allow only Subpair,",
+    "list its origin: in Chrome \"chrome-extension://<the ID shown on chrome://extensions>\", in Firefox",
+    "\"moz-extension://<the Internal UUID shown on about:debugging#/runtime/this-firefox>\"."
+  ],
+  "port": 8765,
+  "storeDir": "",
+  "allowedOrigins": [],
+
+  "//eztrans": "Windows only. helper: Luna Translator's LunaSubProcess32.exe; dir: the ezTrans XP folder; cwd: the Luna Translator folder.",
+  "eztrans": {
+    "helper": "",
+    "dir": "",
+    "cwd": ""
+  },
+
+  "//api": "Anthropic API. The key can also come from ANTHROPIC_API_KEY. effort: low, medium, high, xhigh or max; empty leaves it out (models that do not take it).",
+  "api": {
+    "key": "",
+    "model": "claude-haiku-5-5",
+    "effort": "low"
+  },
+
+  "//openai": "Any OpenAI-compatible server, e.g. Ollama at http://127.0.0.1:11434/v1. The key can also come from OPENAI_API_KEY; servers on this computer or the local network usually need none.",
+  "openai": {
+    "baseUrl": "https://api.openai.com/v1",
+    "model": "",
+    "key": ""
+  }
+}

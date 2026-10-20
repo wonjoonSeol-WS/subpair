@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title data-i18n="optTitle"></title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; color: #1c1c20; }
+  h1 { font-size: 20px; } h2 { font-size: 15px; margin: 20px 0 8px; }
+  label { display: block; margin: 8px 0 2px; font-weight: 600; }
+  input[type=text], select { width: 100%; padding: 6px 8px; box-sizing: border-box; }
+  input[type=number] { width: 70px; padding: 6px 8px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; } .row > div { flex: 1 1 200px; }
+  .hint { color: #666; font-size: 12px; font-weight: 400; }
+  button { padding: 6px 12px; margin: 4px 4px 4px 0; cursor: pointer; }
+  .keys input { width: 100%; }
+  .langs { display: flex; flex-direction: column; gap: 6px; }
+  #status { color: #2b8a3e; margin-left: auto; font-size: 13px; }
+  #status.error { color: #c92a2a; }
+  .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; background: #fff; padding: 10px 0 8px; border-bottom: 1px solid #e3e3e8; margin-bottom: 8px; }
+  .topbar h1 { margin: 0; }
+  button.primary { background: #3b5bdb; color: #fff; border: 0; border-radius: 6px; padding: 8px 18px; font-weight: 600; margin: 0; }
+  button.primary:hover { background: #2f4ac0; }
+  .banner { background: #fff4d6; border: 1px solid #f0c36d; border-radius: 6px; padding: 10px 12px; margin: 8px 0; }
+  .banner[hidden] { display: none; }
+  #sites li { display: flex; align-items: center; gap: 8px; }
+  #sites code { flex: 1; }
+</style>
+</head>
+<body>
+<div class="topbar"><h1 data-i18n="extName"></h1><span id="status" role="status"></span><button id="save" class="primary" data-i18n="optSave"></button></div>
+
+<div id="firstRun" class="banner" hidden data-i18n="optFirstRun"></div>
+<div id="changedElsewhere" class="banner" hidden><span data-i18n="optChangedElsewhere"></span> <button id="reload" data-i18n="optLoadThem"></button></div>
+
+<h2 data-i18n="optProfile"></h2>
+<div class="row">
+  <div><label for="profile" data-i18n="optActiveProfile"></label><select id="profile"></select></div>
+  <div><label for="name" data-i18n="optName"></label><input type="text" id="name"></div>
+</div>
+<button id="add" data-i18n="optNewProfile"></button><button id="dup" data-i18n="optDuplicate"></button><button id="del" data-i18n="optDelete"></button>
+
+<h2 data-i18n="optLanguages"></h2>
+<p class="hint" data-i18n="optLanguagesHint"></p>
+<div class="row">
+  <div><label><span data-i18n="optMainLine"></span> <span class="hint" data-i18n="optMainLineHint"></span></label><div class="langs" id="mainLangs"></div></div>
+  <div><label><span data-i18n="optSecondLine"></span> <span class="hint" data-i18n="optSecondLineHint"></span></label><div class="langs" id="subLangs"></div></div>
+</div>
+
+<h2 data-i18n="optTranslation"></h2>
+<p class="hint" data-i18n="optTranslationHint"></p>
+<div class="row">
+  <div><label for="trBackend" data-i18n="optTranslator"></label><select id="trBackend"></select></div>
+  <div><label for="trMode" data-i18n="optWhen"></label>
+    <select id="trMode">
+      <option value="auto" data-i18n="optWhenAuto"></option>
+      <option value="live" data-i18n="optWhenLive"></option>
+      <option value="process" data-i18n="optWhenProcess"></option>
+      <option value="off" data-i18n="optWhenOff"></option>
+    </select></div>
+  <div><label for="trBridge"><span data-i18n="optBridge"></span> <span class="hint" data-i18n="optBridgeHint"></span></label><input type="text" id="trBridge"></div>
+</div>
+<p class="hint" data-i18n="optModelsHint"></p>
+<div class="row" id="models"></div>
+
+<h2 data-i18n="optLayout"></h2>
+<div class="row">
+  <div><label for="mainFont" data-i18n="optMainFont"></label><input type="number" id="mainFont"></div>
+  <div><label for="subFont" data-i18n="optSubFont"></label><input type="number" id="subFont"></div>
+  <div><label for="mainLines"><span data-i18n="optMainLines"></span> <span class="hint" data-i18n="optHalves"></span></label><input type="number" id="mainLines" step="0.5"></div>
+  <div><label for="subLines"><span data-i18n="optSubLines"></span> <span class="hint" data-i18n="optHalves"></span></label><input type="number" id="subLines" step="0.5"></div>
+</div>
+<div class="row">
+  <div><label for="textPlacement" data-i18n="optPosition"></label>
+    <select id="textPlacement"><option value="overlay" data-i18n="placeOverlay"></option><option value="bar" data-i18n="placeBar"></option></select></div>
+  <div><label for="subtitleBackground" data-i18n="optBackground"></label>
+    <select id="subtitleBackground"><option value="none" data-i18n="bgNone"></option><option value="translucent" data-i18n="bgTranslucent"></option><option value="solid" data-i18n="bgSolid"></option></select></div>
+  <div><label for="subtitleGap"><span data-i18n="optGap"></span> <span class="hint" data-i18n="optGapHint"></span></label><input type="number" id="subtitleGap" step="1"></div>
+  <div><label for="lineGap" data-i18n="optLineGap"></label><input type="number" id="lineGap" step="1"></div>
+  <div><label for="pictureAlign"><span data-i18n="optAlign"></span> <span class="hint" data-i18n="optAlignHint"></span></label>
+    <select id="pictureAlign"><option value="center" data-i18n="alignCenter"></option><option value="top" data-i18n="alignTop"></option><option value="bottom" data-i18n="alignBottom"></option></select></div>
+</div>
+<label><input type="checkbox" id="joinLines"> <span data-i18n="optJoinLines"></span></label>
+<label><input type="checkbox" id="hideSpeaker"> <span data-i18n="optHideSpeaker"></span></label>
+<label><input type="checkbox" id="panelTimes"> <span data-i18n="optPanelTimes"></span></label>
+<label><input type="checkbox" id="panel"> <span data-i18n="optPanel"></span></label>
+<label><input type="checkbox" id="autoPause"> <span data-i18n="optAutoPause"></span></label>
+
+<h2 data-i18n="optColors"></h2>
+<p class="hint" data-i18n="optColorsHint"></p>
+<label><input type="checkbox" id="colorize"> <span data-i18n="optColorize"></span></label>
+<div class="row colors">
+  <div><label data-i18n="optNouns"></label><input type="color" data-color="noun"></div>
+  <div><label data-i18n="optVerbs"></label><input type="color" data-color="verb"></div>
+  <div><label data-i18n="optAdjectives"></label><input type="color" data-color="adj"></div>
+  <div><label data-i18n="optAdverbs"></label><input type="color" data-color="adv"></div>
+  <div><label data-i18n="optParticles"></label><input type="color" data-color="particle"></div>
+</div>
+
+<h2 data-i18n="optShortcuts"></h2>
+<p class="hint" data-i18n="optShortcutsHint"></p>
+<div class="row keys">
+  <div><label for="key-prev" data-i18n="optKeyPrev"></label><input type="text" id="key-prev" data-key="prev"></div>
+  <div><label for="key-repeat" data-i18n="optKeyRepeat"></label><input type="text" id="key-repeat" data-key="repeat"></div>
+  <div><label for="key-next" data-i18n="optKeyNext"></label><input type="text" id="key-next" data-key="next"></div>
+  <div><label for="key-autopause" data-i18n="optKeyAutoPause"></label><input type="text" id="key-autopause" data-key="autopause"></div>
+</div>
+
+<h2 data-i18n="optServers"></h2>
+<p class="hint" data-i18n="optServersHint"></p>
+<ul id="sites"></ul>
+
+<h2 data-i18n="optBackup"></h2>
+<p class="hint" data-i18n="optBackupHint"></p>
+<button id="export" data-i18n="optExport"></button><button id="import" data-i18n="optImport"></button>
+<input type="file" id="file" accept="application/json" hidden>
+
+<script src="shim.js"></script>
+<script type="module" src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "subpair",
+  "version": "0.1.0",
+  "description": "Browser extension that shows two subtitle lines at once on Netflix and Jellyfin, with an optional local translation bridge.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=21"
+  },
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "bridge": "node bridge/server.mjs",
+    "build:firefox": "node scripts/build-firefox.mjs",
+    "lint:firefox": "npm run build:firefox && web-ext lint --source-dir dist/firefox",
+    "build:chrome": "node scripts/build-firefox.mjs chrome",
+    "package": "npm run build:firefox && npm run build:chrome && web-ext build --source-dir dist/firefox --artifacts-dir dist/packages --filename subpair-firefox-{version}.zip --overwrite-dest && web-ext build --source-dir dist/chrome --artifacts-dir dist/packages --filename subpair-chrome-{version}.zip --overwrite-dest"
+  },
+  "devDependencies": {
+    "kuromoji": "^0.1.2",
+    "web-ext": "10.8.0"
+  }
+}

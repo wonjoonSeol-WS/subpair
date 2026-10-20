@@ -1,0 +1,57 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1c1c22;
+  --muted: #5f6370;
+  --line: #e3e4ea;
+  --accent: #3b5bdb;
+  --code-bg: #f4f5f8;
+  --note-bg: #eef2ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111216;
+    --fg: #e8e8ee;
+    --muted: #9a9daa;
+    --line: #2a2c35;
+    --accent: #7d97ff;
+    --code-bg: #1b1d24;
+    --note-bg: #1a2140;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", "Noto Sans KR", "Noto Sans JP", sans-serif;
+}
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 10px 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+header a { color: var(--fg); text-decoration: none; }
+header a[aria-current] { color: var(--accent); font-weight: 600; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; }
+header nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+header nav.languages { margin-left: auto; }
+main { max-width: 820px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 30px; line-height: 1.25; }
+h2 { margin-top: 40px; padding-top: 8px; border-top: 1px solid var(--line); }
+a { color: var(--accent); }
+img { max-width: 100%; height: auto; border-radius: 6px; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+pre { background: var(--code-bg); padding: 12px 14px; border-radius: 6px; overflow-x: auto; }
+pre code { padding: 0; background: none; }
+table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+blockquote { margin: 16px 0; padding: 10px 14px; background: var(--note-bg); border-left: 4px solid var(--accent); border-radius: 4px; }
+blockquote p { margin: 4px 0; }
+.mermaid { margin: 16px 0; text-align: center; }
+footer { max-width: 820px; margin: 0 auto; padding: 16px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }

@@ -1,0 +1,70 @@
+{
+  "port": 8765,
+  "from": "ja",
+  "storeDir": "",
+  "allowedOrigins": [],
+  "limits": {
+    "maxText": 2000,
+    "maxLines": 200,
+    "maxContext": 12,
+    "maxCues": 20000,
+    "maxJobs": 200,
+    "maxRunningJobs": 8,
+    "maxClients": 200,
+    "bodyBytesLine": 262144,
+    "bodyBytesJobs": 8388608,
+    "lineWaitMs": 20000,
+    "lineResultTtlMs": 60000,
+    "lineAbandonMs": 30000,
+    "maxPendingLines": 200
+  },
+  "llm": {
+    "attempts": 2,
+    "splitDepth": 4,
+    "retries": 3,
+    "retryBaseMs": 1000,
+    "retryMaxMs": 30000
+  },
+  "eztrans": {
+    "helper": "",
+    "dir": "",
+    "cwd": "",
+    "chunk": 8,
+    "loadMs": 1500,
+    "startTimeoutMs": 30000,
+    "connectRetryMs": 200,
+    "requestTimeoutMs": 15000,
+    "maxReplyBytes": 1048576
+  },
+  "claude": {
+    "command": "claude",
+    "model": "haiku",
+    "batch": 40,
+    "context": 6,
+    "concurrency": 2,
+    "timeoutMs": 180000,
+    "maxOutputBytes": 4194304
+  },
+  "api": {
+    "baseUrl": "https://api.anthropic.com",
+    "version": "2023-06-01",
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "key": "",
+    "batch": 40,
+    "context": 6,
+    "concurrency": 3,
+    "timeoutMs": 120000,
+    "maxTokens": 8000
+  },
+  "openai": {
+    "baseUrl": "https://api.openai.com/v1",
+    "model": "",
+    "key": "",
+    "temperature": null,
+    "batch": 40,
+    "context": 6,
+    "concurrency": 2,
+    "timeoutMs": 120000
+  }
+}

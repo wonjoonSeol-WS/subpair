@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+# local settings (may hold API keys) and saved translations
+bridge/config.json
+bridge/store/
+# build output
+dist/
+*.log

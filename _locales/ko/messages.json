@@ -1,0 +1,836 @@
+{
+  "extName": {
+    "message": "Subpair"
+  },
+  "extDescription": {
+    "message": "Netflix와 Jellyfin에서 자막 두 줄을 함께 보여 줍니다. 대본 패널, 한 줄 다시 듣기, 자동 일시정지, 로컬 번역(선택)을 지원합니다."
+  },
+  "cmdToggle": {
+    "message": "Subpair 켜기/끄기"
+  },
+  "actionOn": {
+    "message": "Subpair 켜짐 (클릭하면 꺼짐)"
+  },
+  "actionOff": {
+    "message": "Subpair 꺼짐 (클릭하면 켜짐)"
+  },
+  "badgeOff": {
+    "message": "끔"
+  },
+  "noticeOff": {
+    "message": "Subpair: 꺼짐"
+  },
+  "noticeOffTitle": {
+    "message": "Subpair 다시 켜기 (툴바의 Subpair 버튼, 또는 바꾸지 않았다면 Alt+Shift+S로도 켤 수 있습니다)"
+  },
+  "noticeAsk": {
+    "message": "이 서버에서 Subpair를 사용할까요?"
+  },
+  "noticeAskTitle": {
+    "message": "Subpair가 이 Jellyfin 서버의 자막을 읽고, 번역기로 보낼 수 있습니다. 클릭하면 이 서버를 허용합니다."
+  },
+  "noticeSetup": {
+    "message": "Subpair: 언어를 선택하세요"
+  },
+  "noticeSetupTitle": {
+    "message": "Subpair 설정을 열어 주 자막과 두 번째 자막의 언어를 선택합니다"
+  },
+  "btnPrev": {
+    "message": "이전 줄"
+  },
+  "btnRepeat": {
+    "message": "현재 줄 반복"
+  },
+  "btnNext": {
+    "message": "다음 줄"
+  },
+  "btnAutoPause": {
+    "message": "자동 일시정지"
+  },
+  "btnPanel": {
+    "message": "대본 패널 보이기/숨기기"
+  },
+  "btnSettings": {
+    "message": "빠른 설정"
+  },
+  "btnOff": {
+    "message": "Subpair 끄기"
+  },
+  "withKeys": {
+    "message": "$1 ($2)"
+  },
+  "copied": {
+    "message": "복사했습니다"
+  },
+  "lineCopied": {
+    "message": "줄을 복사했습니다"
+  },
+  "dictCopied": {
+    "message": "기본형을 복사했습니다"
+  },
+  "copyFailed": {
+    "message": "복사하지 못했습니다"
+  },
+  "autoPauseOn": {
+    "message": "자동 일시정지 켜짐"
+  },
+  "autoPauseOff": {
+    "message": "자동 일시정지 꺼짐"
+  },
+  "notSaved": {
+    "message": "저장하지 못했습니다: $1"
+  },
+  "profileGone": {
+    "message": "이 프로필이 더 이상 없습니다. 설정에서 프로필을 선택하세요"
+  },
+  "noTranslation": {
+    "message": "번역 없음: $1"
+  },
+  "menuMain": {
+    "message": "주 자막"
+  },
+  "menuSecond": {
+    "message": "두 번째 자막"
+  },
+  "menuTranslator": {
+    "message": "번역기"
+  },
+  "menuTiming": {
+    "message": "자막 싱크"
+  },
+  "menuSize": {
+    "message": "글자 크기"
+  },
+  "menuPosition": {
+    "message": "자막 위치"
+  },
+  "menuBackground": {
+    "message": "자막 배경"
+  },
+  "menuAutoPause": {
+    "message": "자동 일시정지"
+  },
+  "menuPanel": {
+    "message": "대본 패널"
+  },
+  "menuMore": {
+    "message": "설정 더 보기..."
+  },
+  "menuBack": {
+    "message": "뒤로"
+  },
+  "on": {
+    "message": "켜짐"
+  },
+  "off": {
+    "message": "꺼짐"
+  },
+  "none": {
+    "message": "없음"
+  },
+  "mainLine": {
+    "message": "주 자막"
+  },
+  "secondLine": {
+    "message": "두 번째 자막"
+  },
+  "reset": {
+    "message": "초기화"
+  },
+  "stepLess": {
+    "message": "$1: 줄이기"
+  },
+  "stepMore": {
+    "message": "$1: 늘리기"
+  },
+  "px": {
+    "message": "$1 px"
+  },
+  "seconds": {
+    "message": "$1초"
+  },
+  "spaceFromPicture": {
+    "message": "화면과의 간격"
+  },
+  "spaceBetweenLines": {
+    "message": "줄 간격"
+  },
+  "pictureAboveBar": {
+    "message": "하단 바 위에서 화면의 위치:"
+  },
+  "backgroundNote": {
+    "message": "영상 위에 표시되는 자막에 적용됩니다. 하단 바는 자체 모양을 씁니다."
+  },
+  "wantedMissing": {
+    "message": "$1 자막을 원하지만 표시되지 않습니다: $2. 다시 선택하면 재시도합니다."
+  },
+  "noTrackNoTranslator": {
+    "message": "이 영상에 해당 자막이 없고, 번역할 번역기도 없습니다"
+  },
+  "useTrackAgain": {
+    "message": "$1 자막 트랙을 다시 사용"
+  },
+  "translateInstead": {
+    "message": "대신 주 자막을 번역"
+  },
+  "translateInsteadNote": {
+    "message": "자막이 이상하거나 싱크가 안 맞을 때"
+  },
+  "whenToTranslate": {
+    "message": "번역 시점"
+  },
+  "translateAgain": {
+    "message": "이 작품 다시 번역"
+  },
+  "translateAgainNote": {
+    "message": "저장된 번역을 바꿉니다"
+  },
+  "clickAgain": {
+    "message": "한 번 더 누르면 시작"
+  },
+  "noTrackInVideo": {
+    "message": "이 영상에 자막 없음"
+  },
+  "translated": {
+    "message": "번역"
+  },
+  "langTranslated": {
+    "message": "$1 (번역)"
+  },
+  "langNotAvailable": {
+    "message": "$1 (사용할 수 없음)"
+  },
+  "langInsteadOf": {
+    "message": "$2 대신 $1"
+  },
+  "subtitleTrack": {
+    "message": "자막 트랙"
+  },
+  "automatic": {
+    "message": "자동"
+  },
+  "automaticFirstReady": {
+    "message": "자동 (준비된 첫 번째 번역기)"
+  },
+  "summaryWhole": {
+    "message": "$1, 작품 전체"
+  },
+  "summaryWholeProgress": {
+    "message": "$1, 작품 전체 $2/$3"
+  },
+  "summarySaved": {
+    "message": "$1, 저장된 번역"
+  },
+  "summaryFailed": {
+    "message": "$1, 실패"
+  },
+  "summaryLive": {
+    "message": "$1, 실시간"
+  },
+  "modeAuto": {
+    "message": "자동"
+  },
+  "modeLive": {
+    "message": "실시간 (몇 줄 앞서)"
+  },
+  "modeProcess": {
+    "message": "지금 작품 전체"
+  },
+  "placeOverlay": {
+    "message": "영상 위"
+  },
+  "placeBar": {
+    "message": "하단 바"
+  },
+  "placeSummaryBar": {
+    "message": "하단 바"
+  },
+  "placeSummaryOverlay": {
+    "message": "영상 위, 화면에서 $1 px"
+  },
+  "alignCenter": {
+    "message": "가운데"
+  },
+  "alignTop": {
+    "message": "위"
+  },
+  "alignBottom": {
+    "message": "아래"
+  },
+  "bgNone": {
+    "message": "없음 (외곽선 글자)"
+  },
+  "bgTranslucent": {
+    "message": "어둡게, 반투명"
+  },
+  "bgSolid": {
+    "message": "검정"
+  },
+  "backendEztrans": {
+    "message": "ezTrans (로컬, Windows, 일본어에서 한국어만)"
+  },
+  "backendClaude": {
+    "message": "Claude (claude -p, Claude Code 로그인 사용)"
+  },
+  "backendApi": {
+    "message": "Anthropic API (브리지에 ANTHROPIC_API_KEY 필요)"
+  },
+  "backendOpenai": {
+    "message": "OpenAI 호환 (OpenAI, Gemini, DeepSeek, Ollama 등. 주소는 bridge/config.json)"
+  },
+  "nameOpenai": {
+    "message": "OpenAI 호환"
+  },
+  "modelHintClaude": {
+    "message": "haiku, sonnet, opus 또는 전체 모델 ID"
+  },
+  "modelHintApi": {
+    "message": "모델 ID (예: claude-haiku-5-5)"
+  },
+  "modelHintOpenai": {
+    "message": "제공자가 지원하는 모델 ID"
+  },
+  "trOff": {
+    "message": "번역이 꺼져 있습니다"
+  },
+  "trBridgeDown": {
+    "message": "번역 브리지가 실행 중이 아닙니다 (npm run bridge)"
+  },
+  "trNoneReady": {
+    "message": "$1에서 $2(으)로 번역할 수 있는 번역기가 없습니다"
+  },
+  "trCannot": {
+    "message": "$1(으)로는 $2에서 $3(으)로 번역할 수 없습니다 (또는 설정되지 않음)"
+  },
+  "trSavedLoaded": {
+    "message": "저장된 $1 번역을 불러왔습니다"
+  },
+  "trSavedPartial": {
+    "message": "저장된 $1 번역은 $3줄 중 $2줄만 맞아, 나머지를 번역합니다"
+  },
+  "trSaved": {
+    "message": "이 작품의 번역을 저장했습니다"
+  },
+  "trSaveFailed": {
+    "message": "번역을 저장하지 못했습니다: $1"
+  },
+  "trFailed": {
+    "message": "번역 실패: $1"
+  },
+  "trLost": {
+    "message": "번역 브리지와 연결이 끊겼습니다"
+  },
+  "trStopped": {
+    "message": "번역을 멈췄습니다"
+  },
+  "trProgress": {
+    "message": "번역 중 $1/$2"
+  },
+  "trReady": {
+    "message": "번역 완료"
+  },
+  "trNotLoaded": {
+    "message": "번역은 끝났지만 불러오지 못했습니다"
+  },
+  "trPaused": {
+    "message": "번역 일시 중지, 재시도 중: $1"
+  },
+  "trLive": {
+    "message": "실시간 번역 중"
+  },
+  "noAnswer": {
+    "message": "응답 없음"
+  },
+  "saveDone": {
+    "message": "번역을 Jellyfin에 저장했습니다"
+  },
+  "saveReplaced": {
+    "message": "Jellyfin의 번역을 교체했습니다"
+  },
+  "saveNewOldKept": {
+    "message": "새 번역을 Jellyfin에 저장했지만 이전 번역은 지우지 못했습니다 (상태 $1, 관리자 권한 필요)"
+  },
+  "saveKeptForeign": {
+    "message": "Jellyfin에 있는 자막을 그대로 두었습니다: Subpair가 만든 자막이 아닙니다"
+  },
+  "saveNoPermission": {
+    "message": "Jellyfin에 저장하지 못했습니다: 이 계정은 자막을 관리할 수 없습니다"
+  },
+  "saveFailedStatus": {
+    "message": "Jellyfin에 저장하지 못했습니다 (상태 $1)"
+  },
+  "saveFailedDetail": {
+    "message": "Jellyfin에 저장하지 못했습니다 (상태 $1: $2)"
+  },
+  "saveFailedError": {
+    "message": "Jellyfin에 저장하지 못했습니다: $1"
+  },
+  "saveStoppedReload": {
+    "message": "저장을 멈췄습니다: 확장 프로그램이 다시 로드되었습니다"
+  },
+  "optTitle": {
+    "message": "Subpair 설정"
+  },
+  "optSave": {
+    "message": "설정 저장"
+  },
+  "optFirstRun": {
+    "message": "환영합니다. 주 자막 언어(함께 읽을 자막, 예: 배우고 있는 언어)와 두 번째 자막 언어(내 언어)를 고른 뒤 설정 저장을 누르세요."
+  },
+  "optChangedElsewhere": {
+    "message": "이 페이지가 열려 있는 동안 플레이어에서 설정이 바뀌었습니다. 지금 저장하면 그 변경을 덮어씁니다."
+  },
+  "optLoadThem": {
+    "message": "그 설정 불러오기"
+  },
+  "optProfile": {
+    "message": "프로필"
+  },
+  "optActiveProfile": {
+    "message": "사용 중인 프로필"
+  },
+  "optName": {
+    "message": "이름"
+  },
+  "optNewProfile": {
+    "message": "새 프로필"
+  },
+  "optDuplicate": {
+    "message": "복제"
+  },
+  "optDelete": {
+    "message": "삭제"
+  },
+  "optLanguages": {
+    "message": "언어"
+  },
+  "optLanguagesHint": {
+    "message": "첫 번째 선택과, 원하면 대체 언어를 고르세요. 영상에 자막 트랙이 있는 첫 언어가 사용됩니다."
+  },
+  "optMainLine": {
+    "message": "주 자막"
+  },
+  "optMainLineHint": {
+    "message": "(함께 읽을 자막)"
+  },
+  "optSecondLine": {
+    "message": "두 번째 자막"
+  },
+  "optSecondLineHint": {
+    "message": "(이 언어의 자막 트랙, 또는 주 자막의 번역)"
+  },
+  "optSlotFirst": {
+    "message": "첫 번째 선택"
+  },
+  "optSlotFallback": {
+    "message": "대체 언어"
+  },
+  "optSlotFallback2": {
+    "message": "두 번째 대체 언어"
+  },
+  "optChooseLanguage": {
+    "message": "(언어 선택)"
+  },
+  "optNoLanguage": {
+    "message": "(없음)"
+  },
+  "optTranslation": {
+    "message": "번역"
+  },
+  "optTranslationHint": {
+    "message": "Netflix나 Jellyfin 작품에 첫 번째 두 번째 자막 언어의 트랙이 없으면, 작은 로컬 프로그램(브리지, Subpair 폴더에서 npm run bridge로 실행)이 주 자막을 번역합니다. 번역은 작품마다 저장되어 다음에 다시 쓰입니다. 브리지가 꺼져 있으면 트랙이 있는 다음 두 번째 자막 언어를 씁니다."
+  },
+  "optTranslator": {
+    "message": "번역기"
+  },
+  "optWhen": {
+    "message": "번역 시점"
+  },
+  "optWhenAuto": {
+    "message": "자동 (ezTrans는 몇 줄 앞서, 나머지는 작품 전체 먼저)"
+  },
+  "optWhenLive": {
+    "message": "실시간, 영상보다 몇 줄 앞서"
+  },
+  "optWhenProcess": {
+    "message": "작품 전체를 먼저 번역한 뒤 표시"
+  },
+  "optWhenOff": {
+    "message": "번역 안 함"
+  },
+  "optBridge": {
+    "message": "브리지 주소"
+  },
+  "optBridgeHint": {
+    "message": "(이 컴퓨터만)"
+  },
+  "optModelsHint": {
+    "message": "번역기별 모델. 비워 두면 브리지 설정을 씁니다(브리지가 실행 중이면 회색으로 표시). API 키와 OpenAI 호환 주소는 브라우저가 아니라 브리지의 bridge/config.json에 둡니다."
+  },
+  "optModelFor": {
+    "message": "$1 모델"
+  },
+  "optBridgeDefault": {
+    "message": "브리지 기본값: $1"
+  },
+  "optLayout": {
+    "message": "레이아웃"
+  },
+  "optMainFont": {
+    "message": "주 자막 글자 (px)"
+  },
+  "optSubFont": {
+    "message": "두 번째 자막 글자 (px)"
+  },
+  "optMainLines": {
+    "message": "주 자막 줄 수 확보"
+  },
+  "optSubLines": {
+    "message": "두 번째 자막 줄 수 확보"
+  },
+  "optHalves": {
+    "message": "(0.5 단위 가능)"
+  },
+  "optPosition": {
+    "message": "자막 위치"
+  },
+  "optBackground": {
+    "message": "영상 위 자막의 배경"
+  },
+  "optGap": {
+    "message": "화면과의 간격 (px)"
+  },
+  "optGapHint": {
+    "message": "(영상 위)"
+  },
+  "optLineGap": {
+    "message": "줄 간격 (px)"
+  },
+  "optAlign": {
+    "message": "화면 위치"
+  },
+  "optAlignHint": {
+    "message": "(하단 바일 때만: 바 위에서 화면이 놓이는 곳)"
+  },
+  "optJoinLines": {
+    "message": "자막을 한 줄로 표시 (자막 파일이 한 큐 안에 넣은 줄바꿈을 합침)"
+  },
+  "optHideSpeaker": {
+    "message": "줄 앞의 화자 이름 숨기기, 예: （田中） 또는 (Alice)"
+  },
+  "optPanelTimes": {
+    "message": "대본 패널에 시간 표시"
+  },
+  "optPanel": {
+    "message": "오른쪽에 대본 패널 표시 (일반 화면. 전체 화면에서는 따로 켜고 끄며, 처음엔 꺼짐)"
+  },
+  "optAutoPause": {
+    "message": "주 자막 한 줄이 끝날 때마다 자동 일시정지"
+  },
+  "optColors": {
+    "message": "단어 색"
+  },
+  "optColorsHint": {
+    "message": "품사별로 단어에 색을 입힙니다. 지금은 일본어만(일본어 분석기 필요). 단어를 클릭하면 복사, Ctrl+클릭은 기본형, Alt+클릭은 한 줄 전체를 복사합니다."
+  },
+  "optColorize": {
+    "message": "품사별 단어 색"
+  },
+  "optNouns": {
+    "message": "명사"
+  },
+  "optVerbs": {
+    "message": "동사"
+  },
+  "optAdjectives": {
+    "message": "형용사"
+  },
+  "optAdverbs": {
+    "message": "부사"
+  },
+  "optParticles": {
+    "message": "조사"
+  },
+  "optShortcuts": {
+    "message": "단축키"
+  },
+  "optShortcutsHint": {
+    "message": "칸을 클릭하고 키를 누르면 추가되고, Backspace는 마지막 키를 지웁니다. Ctrl, Alt, Shift, Cmd와 함께 누른 키는 페이지에 맡깁니다. Subpair 켜기/끄기 단축키(Alt+Shift+S)는 브라우저의 확장 프로그램 단축키 설정에서 바꿉니다."
+  },
+  "optKeyPrev": {
+    "message": "이전 줄"
+  },
+  "optKeyRepeat": {
+    "message": "현재 줄 반복"
+  },
+  "optKeyNext": {
+    "message": "다음 줄"
+  },
+  "optKeyAutoPause": {
+    "message": "자동 일시정지 켜기/끄기"
+  },
+  "optServers": {
+    "message": "Jellyfin 서버"
+  },
+  "optServersHint": {
+    "message": "Subpair는 허용한 Jellyfin 서버에서만 동작합니다(플레이어의 \"이 서버에서 Subpair를 사용할까요?\" 버튼). 허용한 서버 목록입니다."
+  },
+  "optServersNone": {
+    "message": "아직 없습니다."
+  },
+  "optRemove": {
+    "message": "삭제"
+  },
+  "optBackup": {
+    "message": "백업"
+  },
+  "optBackupHint": {
+    "message": "설정은 위쪽의 저장 버튼으로 저장됩니다."
+  },
+  "optExport": {
+    "message": "모든 프로필 내보내기"
+  },
+  "optImport": {
+    "message": "프로필 가져오기"
+  },
+  "optSaved": {
+    "message": "저장했습니다"
+  },
+  "optSavedWith": {
+    "message": "저장했습니다 ($1)"
+  },
+  "optNotSaved": {
+    "message": "저장하지 못했습니다: $1"
+  },
+  "optNotAllowed": {
+    "message": "$1 $2 값은 허용되지 않아 $3(으)로 설정했습니다"
+  },
+  "optWasEmpty": {
+    "message": "비어 있음"
+  },
+  "optLocalOnly": {
+    "message": "동기화하기엔 너무 커서 이 브라우저에만 저장했습니다"
+  },
+  "optNoMain": {
+    "message": "주 자막 언어를 선택하세요. 선택하기 전에는 아무것도 표시되지 않습니다"
+  },
+  "optBadBridge": {
+    "message": "브리지 주소는 http://127.0.0.1 또는 http://localhost여야 해서 기본값으로 되돌렸습니다"
+  },
+  "optBadModel": {
+    "message": "\"$1\"은(는) 모델 이름이 아니어서 $2 모델을 비웠습니다"
+  },
+  "optKeyClash": {
+    "message": "$1 키가 \"$2\"와(과) \"$3\"에 함께 지정되어 있습니다"
+  },
+  "optKeepOne": {
+    "message": "프로필은 하나 이상 있어야 합니다"
+  },
+  "optImported": {
+    "message": "가져왔습니다"
+  },
+  "optImportFailed": {
+    "message": "가져오지 못했습니다: $1"
+  },
+  "optImportNoProfiles": {
+    "message": "이 파일에 프로필이 없습니다"
+  },
+  "optImportConfirm": {
+    "message": "프로필 $1개를 모두 이 파일의 프로필 $2개로 바꿀까요?"
+  },
+  "optNewProfileName": {
+    "message": "새 프로필"
+  },
+  "optCopySuffix": {
+    "message": "$1 사본"
+  },
+  "bridgeErr_forbidden_host": {
+    "message": "허용되지 않은 호스트"
+  },
+  "bridgeErr_forbidden_origin": {
+    "message": "허용되지 않은 출처"
+  },
+  "bridgeErr_not_found": {
+    "message": "찾을 수 없음"
+  },
+  "bridgeErr_method_not_allowed": {
+    "message": "허용되지 않은 요청 방식"
+  },
+  "bridgeErr_bad_request_target": {
+    "message": "잘못된 요청 주소"
+  },
+  "bridgeErr_bad_url_escape": {
+    "message": "잘못된 URL 이스케이프"
+  },
+  "bridgeErr_body_too_large": {
+    "message": "요청 본문이 너무 큽니다"
+  },
+  "bridgeErr_body_not_json": {
+    "message": "요청 본문은 JSON 객체여야 합니다"
+  },
+  "bridgeErr_to_required": {
+    "message": "to(번역할 언어)가 필요합니다"
+  },
+  "bridgeErr_bad_language": {
+    "message": "$1은(는) ja나 ko 같은 언어 코드여야 합니다"
+  },
+  "bridgeErr_unknown_backend": {
+    "message": "알 수 없는 번역기"
+  },
+  "bridgeErr_bad_backend_name": {
+    "message": "잘못된 번역기 이름"
+  },
+  "bridgeErr_bad_model": {
+    "message": "모델 이름은 영문자, 숫자, . : / - _ 1~100자여야 합니다"
+  },
+  "bridgeErr_bad_key": {
+    "message": "키는 영문자, 숫자, - 또는 _ 1~$1자여야 합니다"
+  },
+  "bridgeErr_bad_texts": {
+    "message": "$1은(는) 최대 $3자인 문자열 최대 $2개의 배열이어야 합니다"
+  },
+  "bridgeErr_bad_cues": {
+    "message": "cues는 큐 1~$1개의 배열이어야 합니다"
+  },
+  "bridgeErr_bad_cue": {
+    "message": "각 큐에는 텍스트(문자열)와 숫자로 된 시작/끝 초가 필요하며, 시작은 끝보다 클 수 없습니다"
+  },
+  "bridgeErr_same_language": {
+    "message": "원문과 번역 언어가 같습니다"
+  },
+  "bridgeErr_pair_unsupported": {
+    "message": "$1은(는) $2만 지원하며 $3 -> $4는 지원하지 않습니다"
+  },
+  "bridgeErr_needs_model": {
+    "message": "$1에는 모델이 필요합니다: 요청에 보내거나 bridge/config.json에 $1.model을 설정하세요"
+  },
+  "bridgeErr_backend_not_ready": {
+    "message": "$1이(가) 설정되지 않았습니다"
+  },
+  "bridgeErr_eztrans_not_configured": {
+    "message": "ezTrans 또는 Luna 헬퍼를 찾지 못했습니다 (bridge/config.json의 eztrans.helper / eztrans.dir)"
+  },
+  "bridgeErr_claude_missing": {
+    "message": "claude 명령이 실행되지 않았습니다 (Claude Code를 설치하고 로그인하거나, bridge/config.json에 claude.command를 설정하세요)"
+  },
+  "bridgeErr_api_key_missing": {
+    "message": "Anthropic API 키가 없습니다 (ANTHROPIC_API_KEY 또는 bridge/config.json의 api.key)"
+  },
+  "bridgeErr_openai_not_configured": {
+    "message": "OpenAI 호환 번역기가 설정되지 않았습니다 (bridge/config.json의 openai.baseUrl, 호스팅 서비스라면 OPENAI_API_KEY 또는 openai.key)"
+  },
+  "bridgeErr_too_many_requests": {
+    "message": "진행 중인 번역이 너무 많습니다. 잠시 후 다시 시도하세요"
+  },
+  "bridgeErr_line_not_found": {
+    "message": "알 수 없거나 만료된 요청입니다"
+  },
+  "bridgeErr_too_many_jobs": {
+    "message": "이미 $1개 작품을 번역 중입니다. 나중에 다시 시도하세요"
+  },
+  "bridgeErr_job_running": {
+    "message": "이 작품은 이미 같은 번역기와 모델로 번역 중입니다. 끝난 뒤 다시 시도하세요"
+  },
+  "bridgeErr_lines_failed": {
+    "message": "$1줄을 번역하지 못해 저장된 번역을 그대로 두었습니다"
+  },
+  "bridgeErr_not_saved": {
+    "message": "저장되지 않았습니다"
+  },
+  "bridgeErr_upstream_rate_limited": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_upstream_error": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_timeout": {
+    "message": "$1: $2이(가) $3 ms 안에 응답하지 않았습니다"
+  },
+  "bridgeErr_refused": {
+    "message": "$1: Anthropic API가 이 부분의 번역을 거부했습니다"
+  },
+  "bridgeErr_refused_for": {
+    "message": "$1: Anthropic API가 이 부분의 번역을 거부했습니다 ($2)"
+  },
+  "bridgeErr_max_tokens": {
+    "message": "$1: Anthropic API 응답이 max_tokens($2)에 도달했습니다. api.maxTokens를 늘리거나 api.batch를 줄이세요"
+  },
+  "bridgeErr_no_content": {
+    "message": "$1: OpenAI 호환 API 응답에 메시지 내용이 없습니다"
+  },
+  "bridgeErr_claude_failed": {
+    "message": "$1: claude가 $2(으)로 종료되었습니다: $3"
+  },
+  "bridgeErr_claude_timeout": {
+    "message": "$1: claude가 $2 ms 뒤 시간 초과되었습니다"
+  },
+  "bridgeErr_claude_output_too_big": {
+    "message": "$1: claude 출력이 $2바이트를 넘었습니다"
+  },
+  "bridgeErr_cmd_unsafe": {
+    "message": "$1: $2을(를) cmd.exe로 안전하게 실행할 수 없습니다 (인수 $3). .exe 설치 버전을 쓰거나 명령을 .exe로 지정하세요"
+  },
+  "bridgeErr_eztrans_start_failed": {
+    "message": "$1: ezTrans 헬퍼를 시작하지 못했습니다: $2"
+  },
+  "bridgeErr_eztrans_exited": {
+    "message": "$1: ezTrans 헬퍼가 종료되었습니다 ($2)"
+  },
+  "bridgeErr_eztrans_gone": {
+    "message": "$1: ezTrans 헬퍼가 종료되었습니다"
+  },
+  "bridgeErr_eztrans_no_pipe": {
+    "message": "$1: ezTrans 헬퍼가 파이프를 열지 않았습니다"
+  },
+  "bridgeErr_eztrans_not_running": {
+    "message": "$1: ezTrans 헬퍼가 실행 중이 아닙니다"
+  },
+  "bridgeErr_eztrans_pipe_closed": {
+    "message": "$1: ezTrans 헬퍼가 파이프를 닫았습니다"
+  },
+  "bridgeErr_eztrans_timeout": {
+    "message": "$1: ezTrans가 제때 응답하지 않았습니다"
+  },
+  "bridgeErr_eztrans_bad_reply": {
+    "message": "$1: ezTrans가 잘못된 응답 길이 $2을(를) 보냈습니다"
+  },
+  "bridgeErr_backend_failed": {
+    "message": "$1: $2"
+  },
+  "bridgeErr_internal_error": {
+    "message": "$1"
+  },
+  "bridgeBadUrl": {
+    "message": "브리지 주소나 경로가 허용되지 않습니다"
+  },
+  "bridgeTimedOut": {
+    "message": "브리지가 $1 ms 안에 응답하지 않았습니다"
+  },
+  "bridgeUnreachable": {
+    "message": "브리지에 연결할 수 없습니다 ($1)"
+  },
+  "noWorkerAnswer": {
+    "message": "확장 프로그램 워커가 응답하지 않습니다"
+  },
+  "seasonTranslate": {
+    "message": "시즌 전체 번역"
+  },
+  "seasonTranslateNote": {
+    "message": "한 화씩 차례로 번역해 저장"
+  },
+  "seasonProgress": {
+    "message": "$1/$2화"
+  },
+  "seasonStop": {
+    "message": "시즌 번역 멈추기"
+  },
+  "seasonStarted": {
+    "message": "시즌 전체를 백그라운드에서 번역합니다"
+  },
+  "seasonDone": {
+    "message": "시즌 번역 완료: $2화 중 $1화"
+  },
+  "nextQueued": {
+    "message": "다음 화를 백그라운드에서 번역합니다"
+  }
+}

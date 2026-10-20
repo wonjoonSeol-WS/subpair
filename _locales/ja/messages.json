@@ -1,0 +1,836 @@
+{
+  "extName": {
+    "message": "Subpair"
+  },
+  "extDescription": {
+    "message": "NetflixとJellyfinで字幕を2行同時に表示。トランスクリプト、1行リピート、自動一時停止、ローカル翻訳(任意)に対応。"
+  },
+  "cmdToggle": {
+    "message": "Subpairのオン/オフ"
+  },
+  "actionOn": {
+    "message": "Subpair オン (クリックでオフ)"
+  },
+  "actionOff": {
+    "message": "Subpair オフ (クリックでオン)"
+  },
+  "badgeOff": {
+    "message": "OFF"
+  },
+  "noticeOff": {
+    "message": "Subpair: オフ"
+  },
+  "noticeOffTitle": {
+    "message": "Subpairをオンに戻す (ツールバーのSubpairボタン、または変更していなければAlt+Shift+Sでも可)"
+  },
+  "noticeAsk": {
+    "message": "このサーバーでSubpairを使いますか?"
+  },
+  "noticeAskTitle": {
+    "message": "SubpairがこのJellyfinサーバーの字幕を読み込み、翻訳エンジンに送ることがあります。クリックするとこのサーバーを許可します。"
+  },
+  "noticeSetup": {
+    "message": "Subpair: 言語を選んでください"
+  },
+  "noticeSetupTitle": {
+    "message": "Subpairの設定を開き、メイン字幕と2行目の字幕の言語を選びます"
+  },
+  "btnPrev": {
+    "message": "前の行"
+  },
+  "btnRepeat": {
+    "message": "この行をリピート"
+  },
+  "btnNext": {
+    "message": "次の行"
+  },
+  "btnAutoPause": {
+    "message": "自動一時停止"
+  },
+  "btnPanel": {
+    "message": "トランスクリプトパネルの表示/非表示"
+  },
+  "btnSettings": {
+    "message": "クイック設定"
+  },
+  "btnOff": {
+    "message": "Subpairをオフ"
+  },
+  "withKeys": {
+    "message": "$1 ($2)"
+  },
+  "copied": {
+    "message": "コピーしました"
+  },
+  "lineCopied": {
+    "message": "行をコピーしました"
+  },
+  "dictCopied": {
+    "message": "辞書形をコピーしました"
+  },
+  "copyFailed": {
+    "message": "コピーできませんでした"
+  },
+  "autoPauseOn": {
+    "message": "自動一時停止 オン"
+  },
+  "autoPauseOff": {
+    "message": "自動一時停止 オフ"
+  },
+  "notSaved": {
+    "message": "保存できませんでした: $1"
+  },
+  "profileGone": {
+    "message": "このプロファイルはもうありません。設定でプロファイルを選んでください"
+  },
+  "noTranslation": {
+    "message": "翻訳なし: $1"
+  },
+  "menuMain": {
+    "message": "メイン字幕"
+  },
+  "menuSecond": {
+    "message": "2行目の字幕"
+  },
+  "menuTranslator": {
+    "message": "翻訳エンジン"
+  },
+  "menuTiming": {
+    "message": "字幕のタイミング"
+  },
+  "menuSize": {
+    "message": "文字サイズ"
+  },
+  "menuPosition": {
+    "message": "字幕の位置"
+  },
+  "menuBackground": {
+    "message": "字幕の背景"
+  },
+  "menuAutoPause": {
+    "message": "自動一時停止"
+  },
+  "menuPanel": {
+    "message": "トランスクリプトパネル"
+  },
+  "menuMore": {
+    "message": "その他の設定..."
+  },
+  "menuBack": {
+    "message": "戻る"
+  },
+  "on": {
+    "message": "オン"
+  },
+  "off": {
+    "message": "オフ"
+  },
+  "none": {
+    "message": "なし"
+  },
+  "mainLine": {
+    "message": "メイン字幕"
+  },
+  "secondLine": {
+    "message": "2行目の字幕"
+  },
+  "reset": {
+    "message": "リセット"
+  },
+  "stepLess": {
+    "message": "$1: 減らす"
+  },
+  "stepMore": {
+    "message": "$1: 増やす"
+  },
+  "px": {
+    "message": "$1 px"
+  },
+  "seconds": {
+    "message": "$1秒"
+  },
+  "spaceFromPicture": {
+    "message": "映像との間隔"
+  },
+  "spaceBetweenLines": {
+    "message": "行間"
+  },
+  "pictureAboveBar": {
+    "message": "バーの上での映像の位置:"
+  },
+  "backgroundNote": {
+    "message": "映像の上に表示する字幕に適用されます。下部バーは独自の見た目です。"
+  },
+  "wantedMissing": {
+    "message": "$1を表示したいのに表示されていません: $2。もう一度選ぶと再試行します。"
+  },
+  "noTrackNoTranslator": {
+    "message": "この動画にその字幕がなく、翻訳エンジンもありません"
+  },
+  "useTrackAgain": {
+    "message": "$1の字幕トラックに戻す"
+  },
+  "translateInstead": {
+    "message": "代わりにメイン字幕を翻訳"
+  },
+  "translateInsteadNote": {
+    "message": "字幕がおかしい、またはずれているとき"
+  },
+  "whenToTranslate": {
+    "message": "翻訳のタイミング"
+  },
+  "translateAgain": {
+    "message": "この作品をもう一度翻訳"
+  },
+  "translateAgainNote": {
+    "message": "保存済みの翻訳を置き換えます"
+  },
+  "clickAgain": {
+    "message": "もう一度押すと開始"
+  },
+  "noTrackInVideo": {
+    "message": "この動画に字幕なし"
+  },
+  "translated": {
+    "message": "翻訳"
+  },
+  "langTranslated": {
+    "message": "$1 (翻訳)"
+  },
+  "langNotAvailable": {
+    "message": "$1 (利用不可)"
+  },
+  "langInsteadOf": {
+    "message": "$2の代わりに$1"
+  },
+  "subtitleTrack": {
+    "message": "字幕トラック"
+  },
+  "automatic": {
+    "message": "自動"
+  },
+  "automaticFirstReady": {
+    "message": "自動 (準備できている最初のもの)"
+  },
+  "summaryWhole": {
+    "message": "$1、作品全体"
+  },
+  "summaryWholeProgress": {
+    "message": "$1、作品全体 $2/$3"
+  },
+  "summarySaved": {
+    "message": "$1、保存済みの翻訳"
+  },
+  "summaryFailed": {
+    "message": "$1、失敗"
+  },
+  "summaryLive": {
+    "message": "$1、リアルタイム"
+  },
+  "modeAuto": {
+    "message": "自動"
+  },
+  "modeLive": {
+    "message": "リアルタイム (数行先まで)"
+  },
+  "modeProcess": {
+    "message": "今すぐ作品全体"
+  },
+  "placeOverlay": {
+    "message": "映像の上"
+  },
+  "placeBar": {
+    "message": "下部バー"
+  },
+  "placeSummaryBar": {
+    "message": "下部バー"
+  },
+  "placeSummaryOverlay": {
+    "message": "映像の上、映像から$1 px"
+  },
+  "alignCenter": {
+    "message": "中央"
+  },
+  "alignTop": {
+    "message": "上"
+  },
+  "alignBottom": {
+    "message": "下"
+  },
+  "bgNone": {
+    "message": "なし (縁取り文字)"
+  },
+  "bgTranslucent": {
+    "message": "暗い半透明"
+  },
+  "bgSolid": {
+    "message": "黒"
+  },
+  "backendEztrans": {
+    "message": "ezTrans (ローカル、Windows、日本語から韓国語のみ)"
+  },
+  "backendClaude": {
+    "message": "Claude (claude -p、Claude Codeのログインを使用)"
+  },
+  "backendApi": {
+    "message": "Anthropic API (ブリッジにANTHROPIC_API_KEYが必要)"
+  },
+  "backendOpenai": {
+    "message": "OpenAI互換 (OpenAI、Gemini、DeepSeek、Ollamaなど。アドレスはbridge/config.json)"
+  },
+  "nameOpenai": {
+    "message": "OpenAI互換"
+  },
+  "modelHintClaude": {
+    "message": "haiku、sonnet、opus、またはモデルIDそのもの"
+  },
+  "modelHintApi": {
+    "message": "モデルID (例: claude-haiku-5-5)"
+  },
+  "modelHintOpenai": {
+    "message": "プロバイダーが提供するモデルID"
+  },
+  "trOff": {
+    "message": "翻訳はオフです"
+  },
+  "trBridgeDown": {
+    "message": "翻訳ブリッジが起動していません (npm run bridge)"
+  },
+  "trNoneReady": {
+    "message": "$1から$2に翻訳できる翻訳エンジンがありません"
+  },
+  "trCannot": {
+    "message": "$1では$2から$3に翻訳できません (または未設定)"
+  },
+  "trSavedLoaded": {
+    "message": "保存済みの$1の翻訳を読み込みました"
+  },
+  "trSavedPartial": {
+    "message": "保存済みの$1の翻訳は$3行中$2行しか合わないため、残りを翻訳します"
+  },
+  "trSaved": {
+    "message": "この作品の翻訳を保存しました"
+  },
+  "trSaveFailed": {
+    "message": "翻訳を保存できませんでした: $1"
+  },
+  "trFailed": {
+    "message": "翻訳に失敗しました: $1"
+  },
+  "trLost": {
+    "message": "翻訳ブリッジとの接続が切れました"
+  },
+  "trStopped": {
+    "message": "翻訳を止めました"
+  },
+  "trProgress": {
+    "message": "翻訳中 $1/$2"
+  },
+  "trReady": {
+    "message": "翻訳が完了しました"
+  },
+  "trNotLoaded": {
+    "message": "翻訳は終わりましたが読み込めませんでした"
+  },
+  "trPaused": {
+    "message": "翻訳を一時停止、再試行中: $1"
+  },
+  "trLive": {
+    "message": "リアルタイム翻訳中"
+  },
+  "noAnswer": {
+    "message": "応答なし"
+  },
+  "saveDone": {
+    "message": "翻訳をJellyfinに保存しました"
+  },
+  "saveReplaced": {
+    "message": "Jellyfinの翻訳を置き換えました"
+  },
+  "saveNewOldKept": {
+    "message": "新しい翻訳をJellyfinに保存しましたが、古い翻訳は削除できませんでした (ステータス $1、管理者権限が必要)"
+  },
+  "saveKeptForeign": {
+    "message": "Jellyfinにある字幕はそのままにしました: Subpairが作ったものではありません"
+  },
+  "saveNoPermission": {
+    "message": "Jellyfinに保存できませんでした: このアカウントには字幕を管理する権限がありません"
+  },
+  "saveFailedStatus": {
+    "message": "Jellyfinに保存できませんでした (ステータス $1)"
+  },
+  "saveFailedDetail": {
+    "message": "Jellyfinに保存できませんでした (ステータス $1: $2)"
+  },
+  "saveFailedError": {
+    "message": "Jellyfinに保存できませんでした: $1"
+  },
+  "saveStoppedReload": {
+    "message": "保存を中止しました: 拡張機能が再読み込みされました"
+  },
+  "optTitle": {
+    "message": "Subpairの設定"
+  },
+  "optSave": {
+    "message": "設定を保存"
+  },
+  "optFirstRun": {
+    "message": "ようこそ。メイン字幕の言語(一緒に読む字幕、たとえば学習中の言語)と、2行目の字幕の言語(自分の言語)を選んで、「設定を保存」を押してください。"
+  },
+  "optChangedElsewhere": {
+    "message": "このページを開いている間にプレーヤーで設定が変更されました。今保存するとその変更は上書きされます。"
+  },
+  "optLoadThem": {
+    "message": "その設定を読み込む"
+  },
+  "optProfile": {
+    "message": "プロファイル"
+  },
+  "optActiveProfile": {
+    "message": "使用中のプロファイル"
+  },
+  "optName": {
+    "message": "名前"
+  },
+  "optNewProfile": {
+    "message": "新しいプロファイル"
+  },
+  "optDuplicate": {
+    "message": "複製"
+  },
+  "optDelete": {
+    "message": "削除"
+  },
+  "optLanguages": {
+    "message": "言語"
+  },
+  "optLanguagesHint": {
+    "message": "第一候補と、必要なら予備の言語を選んでください。動画に字幕トラックがある最初の言語が使われます。"
+  },
+  "optMainLine": {
+    "message": "メイン字幕"
+  },
+  "optMainLineHint": {
+    "message": "(一緒に読む字幕)"
+  },
+  "optSecondLine": {
+    "message": "2行目の字幕"
+  },
+  "optSecondLineHint": {
+    "message": "(この言語の字幕トラック、またはメイン字幕の翻訳)"
+  },
+  "optSlotFirst": {
+    "message": "第一候補"
+  },
+  "optSlotFallback": {
+    "message": "予備"
+  },
+  "optSlotFallback2": {
+    "message": "2番目の予備"
+  },
+  "optChooseLanguage": {
+    "message": "(言語を選択)"
+  },
+  "optNoLanguage": {
+    "message": "(なし)"
+  },
+  "optTranslation": {
+    "message": "翻訳"
+  },
+  "optTranslationHint": {
+    "message": "NetflixやJellyfinの作品に、2行目の第一候補の言語の字幕トラックがないときは、小さなローカルプログラム(ブリッジ、Subpairのフォルダーでnpm run bridgeで起動)がメイン字幕を翻訳します。翻訳は作品ごとに保存され、次回も使われます。ブリッジが止まっているときは、トラックがある次の2行目の言語を使います。"
+  },
+  "optTranslator": {
+    "message": "翻訳エンジン"
+  },
+  "optWhen": {
+    "message": "翻訳のタイミング"
+  },
+  "optWhenAuto": {
+    "message": "自動 (ezTransは数行先まで、その他は作品全体を先に)"
+  },
+  "optWhenLive": {
+    "message": "リアルタイム、映像の数行先まで"
+  },
+  "optWhenProcess": {
+    "message": "作品全体を先に翻訳してから表示"
+  },
+  "optWhenOff": {
+    "message": "翻訳しない"
+  },
+  "optBridge": {
+    "message": "ブリッジのアドレス"
+  },
+  "optBridgeHint": {
+    "message": "(このパソコンのみ)"
+  },
+  "optModelsHint": {
+    "message": "翻訳エンジンごとのモデル。空欄ならブリッジの設定を使います(ブリッジが起動中ならグレーで表示)。APIキーとOpenAI互換のアドレスはブラウザーではなく、ブリッジのbridge/config.jsonに置きます。"
+  },
+  "optModelFor": {
+    "message": "$1のモデル"
+  },
+  "optBridgeDefault": {
+    "message": "ブリッジの既定値: $1"
+  },
+  "optLayout": {
+    "message": "レイアウト"
+  },
+  "optMainFont": {
+    "message": "メイン字幕の文字 (px)"
+  },
+  "optSubFont": {
+    "message": "2行目の文字 (px)"
+  },
+  "optMainLines": {
+    "message": "メイン字幕の確保行数"
+  },
+  "optSubLines": {
+    "message": "2行目の確保行数"
+  },
+  "optHalves": {
+    "message": "(0.5単位可)"
+  },
+  "optPosition": {
+    "message": "字幕の位置"
+  },
+  "optBackground": {
+    "message": "映像上の字幕の背景"
+  },
+  "optGap": {
+    "message": "映像との間隔 (px)"
+  },
+  "optGapHint": {
+    "message": "(映像の上)"
+  },
+  "optLineGap": {
+    "message": "行間 (px)"
+  },
+  "optAlign": {
+    "message": "映像の位置"
+  },
+  "optAlignHint": {
+    "message": "(下部バーのときのみ: バーの上で映像を置く位置)"
+  },
+  "optJoinLines": {
+    "message": "字幕を1行で表示 (字幕ファイルが1つのキューに入れた改行をつなげる)"
+  },
+  "optHideSpeaker": {
+    "message": "行頭の話者名を隠す、例: （田中） や (Alice)"
+  },
+  "optPanelTimes": {
+    "message": "トランスクリプトパネルに時間を表示"
+  },
+  "optPanel": {
+    "message": "右側にトランスクリプトパネルを表示 (通常表示。全画面では別にオン/オフでき、最初はオフ)"
+  },
+  "optAutoPause": {
+    "message": "メイン字幕の各行の終わりで自動一時停止"
+  },
+  "optColors": {
+    "message": "単語の色"
+  },
+  "optColorsHint": {
+    "message": "品詞ごとに単語に色を付けます。今は日本語のみ(日本語解析器が必要)。単語をクリックでコピー、Ctrl+クリックで辞書形、Alt+クリックで行全体をコピーします。"
+  },
+  "optColorize": {
+    "message": "品詞ごとに単語に色を付ける"
+  },
+  "optNouns": {
+    "message": "名詞"
+  },
+  "optVerbs": {
+    "message": "動詞"
+  },
+  "optAdjectives": {
+    "message": "形容詞"
+  },
+  "optAdverbs": {
+    "message": "副詞"
+  },
+  "optParticles": {
+    "message": "助詞"
+  },
+  "optShortcuts": {
+    "message": "ショートカット"
+  },
+  "optShortcutsHint": {
+    "message": "欄をクリックしてキーを押すと追加され、Backspaceで最後のキーを消します。Ctrl、Alt、Shift、Cmdと一緒に押したキーはページに任せます。Subpairのオン/オフ(Alt+Shift+S)は、ブラウザーの拡張機能ショートカット設定で変更します。"
+  },
+  "optKeyPrev": {
+    "message": "前の行"
+  },
+  "optKeyRepeat": {
+    "message": "この行をリピート"
+  },
+  "optKeyNext": {
+    "message": "次の行"
+  },
+  "optKeyAutoPause": {
+    "message": "自動一時停止の切り替え"
+  },
+  "optServers": {
+    "message": "Jellyfinサーバー"
+  },
+  "optServersHint": {
+    "message": "Subpairは許可したJellyfinサーバーでのみ動きます(プレーヤーの「このサーバーでSubpairを使いますか?」ボタン)。許可したサーバーの一覧です。"
+  },
+  "optServersNone": {
+    "message": "まだありません。"
+  },
+  "optRemove": {
+    "message": "削除"
+  },
+  "optBackup": {
+    "message": "バックアップ"
+  },
+  "optBackupHint": {
+    "message": "設定は上部の保存ボタンで保存されます。"
+  },
+  "optExport": {
+    "message": "すべてのプロファイルを書き出す"
+  },
+  "optImport": {
+    "message": "プロファイルを読み込む"
+  },
+  "optSaved": {
+    "message": "保存しました"
+  },
+  "optSavedWith": {
+    "message": "保存しました ($1)"
+  },
+  "optNotSaved": {
+    "message": "保存できませんでした: $1"
+  },
+  "optNotAllowed": {
+    "message": "$1の$2は使えないため、$3にしました"
+  },
+  "optWasEmpty": {
+    "message": "空欄"
+  },
+  "optLocalOnly": {
+    "message": "同期するには大きすぎるため、このブラウザーにだけ保存しました"
+  },
+  "optNoMain": {
+    "message": "メイン字幕の言語を選んでください。選ぶまで何も表示されません"
+  },
+  "optBadBridge": {
+    "message": "ブリッジのアドレスはhttp://127.0.0.1またはhttp://localhostである必要があるため、既定値に戻しました"
+  },
+  "optBadModel": {
+    "message": "「$1」はモデル名ではないため、$2のモデルを空にしました"
+  },
+  "optKeyClash": {
+    "message": "$1が「$2」と「$3」の両方に設定されています"
+  },
+  "optKeepOne": {
+    "message": "プロファイルは1つ以上必要です"
+  },
+  "optImported": {
+    "message": "読み込みました"
+  },
+  "optImportFailed": {
+    "message": "読み込めませんでした: $1"
+  },
+  "optImportNoProfiles": {
+    "message": "このファイルにプロファイルがありません"
+  },
+  "optImportConfirm": {
+    "message": "$1個のプロファイルをすべて、このファイルの$2個に置き換えますか?"
+  },
+  "optNewProfileName": {
+    "message": "新しいプロファイル"
+  },
+  "optCopySuffix": {
+    "message": "$1のコピー"
+  },
+  "bridgeErr_forbidden_host": {
+    "message": "許可されていないホスト"
+  },
+  "bridgeErr_forbidden_origin": {
+    "message": "許可されていないオリジン"
+  },
+  "bridgeErr_not_found": {
+    "message": "見つかりません"
+  },
+  "bridgeErr_method_not_allowed": {
+    "message": "許可されていないメソッド"
+  },
+  "bridgeErr_bad_request_target": {
+    "message": "不正なリクエスト先"
+  },
+  "bridgeErr_bad_url_escape": {
+    "message": "不正なURLエスケープ"
+  },
+  "bridgeErr_body_too_large": {
+    "message": "リクエスト本文が大きすぎます"
+  },
+  "bridgeErr_body_not_json": {
+    "message": "リクエスト本文はJSONオブジェクトである必要があります"
+  },
+  "bridgeErr_to_required": {
+    "message": "to(翻訳先の言語)が必要です"
+  },
+  "bridgeErr_bad_language": {
+    "message": "$1はjaやkoのような言語コードである必要があります"
+  },
+  "bridgeErr_unknown_backend": {
+    "message": "不明な翻訳エンジン"
+  },
+  "bridgeErr_bad_backend_name": {
+    "message": "不正な翻訳エンジン名"
+  },
+  "bridgeErr_bad_model": {
+    "message": "モデル名は英数字と . : / - _ の1〜100文字である必要があります"
+  },
+  "bridgeErr_bad_key": {
+    "message": "キーは英数字、- または _ の1〜$1文字である必要があります"
+  },
+  "bridgeErr_bad_texts": {
+    "message": "$1は最大$3文字の文字列を最大$2個含む配列である必要があります"
+  },
+  "bridgeErr_bad_cues": {
+    "message": "cuesは1〜$1個のキューの配列である必要があります"
+  },
+  "bridgeErr_bad_cue": {
+    "message": "各キューにはテキスト(文字列)と数値の開始/終了秒が必要で、開始は終了以下である必要があります"
+  },
+  "bridgeErr_same_language": {
+    "message": "原文と翻訳先の言語が同じです"
+  },
+  "bridgeErr_pair_unsupported": {
+    "message": "$1は$2のみ対応で、$3 -> $4には対応していません"
+  },
+  "bridgeErr_needs_model": {
+    "message": "$1にはモデルが必要です: リクエストで送るか、bridge/config.jsonで$1.modelを設定してください"
+  },
+  "bridgeErr_backend_not_ready": {
+    "message": "$1が設定されていません"
+  },
+  "bridgeErr_eztrans_not_configured": {
+    "message": "ezTransまたはLunaのヘルパーが見つかりません (bridge/config.jsonのeztrans.helper / eztrans.dir)"
+  },
+  "bridgeErr_claude_missing": {
+    "message": "claudeコマンドが実行できませんでした (Claude Codeをインストールしてログインするか、bridge/config.jsonでclaude.commandを設定してください)"
+  },
+  "bridgeErr_api_key_missing": {
+    "message": "Anthropic APIキーがありません (ANTHROPIC_API_KEYまたはbridge/config.jsonのapi.key)"
+  },
+  "bridgeErr_openai_not_configured": {
+    "message": "OpenAI互換の翻訳エンジンが設定されていません (bridge/config.jsonのopenai.baseUrl、ホスティングサービスならOPENAI_API_KEYまたはopenai.key)"
+  },
+  "bridgeErr_too_many_requests": {
+    "message": "進行中の翻訳が多すぎます。少し待ってからやり直してください"
+  },
+  "bridgeErr_line_not_found": {
+    "message": "不明または期限切れのリクエストです"
+  },
+  "bridgeErr_too_many_jobs": {
+    "message": "すでに$1作品を翻訳中です。後でやり直してください"
+  },
+  "bridgeErr_job_running": {
+    "message": "この作品はすでに同じ翻訳エンジンとモデルで翻訳中です。終わってからやり直してください"
+  },
+  "bridgeErr_lines_failed": {
+    "message": "$1行を翻訳できなかったため、保存済みの翻訳をそのままにしました"
+  },
+  "bridgeErr_not_saved": {
+    "message": "保存されていません"
+  },
+  "bridgeErr_upstream_rate_limited": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_upstream_error": {
+    "message": "$1: $2 $3: $4"
+  },
+  "bridgeErr_timeout": {
+    "message": "$1: $2が$3 ms以内に応答しませんでした"
+  },
+  "bridgeErr_refused": {
+    "message": "$1: Anthropic APIがこの部分の翻訳を拒否しました"
+  },
+  "bridgeErr_refused_for": {
+    "message": "$1: Anthropic APIがこの部分の翻訳を拒否しました ($2)"
+  },
+  "bridgeErr_max_tokens": {
+    "message": "$1: Anthropic APIの応答がmax_tokens($2)に達しました。api.maxTokensを増やすかapi.batchを減らしてください"
+  },
+  "bridgeErr_no_content": {
+    "message": "$1: OpenAI互換APIの応答にメッセージ内容がありません"
+  },
+  "bridgeErr_claude_failed": {
+    "message": "$1: claudeが$2で終了しました: $3"
+  },
+  "bridgeErr_claude_timeout": {
+    "message": "$1: claudeが$2 ms後にタイムアウトしました"
+  },
+  "bridgeErr_claude_output_too_big": {
+    "message": "$1: claudeの出力が$2バイトを超えました"
+  },
+  "bridgeErr_cmd_unsafe": {
+    "message": "$1: $2をcmd.exeで安全に実行できません (引数 $3)。.exe版のインストーラーを使うか、コマンドを.exeに向けてください"
+  },
+  "bridgeErr_eztrans_start_failed": {
+    "message": "$1: ezTransのヘルパーを起動できませんでした: $2"
+  },
+  "bridgeErr_eztrans_exited": {
+    "message": "$1: ezTransのヘルパーが終了しました ($2)"
+  },
+  "bridgeErr_eztrans_gone": {
+    "message": "$1: ezTransのヘルパーが終了しました"
+  },
+  "bridgeErr_eztrans_no_pipe": {
+    "message": "$1: ezTransのヘルパーがパイプを開きませんでした"
+  },
+  "bridgeErr_eztrans_not_running": {
+    "message": "$1: ezTransのヘルパーが起動していません"
+  },
+  "bridgeErr_eztrans_pipe_closed": {
+    "message": "$1: ezTransのヘルパーがパイプを閉じました"
+  },
+  "bridgeErr_eztrans_timeout": {
+    "message": "$1: ezTransが時間内に応答しませんでした"
+  },
+  "bridgeErr_eztrans_bad_reply": {
+    "message": "$1: ezTransが不正な応答長$2を送りました"
+  },
+  "bridgeErr_backend_failed": {
+    "message": "$1: $2"
+  },
+  "bridgeErr_internal_error": {
+    "message": "$1"
+  },
+  "bridgeBadUrl": {
+    "message": "ブリッジのアドレスまたはパスが許可されていません"
+  },
+  "bridgeTimedOut": {
+    "message": "ブリッジが$1 ms以内に応答しませんでした"
+  },
+  "bridgeUnreachable": {
+    "message": "ブリッジに接続できません ($1)"
+  },
+  "noWorkerAnswer": {
+    "message": "拡張機能のワーカーが応答しません"
+  },
+  "seasonTranslate": {
+    "message": "シーズン全体を翻訳"
+  },
+  "seasonTranslateNote": {
+    "message": "1話ずつ順に翻訳して保存"
+  },
+  "seasonProgress": {
+    "message": "$1/$2話"
+  },
+  "seasonStop": {
+    "message": "シーズンの翻訳を止める"
+  },
+  "seasonStarted": {
+    "message": "シーズン全体をバックグラウンドで翻訳します"
+  },
+  "seasonDone": {
+    "message": "シーズンの翻訳完了: $2話中$1話"
+  },
+  "nextQueued": {
+    "message": "次の話をバックグラウンドで翻訳します"
+  }
+}
