@@ -1,6 +1,6 @@
 // Per-browser state that is not part of a profile (chrome.storage.local): the on/off switch, the transcript panel in
-// fullscreen, the Jellyfin servers Subpair may work on, and titles whose second line is translated despite a real track.
-// Profiles themselves live in src/storage.js.
+// fullscreen, and titles whose second line is translated despite a real track. Profiles live in src/storage.js, the
+// Jellyfin servers Subpair may run on in the browser's own permissions (src/servers.js).
 const MAX_TITLES = 500;                                  // remembered "translate instead of the track" titles
 
 const local = () => chrome.storage.local;
@@ -21,23 +21,6 @@ export async function fullscreenPanel() {
   return !!(old && old.fs);
 }
 export const setFullscreenPanel = (on) => local().set({ fullscreenPanel: !!on });
-
-// Origins (https://jellyfin.example) of the Jellyfin servers the user allowed. Any site can have a /web/ page that looks
-// like Jellyfin, so a server is only used once the user says so.
-export async function allowedSites() {
-  const v = await get('sites');
-  return Array.isArray(v) ? v.filter((s) => typeof s === 'string') : [];
-}
-export async function allowSite(origin) {
-  const sites = await allowedSites();
-  if (!sites.includes(origin)) await local().set({ sites: [...sites, origin] });
-}
-export async function forgetSite(origin) {
-  await local().set({ sites: (await allowedSites()).filter((s) => s !== origin) });
-}
-export function onSitesChanged(cb) {
-  chrome.storage.onChanged.addListener((changes, area) => { if (area === 'local' && changes.sites) allowedSites().then(cb); });
-}
 
 // Titles (the session key: a Netflix id or jf-<item>) whose second line is translated from the main line even though the
 // video has a track in the wanted language, because that track is bad or out of sync.

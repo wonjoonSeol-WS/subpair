@@ -23,12 +23,6 @@
   "noticeOffTitle": {
     "message": "Subpair 다시 켜기 (툴바의 Subpair 버튼, 또는 바꾸지 않았다면 Alt+Shift+S로도 켤 수 있습니다)"
   },
-  "noticeAsk": {
-    "message": "이 서버에서 Subpair를 사용할까요?"
-  },
-  "noticeAskTitle": {
-    "message": "Subpair가 이 Jellyfin 서버의 자막을 읽고, 번역기로 보낼 수 있습니다. 클릭하면 이 서버를 허용합니다."
-  },
   "noticeSetup": {
     "message": "Subpair: 언어를 선택하세요"
   },
@@ -573,7 +567,7 @@
     "message": "Jellyfin 서버"
   },
   "optServersHint": {
-    "message": "Subpair는 허용한 Jellyfin 서버에서만 동작합니다(플레이어의 \"이 서버에서 Subpair를 사용할까요?\" 버튼). 허용한 서버 목록입니다."
+    "message": "Subpair는 사용하도록 설정한 Jellyfin 서버에서만 동작합니다: Jellyfin 페이지에서 브라우저 툴바의 Subpair 버튼을 한 번 누르거나(주소가 localhost나 127.0.0.1이 아니면 브라우저가 먼저 묻습니다), 여기에 서버 주소를 추가하세요. 사용하도록 설정한 서버 목록입니다."
   },
   "optServersNone": {
     "message": "아직 없습니다."
@@ -832,5 +826,20 @@
   },
   "nextQueued": {
     "message": "다음 화를 백그라운드에서 번역합니다"
+  },
+  "optServerAddress": {
+    "message": "서버 주소"
+  },
+  "optAddServer": {
+    "message": "이 서버 허용"
+  },
+  "optServerAdded": {
+    "message": "$1을(를) 허용했습니다. Jellyfin 탭을 새로 고치세요."
+  },
+  "optServerNotAdded": {
+    "message": "허용되지 않았습니다: 브라우저가 접근을 허락하지 않았습니다"
+  },
+  "optServerBad": {
+    "message": "\"$1\"은(는) 서버 주소가 아닙니다"
   }
 }

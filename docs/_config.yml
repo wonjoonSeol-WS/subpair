@@ -21,7 +21,7 @@ i18n:
     license: "MIT License"
     not_affiliated: "Not affiliated with Netflix, Jellyfin or Language Reactor."
   ko:
-    description: "즐겨 보는 작품으로 언어를 배우세요. Netflix와 Jellyfin에서 자막 두 줄을 한 번에 보여 주고, 무료 로컬 번역이나 AI 번역을 지원합니다. Language Reactor의 오픈 소스 대안입니다."
+    description: "좋아하는 작품으로 외국어 공부. Netflix와 Jellyfin에서 배우는 언어와 모국어 자막을 한 화면에 띄우고, 자막이 없으면 PC나 AI로 번역해요. 무료 오픈소스 Language Reactor 대안."
     license: "MIT 라이선스"
     not_affiliated: "Netflix, Jellyfin, Language Reactor와 관련이 없습니다."
   ja:

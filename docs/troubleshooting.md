@@ -15,7 +15,9 @@ lang_order: 1
 - **No languages chosen yet**: a notice *Subpair: choose your languages* appears at the top right. Open the settings
   and pick a main language.
 - **Subpair is off**: the toolbar button shows *OFF*. Click it or press Alt+Shift+S.
-- **Jellyfin server not allowed yet**: click *Use Subpair on this server?* at the top right.
+- **Jellyfin server not enabled yet**: on the Jellyfin page, click the Subpair button in the browser toolbar once, or add
+  the address under *Jellyfin servers* in the settings. A server allowed in an earlier version of Subpair needs this once
+  more.
 - **Netflix right after installing or updating**: reload the Netflix tab once.
 - **The video has no text subtitles in your main language**: image subtitles (PGS, VobSub) cannot be read. Pick
   another main language, or add a text subtitle file to the Jellyfin item.

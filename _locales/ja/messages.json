@@ -23,12 +23,6 @@
   "noticeOffTitle": {
     "message": "Subpairをオンに戻す (ツールバーのSubpairボタン、または変更していなければAlt+Shift+Sでも可)"
   },
-  "noticeAsk": {
-    "message": "このサーバーでSubpairを使いますか?"
-  },
-  "noticeAskTitle": {
-    "message": "SubpairがこのJellyfinサーバーの字幕を読み込み、翻訳エンジンに送ることがあります。クリックするとこのサーバーを許可します。"
-  },
   "noticeSetup": {
     "message": "Subpair: 言語を選んでください"
   },
@@ -573,7 +567,7 @@
     "message": "Jellyfinサーバー"
   },
   "optServersHint": {
-    "message": "Subpairは許可したJellyfinサーバーでのみ動きます(プレーヤーの「このサーバーでSubpairを使いますか?」ボタン)。許可したサーバーの一覧です。"
+    "message": "Subpairは有効にしたJellyfinサーバーでのみ動きます: Jellyfinのページでブラウザーのツールバーにある Subpair ボタンを一度押すか(アドレスがlocalhostや127.0.0.1でなければ、ブラウザーが先に確認します)、ここにサーバーのアドレスを追加してください。有効にしたサーバーの一覧です。"
   },
   "optServersNone": {
     "message": "まだありません。"
@@ -832,5 +826,20 @@
   },
   "nextQueued": {
     "message": "次の話をバックグラウンドで翻訳します"
+  },
+  "optServerAddress": {
+    "message": "サーバーのアドレス"
+  },
+  "optAddServer": {
+    "message": "このサーバーを許可"
+  },
+  "optServerAdded": {
+    "message": "$1を許可しました。Jellyfinのタブを再読み込みしてください。"
+  },
+  "optServerNotAdded": {
+    "message": "許可されませんでした: ブラウザーがアクセスを許可しませんでした"
+  },
+  "optServerBad": {
+    "message": "「$1」はサーバーのアドレスではありません"
   }
 }

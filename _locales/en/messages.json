@@ -25,12 +25,6 @@
   "noticeOffTitle": {
     "message": "Turn Subpair back on (also the Subpair toolbar button, or Alt+Shift+S unless you changed it)"
   },
-  "noticeAsk": {
-    "message": "Use Subpair on this server?"
-  },
-  "noticeAskTitle": {
-    "message": "Subpair will read this Jellyfin server's subtitles and may send them to your translator. Click to allow this server."
-  },
   "noticeSetup": {
     "message": "Subpair: choose your languages"
   },
@@ -576,7 +570,7 @@
     "message": "Jellyfin servers"
   },
   "optServersHint": {
-    "message": "Subpair works on a Jellyfin server only after you allow it (the \"Use Subpair on this server?\" button in the player). These are the servers you allowed."
+    "message": "Subpair runs on a Jellyfin server only after you enable it: on your Jellyfin page, click the Subpair button in the browser toolbar once (unless the address is localhost or 127.0.0.1, the browser asks first), or add the server's address here. These are the servers you enabled."
   },
   "optServersNone": {
     "message": "None yet."
@@ -835,5 +829,20 @@
   },
   "nextQueued": {
     "message": "Translating the next episode in the background"
+  },
+  "optServerAddress": {
+    "message": "Server address"
+  },
+  "optAddServer": {
+    "message": "Allow this server"
+  },
+  "optServerAdded": {
+    "message": "Allowed $1. Reload your Jellyfin tab."
+  },
+  "optServerNotAdded": {
+    "message": "Not allowed: the browser did not give access"
+  },
+  "optServerBad": {
+    "message": "\"$1\" is not a server address"
   }
 }

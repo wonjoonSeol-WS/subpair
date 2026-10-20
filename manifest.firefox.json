@@ -37,11 +37,15 @@
     }
   },
   "permissions": [
-    "storage"
+    "storage",
+    "scripting"
   ],
   "host_permissions": [
     "http://127.0.0.1/*",
     "http://localhost/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
   ],
   "background": {
     "scripts": [
@@ -56,8 +60,6 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/web/*",
-        "*://*/*/web/*",
         "*://*.netflix.com/*"
       ],
       "js": [

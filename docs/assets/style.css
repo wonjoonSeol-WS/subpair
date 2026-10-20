@@ -152,5 +152,18 @@ kbd { display: inline-block; min-width: 30px; padding: 3px 9px; border-radius: 7
 .chips li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
   margin-right: 8px; vertical-align: 2px; }
 
-/* Korean: break lines between words, not inside them */
+/* Line breaks: balanced headings, no single word left on a paragraph's last line */
+h1, h2, h3, .lead, .section-lead { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+/* Korean: break lines between words, not inside them; Pretendard for Hangul */
 :lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
+body:lang(ko), :lang(ko) kbd { font-family: "Pretendard Variable", Pretendard, Inter, system-ui, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; }
+:lang(ko) h1, :lang(ko) h2 { letter-spacing: -.025em; }
+:lang(ko) .hero h1 { line-height: 1.18; }
+
+/* Japanese: Noto Sans JP, a little more line height */
+body:lang(ja), :lang(ja) kbd { font-family: Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", Meiryo, system-ui, sans-serif; }
+:lang(ja) h1, :lang(ja) h2 { letter-spacing: -.01em; }
+:lang(ja) .hero h1 { line-height: 1.2; }
+:lang(ja) p { line-height: 1.8; }

@@ -2,7 +2,7 @@
 // then drives the UI, keyboard shortcuts, navigation and auto-pause.
 // The site is an adapter (src/jellyfin.js or src/netflix.js); nothing in this file knows which one it got.
 import { loadSettings, saveSettings, activeProfile, onSettingsChanged } from './storage.js';
-import { isEnabled, setEnabled, onEnabledChanged, allowedSites, allowSite, onSitesChanged, fullscreenPanel, setFullscreenPanel, translatesOverTrack, setTranslateOverTrack } from './prefs.js';
+import { isEnabled, setEnabled, onEnabledChanged, fullscreenPanel, setFullscreenPanel, translatesOverTrack, setTranslateOverTrack } from './prefs.js';
 import { isConfigured, sessionKey, lookOf, wantedSub, keyToken, LIMITS } from './profile.js';
 import { Timeline, AutoPause } from './timeline.js';
 import { createUI, createPill } from './ui.js';
@@ -26,7 +26,6 @@ let epoch = 0;          // bumped by every teardown; a setup that finds it chang
 let retryAt = 0;
 let running = null;     // what the current session was built from, and how to apply a look-only change to it live
 let enabled = true;     // the on/off switch (src/prefs.js), mirrored here so the poll does not read storage every second
-let sites = [];         // the Jellyfin servers the user allowed
 let once = null;        // { key, fresh } for the next setup of that title only ("Translate again")
 // A whole season being translated ahead (src/ahead.js): { done, total, stop() }. It outlives the episode it was started from,
 // and the running session shows its progress through onSeasonChange.
@@ -307,8 +306,6 @@ async function poll() {
       showNotice('off', () => setEnabled(true));
       return;
     }
-    // Any site can have a /web/ page that looks like Jellyfin: nothing is read from its server until the user allows it.
-    if (adapter.askFirst && !sites.includes(location.origin)) { showNotice('ask', () => allowSite(location.origin)); return; }
     const item = await adapter.currentItem(video, current);
     if (!item || item.id === current) return;           // nothing playing yet, or the item already handled
     teardown();                                          // also cancels a setup still running for the previous item
@@ -332,9 +329,8 @@ async function poll() {
 
 export async function start() {
   LOG('loaded');
-  [enabled, sites] = await Promise.all([isEnabled(), allowedSites()]);
+  enabled = await isEnabled();
   onEnabledChanged((on) => { enabled = on; if (!on && seasonRun) seasonRun.stop(); reset(); });
-  onSitesChanged((list) => { sites = list; reset(); });
   onSettingsChanged(onSettingsSaved);
   const timer = setInterval(() => {
     // After the extension is reloaded or updated this script lives on in the old page, cut off from the extension.

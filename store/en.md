@@ -27,6 +27,8 @@ your own language under it.
 Subpair has no account, no analytics and no server of its own. Subtitle text only goes to the bridge on your own computer,
 and from there only to the translator you choose.
 
+Screenshots: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0.
+
 ## Category
 Chrome: Education. Firefox: Language Support (also fits "Photos, Music & Videos").
 
@@ -34,11 +36,14 @@ Chrome: Education. Firefox: Language Support (also fits "Photos, Music & Videos"
 Shows two subtitle languages at the same time on video players (Netflix, Jellyfin) to help people learn a language.
 
 ## Permission justifications (Chrome)
-- **storage**: saves the user's settings and profiles, the on/off switch and the Jellyfin servers the user allowed.
+- **storage**: saves the user's settings and profiles and the on/off switch.
+- **scripting**: runs Subpair on a Jellyfin server only after the user granted access to that server (registers the content
+  script for that one address, and starts it on the open page).
 - **Host permissions http://127.0.0.1/\* and http://localhost/\***: to reach the optional translation bridge, a program the
   user runs on their own computer. No other host is contacted by the extension's worker.
-- **Content scripts on \*://\*/web/\* and \*://\*/\*/web/\***: Jellyfin is self-hosted at any address, and its web player lives
-  under /web/. Subpair stays inactive on such a page until the user allows that server with one click.
+- **Optional host permissions \*://\*/\***: Jellyfin is self-hosted at any address. Nothing is granted at install: access to
+  one server is requested only when the user clicks the toolbar button on that server's page (or adds it in the options),
+  and the browser asks the user first.
 - **Content scripts on \*.netflix.com**: to read Netflix's subtitle tracks and draw the two lines on its player.
 - **Web accessible resources**: the extension's own modules and the Japanese dictionary, loaded by its content script.
 - **commands / action**: the toolbar button and keyboard shortcut that turn Subpair on and off.

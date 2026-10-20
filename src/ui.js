@@ -18,7 +18,6 @@ const RESIZE_DELAY_MS = 60;          // after a layout change, so the new rule i
 // languages are chosen yet.
 export const NOTICES = {
   off: { label: t('noticeOff'), title: t('noticeOffTitle') },
-  ask: { label: t('noticeAsk'), title: t('noticeAskTitle') },
   setup: { label: t('noticeSetup'), title: t('noticeSetupTitle') },
 };
 

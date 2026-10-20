@@ -102,3 +102,13 @@ test('build:chrome has the worker, the pages, the icons and every language, and 
     for (const f of ['bridge', 'tests', 'scripts', 'node_modules', 'docs', 'store', 'manifest.firefox.json']) assert.ok(!fs.existsSync(path.join(out, f)), f);
   } finally { fs.rmSync(out, { recursive: true, force: true }); }
 });
+
+test('Jellyfin servers are optional permissions: the manifests ask only for Netflix and the local bridge up front', () => {
+  for (const m of [chrome, firefox]) {
+    const matches = m.content_scripts.flatMap((c) => c.matches);
+    assert.deepEqual([...new Set(matches)], ['*://*.netflix.com/*']);
+    assert.deepEqual(m.host_permissions, ['http://127.0.0.1/*', 'http://localhost/*']);
+    assert.deepEqual(m.optional_host_permissions, ['*://*/*']);
+    assert.ok(m.permissions.includes('scripting'));
+  }
+});

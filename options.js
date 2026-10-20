@@ -2,7 +2,7 @@ import { loadSettings, saveSettings } from './src/storage.js';
 import { sanitizeSettings, newProfile, newProfileId, isConfigured, keyToken, listOf, LIMITS, DEFAULT_BRIDGE } from './src/profile.js';
 import { LANGUAGES, langLabel, normLang } from './src/lang.js';
 import { BACKENDS, AUTO } from './src/backends.js';
-import { allowedSites, forgetSite, onSitesChanged } from './src/prefs.js';
+import { enabledServers, addServer, removeServer, onServersChanged, serverOrigin, isNetflix } from './src/servers.js';
 import { callBridge } from './src/bridge.js';
 import { t, uiLanguage } from './src/i18n.js';
 
@@ -183,7 +183,7 @@ async function save() {
 async function showSites() {
   const list = $('sites');
   list.textContent = '';
-  const sites = await allowedSites();
+  const sites = await enabledServers();
   if (!sites.length) { const li = document.createElement('li'); li.textContent = t('optServersNone'); list.appendChild(li); return; }
   for (const origin of sites) {
     const li = document.createElement('li');
@@ -191,7 +191,7 @@ async function showSites() {
     code.textContent = origin;
     const b = document.createElement('button');
     b.textContent = t('optRemove');
-    b.onclick = () => forgetSite(origin);
+    b.onclick = () => removeServer(origin);
     li.append(code, b);
     list.appendChild(li);
   }
@@ -208,7 +208,17 @@ async function init() {
   fill();
   showBridgeModels(current().translate.bridge);
   showSites();
-  onSitesChanged(showSites);
+  onServersChanged(showSites);
+  // A server added here asks the browser for access to it (the click is what lets the browser show its prompt).
+  $('addServer').onclick = () => {
+    const origin = serverOrigin($('serverAddress').value);
+    if (!origin || isNetflix(origin)) return flash(t('optServerBad', $('serverAddress').value.trim()), true);
+    addServer(origin).then((granted) => {
+      if (!granted) return flash(t('optServerNotAdded'), true);
+      $('serverAddress').value = '';
+      flash(t('optServerAdded', origin));
+    }, (e) => flash(t('optServerNotAdded') + ` (${e.message})`, true));
+  };
 
   document.addEventListener('input', () => { dirty = true; });
   document.addEventListener('change', () => { dirty = true; });

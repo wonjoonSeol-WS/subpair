@@ -57,8 +57,6 @@ test('the two adapters expose the same shape', () => {
     assert.ok(a.layout.player.length > 0, `${a.name} must name the player box it shrinks`);
     assert.ok(a.layout.hide.length > 0, `${a.name} must name its own subtitle renderer`);
   }
-  assert.equal(jellyfin.askFirst, true);                // any site can look like Jellyfin
-  assert.ok(!netflix.askFirst);
 });
 
 // Sets page globals (location, localStorage) for one test and always puts the old ones back.

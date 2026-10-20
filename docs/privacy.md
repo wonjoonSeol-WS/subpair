@@ -22,14 +22,16 @@ own: nothing is sent to the developers, and nothing is collected for analytics, 
 - **On Jellyfin only**, what Jellyfin's web client keeps in the page's local storage: the sign-in token, the user ID, the
   server address and the device ID. Subpair uses them only to ask that same Jellyfin server which item is playing on this
   device, for that item's details and for its subtitle tracks.
-- Subpair works on a Jellyfin server only after you allow that server.
+- Subpair works on a Jellyfin server only after you enable that server. Unless the server's address is localhost or
+  127.0.0.1, your browser first asks you to give Subpair access to it. You can take that access back in the settings (*Jellyfin servers*) or in
+  your browser's extension settings.
 
 ## What Subpair stores, in your browser
 
 - **Your settings and profiles** (languages, layout, shortcuts, translator choice), in the browser's extension sync
   storage. If you are signed in to your browser, the browser may sync them to your browser account. When they are too large
   for sync storage, they stay on this computer only.
-- **On this computer only**: the on/off switch, the Jellyfin servers you allowed, whether the transcript panel shows in
+- **On this computer only**: the on/off switch, the Jellyfin servers you enabled, whether the transcript panel shows in
   fullscreen, and the titles for which you chose "Translate from the main line instead".
 
 Removing the extension removes the data stored on this computer. Settings that your browser synced to your browser account

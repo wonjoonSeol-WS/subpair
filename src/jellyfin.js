@@ -91,7 +91,6 @@ let lastSrc = null, acceptedAt = 0;
 // The shape main.js works with (the other site is src/netflix.js).
 export const adapter = {
   name: 'jellyfin',
-  askFirst: true,                                       // any site can look like Jellyfin: used only on servers the user allowed
   // The player box that is shrunk to make room for the bar and the panel, and the seek bar, which is fixed to the bottom of
   // the window and so has to be lifted above the bar.
   // hide: the web client's own subtitle renderers, hidden while Subpair shows the lines (jellyfin-web 12.2: .videoSubtitles

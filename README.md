@@ -48,8 +48,10 @@ the optional **bridge**, a small Node.js program on your computer, translates th
 1. The settings page opens by itself: choose the **main line** (the language you are learning) and the **second line**
    (yours; your browser's language is pre-selected), then **Save settings**.
 2. **Netflix**: reload the Netflix tab once after installing, then play a title.
-3. **Jellyfin**: open your server's web client, play an item with text subtitles and click **Use Subpair on this
-   server?** once.
+3. **Jellyfin**: open your server's web client and click the Subpair button in the browser toolbar once (pin it from the
+   extensions menu if it is hidden). Unless the address is `localhost` or `127.0.0.1`, the browser asks you to allow that
+   server first. You can also add the address under **Jellyfin servers** in the settings. Then play an item with text
+   subtitles.
 
 | Key | Action |
 |---|---|
@@ -101,7 +103,7 @@ Only Windows is tested by the author.
 ## Privacy
 
 Nothing leaves your computer unless you turn on translation: then subtitle lines go to the bridge on `127.0.0.1` and on to
-the translator you chose. Subpair asks before it works on a Jellyfin server. Full
+the translator you chose. Subpair runs only on the Jellyfin servers you enable. Full
 [privacy policy](https://wonjoonseol-ws.github.io/subpair/privacy.html).
 
 ## Contributing and license
