@@ -54,6 +54,43 @@ test('a real track in the first wanted second language is used, and nothing is t
   assert.deepEqual(a.fetched.sort(), [1, 2]);                       // the English track was never downloaded
 });
 
+test('on a site that keeps translations, a track that is one of the saved translations is shown as a translation', async () => {
+  // The site lists a Korean track "가 / 나"; the bridge saved translations of the title, by one translator or several.
+  const keeping = () => {
+    const a = fakeAdapter({ tracks: [t(1, 'jpn'), t(2, 'kor')], cues: { 1: [cue(0, 'a'), cue(5, 'b')], 2: [cue(0, '가'), cue(5, '나')] } });
+    a.saveTranslation = () => ({ start() {}, stop() {} });
+    return a;
+  };
+  const srt = (...texts) => texts.map((text, i) => `${i + 1}\n00:00:0${i * 5},000 --> 00:00:0${i * 5 + 1},000\n${text}\n`).join('\n');
+  const session = async (saved, ready) => {
+    const tr = fakeTranslators(ready);
+    const s = await run(keeping(), profile(['ja'], ['ko']), { makeTranslator: tr.makeTranslator, readSaved: async () => saved });
+    return { s, built: tr.built };
+  };
+
+  const own = await session([srt('다른', '번역'), srt('가', '나')]);    // the chosen translator's file differs; another one matches
+  assert.equal(own.s.subKind, 'translated');                     // so "Translate again" is offered
+  assert.equal(own.s.hasWantedTrack, false);                     // and not "translate instead of the track"
+  assert.equal(own.s.translator, own.built[0]);
+
+  const release = await session([srt('가요', '나나')]);            // same timing, its own words: a subtitle of the video
+  assert.equal(release.s.subKind, 'track');
+  assert.equal(release.s.hasWantedTrack, true);
+  assert.equal(release.built.length, 0);
+
+  for (const [saved, ready] of [[[], { ok: true }], [[srt('가', '나')], { ok: false, reason: 'bridge down' }]]) {
+    const { s } = await session(saved, ready);                    // nothing saved, or the bridge went away: the track is shown
+    assert.equal(s.subKind, 'track');
+    assert.equal(s.subCues[0].text, '가');
+  }
+
+  let asked = false;                                             // a site that keeps nothing: the bridge is not even asked
+  const plain = fakeAdapter({ tracks: [t(1, 'jpn'), t(2, 'kor')], cues: { 1: [cue(0, 'a')], 2: [cue(0, '가')] } });
+  const s = await run(plain, profile(['ja'], ['ko']), { makeTranslator: fakeTranslators().makeTranslator, readSaved: async () => { asked = true; return []; } });
+  assert.equal(s.subKind, 'track');
+  assert.equal(asked, false);
+});
+
 test('no track in the wanted language: the second line is translated, with blank cues on the main line\'s timing', async () => {
   const a = fakeAdapter({ tracks: [t(1, 'jpn'), t(3, 'eng')], cues: { 1: [cue(0, 'a'), cue(5, 'b')] }, key: 'jf-9', title: 'Show S1E1' });
   const { built, makeTranslator } = fakeTranslators();

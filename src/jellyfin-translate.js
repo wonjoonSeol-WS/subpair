@@ -74,7 +74,8 @@ export function makeRemover({ base, token, fetchImpl = fetch }) {
   };
 }
 
-// Remembers what was uploaded to which item, per browser: { at, path, print }. Not atomic: callers hold the save lock.
+// Remembers when a translation was uploaded to which item, per browser: { at }, so that a second tab does not upload it again
+// before Jellyfin lists the new track. Not atomic: callers hold the save lock.
 export function storageMarks(area, name = 'jellyfinSaved') {
   const at = (mark) => (typeof mark === 'number' ? mark : (mark && mark.at) || 0);
   return {
@@ -93,9 +94,10 @@ const defaultLock = (fn) => (globalThis.navigator && navigator.locks ? navigator
 const defaultAlive = () => typeof chrome === 'undefined' || !!(chrome.runtime && chrome.runtime.id);
 const isSubtitleIn = (s, lang) => s.Type === 'Subtitle' && normLang(s.Language) === normLang(lang);
 
-// With `replace`, a regenerated translation takes the place of the track this browser uploaded earlier (found by its path and
-// checked by its fingerprint); a track Subpair did not make is never replaced or deleted. `readSubtitle(stream)` resolves to a
-// track's text and `remove(itemId, index)` deletes one; both are only needed with `replace`.
+// With `replace`, a regenerated translation takes the place of the track that holds a translation the bridge had saved when
+// the saver started (same fingerprint), so any browser using that bridge finds it; a track Subpair did not make is never
+// replaced or deleted. `readSubtitle(stream)` resolves to a track's text and `remove(itemId, index)` deletes one; both are
+// only needed with `replace`.
 export function createAutoSaver(options) {
   const { call, itemId, key, from, to, backend, cues, enabled, readMediaStreams, upload, marks, replace = false,
     readSubtitle, remove, onStatus = () => {}, now = Date.now, sleep = defaultSleep, lock = defaultLock, alive = defaultAlive,
@@ -103,6 +105,8 @@ export function createAutoSaver(options) {
   const markKey = `${key}.${to}`;
   const mainStarts = new Set(cues.map((c) => Math.round(c.start * 1000)));
   let stopped = false, started = false, failures = 0;
+  let earlier = new Set();      // with `replace`: fingerprints of the translations saved before the new one
+  let startedAt = 0;
 
   const say = (text) => { if (!stopped) onStatus(text); };
 
@@ -118,17 +122,19 @@ export function createAutoSaver(options) {
     return [...entries.filter((e) => e.backend === backend), ...entries.filter((e) => e.backend !== backend)];
   }
 
-  async function completeSrt(entries) {
+  // The complete saved translations as { entry, text }, in the order of `entries`.
+  async function completeSaves(entries) {
+    const saves = [];
     for (const entry of entries) {
       const r = await call(savedUrl(key, entry));
-      if (r.ok && r.text && covers(parseSrt(r.text))) return r.text;
+      if (r.ok && r.text && covers(parseSrt(r.text))) saves.push({ entry, text: r.text });
     }
-    return null;
+    return saves;
   }
 
   async function readMark() {
     const mark = await marks.get(markKey);
-    return typeof mark === 'number' ? { at: mark } : mark || null;           // marks from before paths were remembered
+    return typeof mark === 'number' ? { at: mark } : mark || null;           // marks from before they were objects
   }
 
   const recent = (mark) => {
@@ -136,11 +142,12 @@ export function createAutoSaver(options) {
     return age >= 0 && age < MARK_TTL_MS;                                      // a mark from the future (clock change) is ignored
   };
 
-  async function ownTrack(streams, mark) {
-    if (!mark || !mark.path || !mark.print) return null;
-    const track = streams.find((s) => isSubtitleIn(s, to) && s.IsExternal && s.Path === mark.path);
-    if (!track) return null;
-    try { return fingerprint(await readSubtitle(track)) === mark.print ? track : null; } catch { return null; }
+  // The external track in the target language that holds one of the earlier translations.
+  async function ownTrack(streams) {
+    for (const s of streams.filter((x) => isSubtitleIn(x, to) && x.IsExternal)) {
+      try { if (earlier.has(fingerprint(await readSubtitle(s)))) return s; } catch { /* unreadable: not known to be ours */ }
+    }
+    return null;
   }
 
   const send = (srt) => Promise.resolve().then(() => upload(itemId, uploadBody(to, srt))).catch(() => ({ ok: false, status: 0 }));
@@ -170,34 +177,39 @@ export function createAutoSaver(options) {
 
   // -> 'settled' when there is nothing more to do (saved, refused, not needed), 'wait' to look again later.
   async function save(entries) {
-    const mark = await readMark();
     if (!replace) {
-      if (recent(mark)) return 'settled';
+      if (recent(await readMark())) return 'settled';
       if (hasSubtitleIn(await readMediaStreams(), to)) return 'settled';      // read fresh: the page's list may be stale
     }
-    const srt = await completeSrt(entries);
-    if (!srt) return 'wait';
-    const print = fingerprint(srt);
-    if (replace && mark && print === mark.print) return 'wait';               // the regenerated translation is not saved yet
+    const [newest] = await completeSaves(entries);
+    if (!newest) return 'wait';
+    const srt = newest.text;
+    if (replace && earlier.has(fingerprint(srt))) {
+      // Saved again since this started yet word for word the same (a translator that always answers alike): nothing to do.
+      if (Date.parse(newest.entry.savedAt) > startedAt) { say(t('saveSame')); return 'settled'; }
+      return 'wait';                                                          // the regenerated translation is not saved yet
+    }
     if (stopped) return 'settled';
     const before = await readMediaStreams();
-    const old = replace ? await ownTrack(before, mark) : null;
+    const old = replace ? await ownTrack(before) : null;
     if (!old && hasSubtitleIn(before, to)) {
       if (replace) say(t('saveKeptForeign'));
       return 'settled';
     }
     const result = await send(srt);
     if (!result.ok) return refused(result);
-    const after = await readMediaStreams().catch(() => []);
-    const known = new Set(before.map((s) => s.Path));
-    const added = after.find((s) => isSubtitleIn(s, to) && s.IsExternal && !known.has(s.Path));
-    await remember({ at: now(), path: added ? added.Path : '', print });
-    if (old) await removeOld(after, old);
+    await remember({ at: now() });
+    if (old) await removeOld(await readMediaStreams().catch(() => []), old);
     else say(t('saveDone'));
     return 'settled';
   }
 
   async function run() {
+    // The bridge keeps the old translation until the new one is finished, so what it holds now is what may be on Jellyfin.
+    startedAt = now();
+    if (replace) {
+      try { earlier = new Set((await completeSaves(await savedEntries())).map((s) => fingerprint(s.text))); } catch { /* bridge down: none known */ }
+    }
     const deadline = now() + maxWaitMs;
     while (!stopped && now() < deadline) {
       if (!alive()) return say(t('saveStoppedReload'));

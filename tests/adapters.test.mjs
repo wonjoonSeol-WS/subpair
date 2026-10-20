@@ -114,6 +114,45 @@ test('Jellyfin: the item and media source come from the stream address; an uncha
   assert.deepEqual(await jellyfin.currentItem(next, id), { id: 'b'.repeat(32), hint: 'ms2' });
 });
 
+test('Jellyfin keeps a finished translation as a subtitle track of the media source being played, once', async () => {
+  const creds = JSON.stringify({ Servers: [{ AccessToken: 'tok', UserId: 'u1', ManualAddress: 'https://h' }] });
+  const sub = (Language) => ({ Type: 'Subtitle', Language, IsExternal: true, Path: `/m/e1.${Language}.srt` });
+  // Two versions of one item: only the second, the one playing, already has a Korean subtitle.
+  const sources = [{ Id: 'ms1', MediaStreams: [sub('jpn')] }, { Id: 'ms2', MediaStreams: [sub('jpn'), sub('kor')] }];
+  const uploads = [];
+  const fetch = async (url, init = {}) => {
+    const u = new URL(url);
+    if (u.pathname === '/Users/u1/Items/e1') return { ok: true, json: async () => structuredClone({ MediaSources: sources }) };
+    if (u.pathname === '/Videos/e1/Subtitles' && init.method === 'POST') {
+      uploads.push({ auth: init.headers.Authorization, body: JSON.parse(init.body) });
+      sources[0].MediaStreams.push(sub('kor'));
+      return { ok: true, status: 204, json: async () => null };
+    }
+    return { ok: false, status: 404, json: async () => null };
+  };
+  const stored = {};
+  const chrome = { runtime: { id: 'x' }, storage: { local: { get: async (k) => ({ [k]: stored[k] }), set: async (o) => Object.assign(stored, o) } } };
+  const cues = Array.from({ length: 4 }, (_, i) => ({ start: i * 2, end: i * 2 + 1, text: `${i}` }));
+  const srt = cues.map((c, i) => `${i + 1}\n00:00:0${c.start},000 --> 00:00:0${c.end},000\n번역 ${i}\n`).join('\n');
+  const call = async (path) => (path === '/subs/jf-e1'
+    ? { ok: true, json: { entries: { a: { file: 'e1.ko.claude.srt', from: 'ja', to: 'ko', backend: 'claude' } } } }
+    : { ok: true, text: srt });
+  const save = (hint) => jellyfin.saveTranslation({ itemId: 'e1', hint, key: 'jf-e1', from: 'ja', to: 'ko', backend: 'claude', cues, call }).start();
+
+  await withGlobals({ location: { origin: 'https://h', pathname: '/web/' }, localStorage: { getItem: () => creds }, fetch, chrome }, async () => {
+    await save('ms2');
+    assert.equal(uploads.length, 0, 'the playing version has Korean already');
+    await save('ms1');
+    assert.equal(uploads.length, 1);
+    assert.equal(uploads[0].auth, 'MediaBrowser Token="tok"');
+    assert.equal(uploads[0].body.Language, 'kor');
+    assert.match(Buffer.from(uploads[0].body.Data, 'base64').toString('utf8'), /번역 3/);
+    assert.equal(typeof stored.jellyfinSaved['jf-e1.ko'].at, 'number');             // remembered, so it is not sent twice
+    await save('ms1');
+    assert.equal(uploads.length, 1);
+  });
+});
+
 test('Jellyfin: the next episode crosses into the next season, skips missing ones, and a movie has none; the season lists its episodes', async () => {
   const creds = JSON.stringify({ Servers: [{ AccessToken: 'tok', UserId: 'u1', ManualAddress: 'https://h' }] });
   const asked = [];

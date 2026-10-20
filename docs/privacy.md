@@ -21,7 +21,7 @@ own: nothing is sent to the developers, and nothing is collected for analytics, 
   Jellyfin server, from that server's subtitle tracks for the item.
 - **On Jellyfin only**, what Jellyfin's web client keeps in the page's local storage: the sign-in token, the user ID, the
   server address and the device ID. Subpair uses them only to ask that same Jellyfin server which item is playing on this
-  device, for that item's details and for its subtitle tracks.
+  device, for that item's details and for its subtitle tracks, and to add a finished translation to that item (below).
 - Subpair works on a Jellyfin server only after you enable that server. Unless the server's address is localhost or
   127.0.0.1, your browser first asks you to give Subpair access to it. You can take that access back in the settings (*Jellyfin servers*) or in
   your browser's extension settings.
@@ -32,7 +32,8 @@ own: nothing is sent to the developers, and nothing is collected for analytics, 
   storage. If you are signed in to your browser, the browser may sync them to your browser account. When they are too large
   for sync storage, they stay on this computer only.
 - **On this computer only**: the on/off switch, the Jellyfin servers you enabled, whether the transcript panel shows in
-  fullscreen, and the titles for which you chose "Translate from the main line instead".
+  fullscreen, the titles for which you chose "Translate from the main line instead", and which translations Subpair added
+  to which Jellyfin items.
 
 Removing the extension removes the data stored on this computer. Settings that your browser synced to your browser account
 are kept or removed by your browser's sync service, as it handles extension data.
@@ -50,6 +51,9 @@ are kept or removed by your browser's sync service, as it handles extension data
 
   In those cases the provider receives the subtitle text under your own account and its own terms. The bridge saves
   finished translations on your computer.
+- **To your own Jellyfin server:** a finished translation of a Jellyfin title is added to that title, on the server it is
+  on, as a subtitle track, so your other Jellyfin apps show it. This happens only when the title has no subtitle in that
+  language. It goes to no other server.
 
 ## What Subpair never does
 

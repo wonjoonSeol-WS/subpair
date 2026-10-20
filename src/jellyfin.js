@@ -2,6 +2,7 @@
 // Everything Jellyfin-specific lives here; the other site is src/netflix.js.
 import { parseSrt } from './srt.js';
 import { TUNING } from './tuning.js';
+import { createAutoSaver, makeUploader, makeRemover, storageMarks } from './jellyfin-translate.js';
 
 // The server's address: the page's origin plus any path prefix before the web client's /web/ folder (a reverse proxy's).
 export function serverBase() {
@@ -144,4 +145,21 @@ export const adapter = {
   },
 
   seekTo(video, seconds) { video.currentTime = seconds; },
+
+  // Keeps the title's finished translation on the server as a subtitle track of the item, so every Jellyfin app shows it,
+  // unless the item already has a subtitle in that language (src/jellyfin-translate.js). With `replace` it takes the place
+  // of the track holding the translation the bridge saved before ("Translate again"). -> { start(), stop() }
+  saveTranslation({ itemId, hint = null, key, from, to, backend, cues, replace = false, call, onStatus }) {
+    const { AccessToken: token } = login();
+    const base = serverBase();
+    let sourceId = hint;
+    return createAutoSaver({
+      call, itemId, key, from, to, backend, cues, replace, onStatus, enabled: true,
+      readMediaStreams: async () => { const s = await getStreams(itemId, sourceId); sourceId = s.mediaSourceId; return s.streams; },
+      readSubtitle: (stream) => fetchSubtitle(itemId, sourceId, stream.Index),
+      upload: makeUploader({ base, token }),
+      remove: makeRemover({ base, token }),
+      marks: storageMarks(chrome.storage.local),
+    });
+  },
 };

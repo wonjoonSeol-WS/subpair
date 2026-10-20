@@ -9,6 +9,7 @@ import { createUI, createPill } from './ui.js';
 import { loadJapanese, japaneseSegmenter } from './analyzer.js';
 import { loadSession } from './session.js';
 import { translateNext, translateSeason } from './ahead.js';
+import { callBridge } from './bridge.js';
 import { languagePatch, stepOffset, stepFont, stepGap, OFFSET_STEP, FONT_STEP, GAP_STEP, LINE_GAP_STEP } from './quickmenu.js';
 import { adapter as jellyfin } from './jellyfin.js';
 import { adapter as netflix, isNetflix } from './netflix.js';
@@ -134,8 +135,9 @@ function startRenderLoop({ video, mainCues, subCues, mainTl, subTl, off, ui, ap,
   };
 }
 
-// Everything that runs while one video plays. Returns { stop, applyLook }.
-function startSession(video, itemId, stored, src, fsPanel) {
+// Everything that runs while one video plays. `play` is { hint, fresh }: the adapter's hint for the item and whether this is
+// a "Translate again". Returns { stop, applyLook }.
+function startSession(video, itemId, stored, src, fsPanel, play) {
   let profile = stored;
   const { mainCues, subCues, mainLang, subLang, translator, site } = src;
   const mainTl = new Timeline(mainCues), subTl = new Timeline(subCues);
@@ -245,6 +247,14 @@ function startSession(video, itemId, stored, src, fsPanel) {
       .catch((e) => LOG('next episode failed', e));
   };
   onSeasonChange = (note) => { if (note) ui.toast(note); ui.refreshMenu(); };
+  // A site that can keep a finished translation (Jellyfin, as a subtitle track for its other apps) gets it once it is done.
+  const saver = translator && adapter.saveTranslation
+    ? adapter.saveTranslation({
+      itemId, hint: play.hint, key: site.key, from: mainLang, to: subLang, backend: translator.status().backend || profile.translate.backend,
+      cues: mainCues, replace: play.fresh, call: (path, body) => callBridge(profile.translate.bridge, path, body), onStatus: (s) => ui.toast(s),
+    })
+    : null;
+  if (saver) saver.start();                           // first: on "Translate again" it notes the translation being replaced
   if (translator) {
     src.setStatusSink((s) => { ui.toast(s); ui.refreshMenu(); if (translator.status().phase === 'saved') ahead(); });
     translator.start();
@@ -261,6 +271,7 @@ function startSession(video, itemId, stored, src, fsPanel) {
       stopRender();
       unbindKeys();
       if (translator) translator.stop();
+      if (saver) saver.stop();
       ui.destroy();
     },
     applyLook(p) {
@@ -280,8 +291,9 @@ async function setup(video, itemId, hint) {
   if (overtaken()) return;
   if (!isConfigured(profile)) { showNotice('setup', openOptions); return; }
 
+  let fresh = false;
   const wishes = async (key) => {
-    const fresh = !!(once && once.key === key && once.fresh);
+    fresh = !!(once && once.key === key && once.fresh);
     if (fresh) once = null;
     return { fresh, preferTranslation: fresh || await translatesOverTrack(key) };
   };
@@ -289,7 +301,7 @@ async function setup(video, itemId, hint) {
   if (!src) return;
   const fsPanel = overtaken() ? false : await fullscreenPanel();
   if (overtaken()) { if (src.translator) src.translator.stop(); return; }
-  const s = startSession(video, itemId, profile, src, fsPanel);
+  const s = startSession(video, itemId, profile, src, fsPanel, { hint, fresh });
   session = s;
   running = { key: sessionKey(profile), applyLook: s.applyLook };
 }

@@ -38,7 +38,7 @@ Use the gear menu's **Subtitle timing** to move the whole main line or the whole
 video. If a subtitle file is off in
 some parts only, the file itself needs fixing: a downloaded file can be timed for another release, or even be for another
 episode. For Jellyfin libraries, subsync-repair (a separate project) checks and fixes subtitle files against the
-video's own tracks. For a bad second-line track, **Second subtitle**, **Translate from the main line instead** replaces
+video's own tracks. For a bad second-line track, **Translator**, **Translate from the main line instead** replaces
 it with a translation.
 
 ## The bridge does not start

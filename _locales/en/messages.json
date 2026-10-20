@@ -350,6 +350,9 @@
   "saveKeptForeign": {
     "message": "Kept the subtitle that is on Jellyfin: Subpair did not make it"
   },
+  "saveSame": {
+    "message": "The new translation is the same as the one on Jellyfin"
+  },
   "saveNoPermission": {
     "message": "Could not save to Jellyfin: this account is not allowed to manage subtitles"
   },

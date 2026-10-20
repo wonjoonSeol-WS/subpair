@@ -95,12 +95,6 @@ export function createMenu(root, { quick, panelOn, togglePanel, openSettings }) 
       if (second.missing) {
         menu.append(node('div', 'subpair-mnote', t('wantedMissing', named(s.wantedSub), s.note || t('noTrackNoTranslator'))));
       }
-      // A track in the wanted language can be bad or out of sync: translating the main line instead is remembered per title.
-      if (s.hasWantedTrack && s.canTranslate) {
-        menu.append(s.overTrack
-          ? row(t('useTrackAgain', named(s.wantedSub)), '', () => quick.translateOverTrack(false))
-          : row(t('translateInstead'), t('translateInsteadNote'), () => quick.translateOverTrack(true)));
-      }
       for (const c of subChoices(s.trackLangs, second.checked, s.mainLang, s.canTranslate)) menu.append(row(c.label, c.note, () => quick.setSub(c.code), c.code === second.checked));
     } else if (view === 'translator') {
       head(t('menuTranslator'), true);
@@ -109,6 +103,12 @@ export function createMenu(root, { quick, panelOn, togglePanel, openSettings }) 
       if (s.mode !== 'off') {
         menu.append(node('div', 'subpair-mgroup', t('whenToTranslate')));
         for (const [value, label] of MODE_CHOICES) menu.append(row(label, '', () => quick.setMode(value), value === s.mode));
+      }
+      // A track in the wanted language can be bad or out of sync: translating the main line instead is remembered per title.
+      if (s.hasWantedTrack && s.canTranslate) {
+        menu.append(s.overTrack
+          ? row(t('useTrackAgain', named(s.wantedSub)), '', () => quick.translateOverTrack(false))
+          : row(t('translateInstead'), t('translateInsteadNote'), () => quick.translateOverTrack(true)));
       }
       // A whole season, translated ahead one episode at a time (sites that can list a season: Jellyfin).
       if (s.canSeason && s.mode !== 'off' && s.wantedSub) {

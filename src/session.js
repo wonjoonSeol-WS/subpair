@@ -8,12 +8,32 @@ import { pickTrack } from './tracks.js';
 import { normLang } from './lang.js';
 import { cleanText } from './text.js';
 import { createTranslator, wantsTranslation } from './translate.js';
-import { callBridge } from './bridge.js';
+import { callBridge, savedEntries, savedUrl } from './bridge.js';
+import { parseSrt } from './srt.js';
 import { wantedSub } from './profile.js';
 
 // Cue text cleaned per the profile (line breaks joined, speaker names dropped), the same for every line Subpair shows.
 export const tidy = (cues, lang, profile) =>
   cues.map((c) => ({ ...c, text: cleanText(c.text, { lang, joinLines: profile.joinLines, hideSpeaker: profile.hideSpeaker }) }));
+
+// A track is a copy of a translation when nearly all its cues start where a translated cue starts, with the same text.
+const COPY_SHARE = 0.95;
+function copies(track, translated) {
+  const byStart = new Map(translated.filter((c) => c.text).map((c) => [Math.round(c.start * 1000), c.text]));
+  return track.filter((c) => byStart.get(Math.round(c.start * 1000)) === c.text).length >= track.length * COPY_SHARE;
+}
+
+// The .srt texts of every translation the bridge saved for a title and language pair, whichever translator made it.
+async function savedTranslations(profile, key, from, to) {
+  const call = (path) => callBridge(profile.translate.bridge, path);
+  const m = await call(`/subs/${encodeURIComponent(key)}`);
+  const texts = [];
+  for (const entry of m.ok ? savedEntries(m.json, { from, to }) : []) {
+    const r = await call(savedUrl(key, entry));
+    if (r.ok && r.text) texts.push(r.text);
+  }
+  return texts;
+}
 
 // The translator for the second line, or { note } saying why there is none (bridge not running, wrong language pair, backend
 // not set up). The second line's cues share the main cues' timing; only their text is filled in.
@@ -38,7 +58,7 @@ async function prepareTranslation({ key, title, profile, mainCues, mainLang, to,
 // wishes(key) -> { preferTranslation, fresh } for this title: preferTranslation translates the main line even when the video
 // has a track in the wanted language (a bad or out-of-sync file); fresh translates the whole title again instead of
 // using a saved translation.
-export async function loadSession({ adapter, itemId, hint, profile, wishes = async () => ({}), getTime = () => 0, log = () => {}, makeTranslator = createTranslator }) {
+export async function loadSession({ adapter, itemId, hint, profile, wishes = async () => ({}), getTime = () => 0, log = () => {}, makeTranslator = createTranslator, readSaved = savedTranslations }) {
   const site = await adapter.open(itemId, hint);
   const { preferTranslation = false, fresh = false } = await wishes(site.key);
   const trackLangs = [...new Set(site.tracks.map((t) => normLang(t.lang)).filter(Boolean))];
@@ -56,10 +76,22 @@ export async function loadSession({ adapter, itemId, hint, profile, wishes = asy
   if (!mainCues.length) { log(`${adapter.name}: the ${mainLang} track has no cues`); return null; }
 
   const usable = first && firstCues.length ? first : null;           // a wanted track that loaded and has cues
-  const useTrack = usable && !preferTranslation && !fresh;
-  let subTrack = useTrack ? usable : null, subCues = useTrack ? firstCues : [], translation = null, note = '';
-  if (wantsTranslation(profile, mainLang, !!useTrack)) {
-    const t = await prepareTranslation({ key: site.key, title: site.title, profile, mainCues, mainLang, to: wanted, fresh, getTime, log, makeTranslator });
+  const prepare = (again) => prepareTranslation({ key: site.key, title: site.title, profile, mainCues, mainLang, to: wanted, fresh: again, getTime, log, makeTranslator });
+  // A site that keeps finished translations (Jellyfin) lists them as tracks. A wanted track that is one of the translations
+  // the bridge saved for this title is shown from the bridge, so the translator menu ("Translate again") applies to it; the
+  // track itself is shown only when no translation can start.
+  const isSavedTranslation = async () => (await readSaved(profile, site.key, mainLang, wanted))
+    .some((text) => copies(firstCues, tidy(parseSrt(text), wanted, profile)));
+  let translation = null, note = '';
+  if (usable && adapter.saveTranslation && !fresh && wantsTranslation(profile, mainLang, false) && await isSavedTranslation()) {
+    const t = await prepare(false);
+    if (t.translator) translation = t;
+  }
+  const real = translation ? null : usable;
+  const useTrack = real && !preferTranslation && !fresh;
+  let subTrack = useTrack ? usable : null, subCues = useTrack ? firstCues : translation ? translation.subCues : [];
+  if (!translation && wantsTranslation(profile, mainLang, !!useTrack)) {
+    const t = await prepare(fresh);
     if (t.translator) { translation = t; subCues = t.subCues; } else note = t.note;
   }
   if (!subTrack && !translation) {
@@ -78,7 +110,7 @@ export async function loadSession({ adapter, itemId, hint, profile, wishes = asy
   log(`${adapter.name} main: ${mainTrack.lang} (${mainCues.length} cues), sub: ${subText}`);
   return {
     mainCues, subCues, mainLang, subLang, subKind, trackLangs, note, site,
-    hasWantedTrack: !!usable, preferTranslation,
+    hasWantedTrack: !!real, preferTranslation,
     translator: translation ? translation.translator : null,
     setStatusSink: translation ? translation.setStatusSink : () => {},
   };

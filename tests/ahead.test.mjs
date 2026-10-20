@@ -61,6 +61,36 @@ test('a title is queued only when it needs a translation: not with a real track,
   assert.deepEqual(await translateTitle({ adapter: fakeAdapter(titles), itemId: 'b', profile: profile(), makeTranslator: down.makeTranslator }), { state: 'skipped', reason: 'bridge down' });
 });
 
+test('a site that keeps translations gets a saver for every title translated ahead or already saved, and only for those', async () => {
+  const keeping = () => {
+    const a = fakeAdapter(titles), savers = [];
+    a.saveTranslation = (opts) => { const s = { opts, started: false, start() { s.started = true; } }; savers.push(s); return s; };
+    return { a, savers };
+  };
+  const queued = keeping();
+  await translateTitle({ adapter: queued.a, itemId: 'b', profile: profile(), makeTranslator: fakeTranslators().makeTranslator });
+  assert.equal(queued.savers.length, 1);
+  const { opts } = queued.savers[0];
+  assert.deepEqual([opts.itemId, opts.key, opts.from, opts.to], ['b', 'k-b', 'ja', 'ko']);
+  assert.deepEqual(opts.cues.map((c) => c.text), ['い']);
+  assert.equal(typeof opts.call, 'function');
+  assert.equal(queued.savers[0].started, true);
+
+  const saved = keeping();
+  await translateTitle({ adapter: saved.a, itemId: 'b', profile: profile(), makeTranslator: fakeTranslators({ prepare: { ok: true, saved: 1 } }).makeTranslator });
+  assert.equal(saved.savers.length, 1);                                           // translated before: it may not be on the server yet
+
+  for (const [itemId, make] of [
+    ['c', fakeTranslators()],                                                      // the video has a Korean track
+    ['b', fakeTranslators({ prepare: { ok: false, reason: 'bridge down' } })],
+    ['b', fakeTranslators({ queue: { ok: false, error: 'busy' } })],
+  ]) {
+    const none = keeping();
+    await translateTitle({ adapter: none.a, itemId, profile: profile(), makeTranslator: make.makeTranslator });
+    assert.equal(none.savers.length, 0, `${itemId}: nothing to keep`);
+  }
+});
+
 test('the next episode waits until the site can list its tracks, then is queued; a viewer who moved on stops it', async () => {
   const tr = fakeTranslators();
   const adapter = fakeAdapter(titles, { readyAfter: { b: 2 } });                   // not ready on the first two looks

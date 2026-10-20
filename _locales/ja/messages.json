@@ -347,6 +347,9 @@
   "saveKeptForeign": {
     "message": "Jellyfinにある字幕はそのままにしました: Subpairが作ったものではありません"
   },
+  "saveSame": {
+    "message": "新しい翻訳はJellyfinにある翻訳と同じです"
+  },
   "saveNoPermission": {
     "message": "Jellyfinに保存できませんでした: このアカウントには字幕を管理する権限がありません"
   },

@@ -78,4 +78,6 @@ for again. ezTrans and local AI are free, and Claude counts toward your subscrip
 - **Translate from the main line instead**: when a show's own subtitles in your language are poor or out of sync, use a
   translation instead. Remembered per title.
 
-Translations are saved on this computer only. Jellyfin apps on a TV or phone don't see them.
+On Jellyfin, a finished translation is also added to the episode as a subtitle, so the Jellyfin apps on your TV and phone
+show it too. This happens only for episodes without a subtitle in that language, and your Jellyfin account needs
+permission to manage subtitles.

@@ -237,7 +237,12 @@ Anthropic API와 Claude Haiku 5.5(`claude-haiku-5-5`, 기본값)로 약 300줄�
 끝난 작품은 브리지의 데이터 폴더에 저장됩니다. Windows는 `%LOCALAPPDATA%\subpair`,
 macOS는 `~/Library/Application Support/subpair`,
 Linux는 `$XDG_DATA_HOME/subpair` 또는 `~/.local/share/subpair`입니다(`storeDir` 또는 `BRIDGE_STORE`로 바꿀 수 있습니다).
-다른 Jellyfin 앱(TV, 휴대폰)에서는 저장된 번역이 보이지 않습니다.
+
+Jellyfin에서는 끝난 번역을 그 항목의 외부 자막 트랙으로도 추가합니다(`POST /Videos/{itemId}/Subtitles`, Jellyfin이 영상
+옆에 `<영상 이름>.<언어>.srt`로 저장). 그래서 모든 Jellyfin 앱에서 보입니다. 항목에 그 언어의 자막이 없을 때만
+추가하며, 계정에 자막 관리 권한이 필요합니다. 미리 번역한 화(다음 화, 시즌 전체)도 같은 방식으로 추가합니다.
+**이 작품 다시 번역**은 Subpair가 이전에 추가한 트랙을 바꿉니다(삭제에는 관리자 권한 필요). Subpair가 만들지 않은
+트랙은 절대 바꾸거나 지우지 않습니다.
 
 ### 시작 시 브리지 실행
 

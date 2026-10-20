@@ -24,8 +24,9 @@ your own language under it.
 - Turn it off from the toolbar or with Alt+Shift+S to get the site's own subtitles back.
 - English, Korean and Japanese interface.
 
-Subpair has no account, no analytics and no server of its own. Subtitle text only goes to the bridge on your own computer,
-and from there only to the translator you choose.
+Subpair has no account, no analytics and no server of its own. Subtitle text goes to the bridge on your own computer, and
+from there only to the translator you choose. On Jellyfin, a finished translation is also saved to your own Jellyfin server
+as a subtitle track (only when the title has none in that language), so its TV and phone apps can show it.
 
 Step-by-step setup, including the translation bridge: https://wonjoonseol-ws.github.io/subpair/
 
@@ -56,6 +57,8 @@ Shows two subtitle languages at the same time on video players (Netflix, Jellyfi
 - Where it goes: to the translation bridge at 127.0.0.1 on the user's own computer. The bridge is optional and run by the
   user; it may pass the text to the translation service the user configured (for example Anthropic or an OpenAI-compatible
   API) under the user's own account.
+- On Jellyfin, a finished translation is also uploaded to the user's own Jellyfin server, the one the video plays from, as a
+  subtitle track for that title (only when the title has no subtitle in that language). Nothing goes to the developer.
 - Not collected: personal information, health, financial, authentication data (a Jellyfin login token is used only to call
   that same Jellyfin server and never sent anywhere else), location, browsing history, user activity.
 - Certifications: data is not sold, not used or transferred for purposes unrelated to the single purpose, and not used to

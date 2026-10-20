@@ -25,17 +25,26 @@ export async function translateTitle({ adapter, itemId, profile, makeTranslator 
   if (wanted === mainLang || pickTrack(site.tracks, [wanted], main.id)) return { state: 'done' };
   const cues = tidy(await site.fetchCues(main), mainLang, profile);
   if (!cues.length) return { state: 'skipped', reason: 'no main cues' };
+  const call = (path, body) => callBridge(profile.translate.bridge, path, body);
   const translator = makeTranslator({
-    call: (path, body) => callBridge(profile.translate.bridge, path, body),
-    key: site.key, title: site.title, from: mainLang, to: wanted,
+    call, key: site.key, title: site.title, from: mainLang, to: wanted,
     backend: profile.translate.backend, models: profile.translate.models, mode: 'process',
     cues, subCues: cues.map((c) => ({ start: c.start, end: c.end, text: '' })), getTime: () => 0,
   });
   const ready = await translator.prepare();
   if (!ready.ok) return { state: 'skipped', reason: ready.reason };
-  if (ready.saved) return { state: 'done' };
+  const keep = () => keepOnSite(adapter, { itemId, key: site.key, from: mainLang, to: wanted, backend: profile.translate.backend, cues, call });
+  if (ready.saved) { keep(); return { state: 'done' }; }
   const r = await translator.queue();
-  return r.ok ? { state: 'queued', translator } : { state: 'skipped', reason: r.error };
+  if (!r.ok) return { state: 'skipped', reason: r.error };
+  keep();
+  return { state: 'queued', translator };
+}
+
+// Has the site keep the title's translation once the bridge has finished it, where the site can (Jellyfin: as a subtitle
+// track every app lists). The saver waits for the bridge by itself and ends on its own.
+function keepOnSite(adapter, options) {
+  if (adapter.saveTranslation) adapter.saveTranslation(options).start();
 }
 
 // Waits for a queued title's job to end. -> true when it finished, false when it failed, was cancelled or was forgotten.

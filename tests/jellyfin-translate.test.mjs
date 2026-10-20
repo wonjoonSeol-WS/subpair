@@ -41,7 +41,7 @@ function setup(options = {}) {
 }
 const ready = (state, text = srtOf(10), key = 'ko.claude') => {
   const [to, backend] = key.split('.');
-  state.entries[key] = entry(to, backend);
+  state.entries[key] = { ...entry(to, backend), savedAt: new Date(state.clock).toISOString() };     // saved now, on the test clock
   state.srt[key] = text;
 };
 
@@ -161,7 +161,14 @@ function jellyfin(state, tracks) {
   return { jf, options };
 }
 
-test('replace: a regenerated translation replaces the track this browser uploaded, deleted by its index after the upload', async () => {
+// "Translate again": the bridge holds `before` when the saver starts and `after` once the new translation is done (after the
+// first wait). Nothing is kept in the browser about what was uploaded.
+const regenerate = (state, o, before, after) => {
+  if (before) ready(state, before);
+  o.sleep = async (ms) => { state.clock += ms; if (++state.sleeps === 1) ready(state, after); };
+};
+
+test('replace: the track holding the translation the bridge had saved is replaced, deleted by its index after the upload', async () => {
   const oldText = srtOf(10, 'OLD');
   const { state, o } = setup();
   const { jf, options } = jellyfin(state, [['/media/A.kor.srt', oldText]]);
@@ -171,39 +178,47 @@ test('replace: a regenerated translation replaces the track this browser uploade
     jf.tracks.set('/media/0-first.kor.1.srt', Buffer.from(body.Data, 'base64').toString('utf8'));   // sorts first: shifts A's index
     return { ok: true, status: 204, detail: '' };
   };
-  state.marks.set('jf-abc123.ko', { at: state.clock - 1000, path: '/media/A.kor.srt', print: fingerprint(oldText) });
-  ready(state, srtOf(10, 'NEW'));
+  regenerate(state, o, oldText, srtOf(10, 'NEW'));
   await createAutoSaver(o).start();
   assert.equal(state.uploads.length, 1);
+  assert.equal(decode(state.uploads[0]), srtOf(10, 'NEW'));
   assert.deepEqual(jf.removed, [3], 'A was index 2 before the upload and 3 after it');
   assert.deepEqual([...jf.tracks.keys()], ['/media/0-first.kor.1.srt']);
   assert.deepEqual(state.statuses, ['Replaced the translation on Jellyfin']);
-  assert.equal(state.marks.get('jf-abc123.ko').path, '/media/0-first.kor.1.srt');
-  assert.equal(state.marks.get('jf-abc123.ko').print, fingerprint(srtOf(10, 'NEW')));
 });
 
-test('replace: waits while the bridge still holds the translation that was uploaded, then replaces it', async () => {
+test('replace: waits while the bridge still holds the earlier translation, then replaces it', async () => {
   const oldText = srtOf(10, 'OLD');
   const { state, o } = setup({ maxWaitMs: 60000 });
   const { jf, options } = jellyfin(state, [['/media/A.kor.srt', oldText]]);
   Object.assign(o, options);
-  state.marks.set('jf-abc123.ko', { at: state.clock - 1000, path: '/media/A.kor.srt', print: fingerprint(oldText) });
   ready(state, oldText);
   o.sleep = async (ms) => { state.clock += ms; if (++state.sleeps === 3) ready(state, srtOf(10, 'NEW')); };
   await createAutoSaver(o).start();
   assert.equal(state.sleeps, 3);
   assert.equal(state.uploads.length, 1);
-  assert.equal(decode(state.uploads[0]), srtOf(10, 'NEW'));
   assert.equal(jf.removed.length, 1);
 });
 
-test('replace: a subtitle Subpair did not upload is kept, and nothing is uploaded or deleted', async () => {
-  for (const mark of [undefined, { at: 1, path: '/media/Other.kor.srt', print: 'x' }]) {
+test('replace: an earlier translation by another translator counts too, and only the track holding one is replaced', async () => {
+  const fromEztrans = srtOf(10, 'EZ');
+  const { state, o } = setup();                                          // the chosen translator is claude
+  const { jf, options } = jellyfin(state, [['/media/A.kor.srt', fromEztrans], ['/media/B.kor.srt', srtOf(10, 'RELEASE')]]);
+  Object.assign(o, options);
+  ready(state, srtOf(10, 'CLAUDE-OLD'), 'ko.claude');                  // claude's older file, which was never uploaded
+  ready(state, fromEztrans, 'ko.eztrans');                             // the one on Jellyfin
+  regenerate(state, o, null, srtOf(10, 'CLAUDE-NEW'));
+  await createAutoSaver(o).start();
+  assert.equal(state.uploads.length, 1);
+  assert.deepEqual([...jf.tracks.keys()].sort(), ['/media/B.kor.srt', '/media/Show.kor.2.srt']);
+});
+
+test('replace: a subtitle no saved translation matches is kept, and nothing is uploaded or deleted', async () => {
+  for (const before of [null, srtOf(10, 'OLD')]) {                      // the bridge had nothing, or something else
     const { state, o } = setup();
     const { jf, options } = jellyfin(state, [['/media/Bazarr.ko.srt', srtOf(10, 'MINE')]]);
     Object.assign(o, options);
-    if (mark) state.marks.set('jf-abc123.ko', mark);
-    ready(state, srtOf(10, 'NEW'));
+    regenerate(state, o, before, srtOf(10, 'NEW'));
     await createAutoSaver(o).start();
     assert.equal(state.uploads.length, 0);
     assert.deepEqual(jf.removed, []);
@@ -215,11 +230,23 @@ test('replace: an uploaded track that was edited since (other fingerprint) count
   const { state, o } = setup();
   const { jf, options } = jellyfin(state, [['/media/A.kor.srt', srtOf(10, 'EDITED')]]);
   Object.assign(o, options);
-  state.marks.set('jf-abc123.ko', { at: state.clock - 1000, path: '/media/A.kor.srt', print: fingerprint(srtOf(10, 'OLD')) });
-  ready(state, srtOf(10, 'NEW'));
+  regenerate(state, o, srtOf(10, 'OLD'), srtOf(10, 'NEW'));
   await createAutoSaver(o).start();
   assert.equal(state.uploads.length, 0);
   assert.deepEqual(jf.removed, []);
+});
+
+test('replace: a translator that gives the same text again ends with a note once the bridge has saved it, not after an hour', async () => {
+  const oldText = srtOf(10, 'SAME');
+  const { state, o } = setup({ maxWaitMs: 3_600_000 });
+  const { jf, options } = jellyfin(state, [['/media/A.kor.srt', oldText]]);
+  Object.assign(o, options);
+  regenerate(state, o, oldText, oldText);                               // ezTrans: the new translation is word for word the old one
+  await createAutoSaver(o).start();
+  assert.equal(state.sleeps, 1, 'it stops as soon as the bridge has saved the new run');
+  assert.equal(state.uploads.length, 0);
+  assert.deepEqual(jf.removed, []);
+  assert.deepEqual(state.statuses, ['The new translation is the same as the one on Jellyfin']);
 });
 
 test('replace: when the old track cannot be deleted the new one is still saved and the user is told why', async () => {
@@ -228,13 +255,11 @@ test('replace: when the old track cannot be deleted the new one is still saved a
   const { jf, options } = jellyfin(state, [['/media/A.kor.srt', oldText]]);
   Object.assign(o, options);
   jf.removeStatus = 403;
-  state.marks.set('jf-abc123.ko', { at: state.clock - 1000, path: '/media/A.kor.srt', print: fingerprint(oldText) });
-  ready(state, srtOf(10, 'NEW'));
+  regenerate(state, o, oldText, srtOf(10, 'NEW'));
   await createAutoSaver(o).start();
   assert.equal(state.uploads.length, 1);
   assert.equal(jf.tracks.size, 2);
   assert.match(state.statuses[0], /old one could not be removed \(status 403, needs an administrator\)/);
-  assert.equal(state.marks.get('jf-abc123.ko').print, fingerprint(srtOf(10, 'NEW')));
 });
 
 test('replace needs a way to read and delete tracks', async () => {

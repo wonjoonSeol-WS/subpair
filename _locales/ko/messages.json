@@ -347,6 +347,9 @@
   "saveKeptForeign": {
     "message": "Jellyfin에 있는 자막을 그대로 두었습니다: Subpair가 만든 자막이 아닙니다"
   },
+  "saveSame": {
+    "message": "새 번역이 Jellyfin에 있는 번역과 같습니다"
+  },
   "saveNoPermission": {
     "message": "Jellyfin에 저장하지 못했습니다: 이 계정은 자막을 관리할 수 없습니다"
   },

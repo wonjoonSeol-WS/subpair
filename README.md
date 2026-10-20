@@ -236,7 +236,14 @@ nothing per line.
 
 A finished title is saved in the bridge's data folder: `%LOCALAPPDATA%\subpair` on Windows,
 `~/Library/Application Support/subpair` on macOS, `$XDG_DATA_HOME/subpair` or `~/.local/share/subpair` on Linux
-(`storeDir` or `BRIDGE_STORE` change it). Other Jellyfin apps (TV, phone) do not see the saved translations.
+(`storeDir` or `BRIDGE_STORE` change it).
+
+On Jellyfin, Subpair also adds a finished translation to the item as an external subtitle track
+(`POST /Videos/{itemId}/Subtitles`; Jellyfin saves it next to the video as `<video>.<language>.srt`), so every Jellyfin
+app shows it. It does so only when the item has no subtitle in that language, and the account needs permission to manage
+subtitles. Episodes translated ahead (the next episode, a whole season) are added the same way. **Translate this title
+again** replaces the track Subpair added before (deleting it needs an administrator); a track Subpair did not make is
+never replaced or deleted.
 
 ### Run the bridge at startup
 

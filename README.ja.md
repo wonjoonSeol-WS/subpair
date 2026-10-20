@@ -195,7 +195,9 @@ Anthropic APIとClaude Haiku 5.5（`claude-haiku-5-5`、既定値）で、約300
 
 ### 保存された翻訳
 
-完了した作品は、ブリッジのデータフォルダーに保存されます。Windowsは`%LOCALAPPDATA%\subpair`、macOSは`~/Library/Application Support/subpair`、Linuxは`$XDG_DATA_HOME/subpair`または`~/.local/share/subpair`です（`storeDir`または`BRIDGE_STORE`で変更できます）。ほかのJellyfinアプリ（テレビ、スマートフォン）では、保存された翻訳は表示されません。
+完了した作品は、ブリッジのデータフォルダーに保存されます。Windowsは`%LOCALAPPDATA%\subpair`、macOSは`~/Library/Application Support/subpair`、Linuxは`$XDG_DATA_HOME/subpair`または`~/.local/share/subpair`です（`storeDir`または`BRIDGE_STORE`で変更できます）。
+
+Jellyfinでは、完了した翻訳をそのアイテムの外部字幕トラックとしても追加します（`POST /Videos/{itemId}/Subtitles`。Jellyfinが動画の隣に`<動画名>.<言語>.srt`として保存）。そのため、どのJellyfinアプリでも表示されます。追加するのはアイテムにその言語の字幕がない場合だけで、アカウントに字幕を管理する権限が必要です。先に翻訳した話（次の話、シーズン全体）も同じように追加します。**この作品をもう一度翻訳**は、Subpairが以前に追加したトラックを置き換えます（削除には管理者権限が必要）。Subpairが作ったものではないトラックを置き換えたり削除したりすることはありません。
 
 ### 起動時にブリッジを実行する
 
