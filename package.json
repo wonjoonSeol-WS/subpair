@@ -1,6 +1,6 @@
 {
   "name": "subpair",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Browser extension that shows two subtitle lines at once on Netflix and Jellyfin, with an optional local translation bridge.",
   "license": "MIT",
   "type": "module",
