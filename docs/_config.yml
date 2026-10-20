@@ -8,6 +8,8 @@ chrome_store_url: https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkf
 firefox_store_url: https://addons.mozilla.org/firefox/addon/subpair/
 stores_in_review: true
 releases_url: https://github.com/wonjoonSeol-WS/subpair/releases/latest
+# GoatCounter site code (the name before .goatcounter.com) for counting visits to these pages; empty means no counter.
+goatcounter: subpair
 markdown: kramdown
 kramdown:
   input: GFM

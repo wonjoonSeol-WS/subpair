@@ -64,6 +64,12 @@ Subpair는 Netflix와 Jellyfin 서버에서 자막 두 줄을 보여 주는 브�
 Firefox는 확장 프로그램에 전송하는 데이터를 선언하도록 요청합니다. 페이지의 자막 텍스트가 로컬 번역 브리지로 가기
 위해 확장 프로그램 밖으로 나갈 수 있으므로, Subpair는 **웹사이트 콘텐츠**(`websiteContent`)를 선언합니다.
 
+## 이 웹사이트
+
+이 웹사이트는(확장 프로그램이 아니라) 오픈소스 방문 집계 도구인 [GoatCounter](https://www.goatcounter.com/)로 방문
+수를 셉니다. 페이지별 방문 수 같은 합계만 남기고 누가 방문했는지는 남기지 않으며, IP 주소나 브라우저 정보는 저장하지
+않습니다([GoatCounter의 집계 방식](https://www.goatcounter.com/help/sessions)).
+
 ## 문의
 
 질문이나 문제가 있으면 프로젝트 저장소에 이슈를 등록하세요.

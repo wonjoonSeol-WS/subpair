@@ -66,6 +66,12 @@ are kept or removed by your browser's sync service, as it handles extension data
 Firefox asks extensions to declare data they transmit. Subpair declares **website content** (`websiteContent`), because
 subtitle text from the page can leave the extension for the local translation bridge.
 
+## This website
+
+This website (not the extension) counts visits with [GoatCounter](https://www.goatcounter.com/), an open-source
+counter. It keeps only totals, such as how many visits a page had, not who made them, and it never stores IP addresses
+or browser details ([how GoatCounter counts](https://www.goatcounter.com/help/sessions)).
+
 ## Contact
 
 Questions or problems: open an issue in the project's repository.
