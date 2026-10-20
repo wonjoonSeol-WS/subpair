@@ -84,6 +84,7 @@ export function createMenu(root, { quick, panelOn, togglePanel, openSettings }) 
         row(t('menuPosition'), placementSummary(s.placement, s.gap), () => go('position')),
         row(t('menuBackground'), choiceLabel(BACKGROUND_CHOICES, s.background), () => go('background')),
         row(t('menuAutoPause'), s.autoPause ? t('on') : t('off'), then(quick.toggleAutoPause)),
+        row(t('menuShowMain'), s.hideMain ? t('off') : t('on'), then(quick.toggleMain)),
         row(t('menuPanel'), panelOn() ? t('on') : t('off'), then(togglePanel)),
         row(t('menuMore'), '', () => { close(); openSettings(); }),
       );

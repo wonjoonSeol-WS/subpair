@@ -191,7 +191,7 @@ function startSession(video, itemId, stored, src, fsPanel, play) {
       canTranslate: profile.translate.mode !== 'off', backend: profile.translate.backend, mode: profile.translate.mode,
       status: translator ? translator.status() : null,
       canSeason: !!adapter.seasonItems, season: seasonRun ? { done: seasonRun.done, total: seasonRun.total } : null,
-      offsets: { ...off }, autoPause, mainFont: profile.mainFont, subFont: profile.subFont,
+      offsets: { ...off }, autoPause, hideMain: profile.hideMain, mainFont: profile.mainFont, subFont: profile.subFont,
       placement: profile.textPlacement, gap: profile.subtitleGap, lineGap: profile.lineGap, align: profile.pictureAlign,
       background: profile.subtitleBackground,
     }),
@@ -216,6 +216,7 @@ function startSession(video, itemId, stored, src, fsPanel, play) {
     setAlign: (value) => look({ pictureAlign: value }),
     setBackground: (value) => look({ subtitleBackground: value }),
     toggleAutoPause: nav.autopause,
+    toggleMain: () => look({ hideMain: !profile.hideMain }),
   };
 
   ui = createUI({

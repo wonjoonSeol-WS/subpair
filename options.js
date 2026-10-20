@@ -87,7 +87,7 @@ function setLimits() {
 }
 
 const NUMBERS = ['mainFont', 'subFont', 'mainLines', 'subLines', 'subtitleGap', 'lineGap'];
-const CHECKS = ['panel', 'joinLines', 'panelTimes', 'hideSpeaker', 'autoPause', 'colorize'];
+const CHECKS = ['panel', 'hideMain', 'joinLines', 'panelTimes', 'hideSpeaker', 'autoPause', 'colorize'];
 const CHOICES = ['pictureAlign', 'textPlacement', 'subtitleBackground'];
 
 function fill() {

@@ -51,6 +51,12 @@ test('the bar fits the reserved lines, and never gets too short for two rows of 
   assert.equal(barHeight({ mainLines: 1, mainFont: 12, subLines: 1, subFont: 12, lineGap: 0 }), BAR_MIN);
 });
 
+test('with only the second line shown, the bar keeps no room for the main line or the gap between them', () => {
+  const p = { mainLines: 2, mainFont: 28, subLines: 3, subFont: 40, lineGap: 10 };
+  assert.equal(barHeight({ ...p, hideMain: true }), Math.round(3 * 40 * 1.35 + 24));
+  assert.equal(barHeight(p), Math.round(2 * 28 * 1.35 + 10 + 3 * 40 * 1.35 + 24));
+});
+
 test('the layout rule shrinks the player boxes, only lifts the controls, and aligns the picture', () => {
   const rule = layoutRule({ player: ['.box'], osd: ['.osd'] }, { bar: 120, panel: 340, align: 0 });
   assert.match(rule, /\.box\{bottom:120px !important;right:340px !important;height:auto !important;width:auto !important;\}/);

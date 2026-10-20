@@ -107,6 +107,9 @@
   "menuPanel": {
     "message": "대본 패널"
   },
+  "menuShowMain": {
+    "message": "영상에 주 자막 표시"
+  },
   "menuMore": {
     "message": "설정 더 보기..."
   },
@@ -514,6 +517,9 @@
   },
   "optHideSpeaker": {
     "message": "줄 앞의 화자 이름 숨기기, 예: （田中） 또는 (Alice)"
+  },
+  "optHideMain": {
+    "message": "영상에는 두 번째 자막만 표시 (내 언어로만 볼 때)"
   },
   "optPanelTimes": {
     "message": "대본 패널에 시간 표시"

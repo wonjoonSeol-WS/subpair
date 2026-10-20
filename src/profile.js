@@ -45,6 +45,7 @@ export function newProfile(id, name, main = [], sub = []) {
     // each translator uses ('' = the bridge's configured default).
     translate: { backend: AUTO, mode: 'auto', bridge: DEFAULT_BRIDGE, models: { claude: '', api: '', openai: '' } },
     hideSpeaker: false,            // drop leading speaker tags such as （田中） or (Alice)
+    hideMain: false,               // show only the second line on the video (for viewers who only want their own language)
     mainFont: 28, subFont: 22,     // px at scale 1
     mainLines: 2, subLines: 2,     // lines of room reserved in the bar
     keys: structuredClone(DEFAULT_KEYS),
@@ -107,6 +108,7 @@ export function sanitizeProfile(p) {
     panelTimes: p.panelTimes === undefined ? base.panelTimes : !!p.panelTimes,
     joinLines: p.joinLines === undefined ? base.joinLines : !!p.joinLines,
     hideSpeaker: !!p.hideSpeaker,
+    hideMain: !!p.hideMain,
     mainFont: clamp(p.mainFont, LIMITS.font, base.mainFont),
     subFont: clamp(p.subFont, LIMITS.font, base.subFont),
     mainLines: clamp(p.mainLines, LIMITS.lines, base.mainLines, LINE_STEP),
@@ -132,7 +134,7 @@ export const wantedSub = (p) => (p.sub[0] ? normLang(p.sub[0]) : '');
 // Settings that only change how the running session looks. Saving one of them updates the screen at once; any other
 // change (a language, the translator...) needs a new session.
 export const LOOK_FIELDS = ['mainFont', 'subFont', 'mainLines', 'subLines', 'textPlacement', 'subtitleGap', 'lineGap', 'pictureAlign',
-  'subtitleBackground', 'panel', 'colorize', 'colors'];
+  'subtitleBackground', 'panel', 'colorize', 'colors', 'hideMain'];
 
 // What a session was built from: the whole profile with the look fields blanked. Two profiles with the same key differ
 // only in look, so the running session can take the new look without being rebuilt.

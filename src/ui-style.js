@@ -41,6 +41,8 @@ export const CSS = `
 /* Text on the video: no bar, the lines sit on the picture and the buttons become a faint cluster in the top-right. */
 #subpair-root.subpair-overlay #subpair-bar { right: var(--subpair-panel, 0px); bottom: 5%; height: auto; background: transparent; pointer-events: none; }
 #subpair-root.subpair-overlay .subpair-text { padding: 0; }
+/* "Only the second line" (a setting): the main line is not shown, and so takes no room. */
+#subpair-root.subpair-main-hidden .subpair-main { display: none; }
 /* Only the words take the mouse: as full-width boxes the lines would cover the site's own buttons. */
 #subpair-root.subpair-overlay .subpair-line { pointer-events: none; }
 #subpair-root.subpair-overlay .subpair-line .subpair-inner { pointer-events: auto; }

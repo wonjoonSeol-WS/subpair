@@ -10,6 +10,13 @@ test('numbers are clamped, junk falls back to defaults', () => {
   assert.equal(p.subLines, 2);                         // not a number -> default
 });
 
+test('the main line shows unless the profile says to hide it', () => {
+  assert.equal(sanitizeProfile({}).hideMain, false);
+  assert.equal(sanitizeProfile({ hideMain: true }).hideMain, true);
+  assert.equal(sanitizeProfile({ hideMain: 'yes' }).hideMain, true);
+  assert.equal(sanitizeProfile({ hideMain: 0 }).hideMain, false);
+});
+
 test('reserved lines accept halves (2.5), round to the nearest half, and the gap is clamped', () => {
   assert.equal(sanitizeProfile({ mainLines: 2.5 }).mainLines, 2.5);
   assert.equal(sanitizeProfile({ mainLines: 2.3 }).mainLines, 2.5);

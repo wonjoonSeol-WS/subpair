@@ -45,6 +45,23 @@ function openView(s, view) {
   return { labels: rows().map(label), rowNamed: (l) => rows().find((r) => label(r) === l), calls };
 }
 
+test('menu: the main line can be switched off and on from the first view', () => {
+  const rowsOf = (s) => {
+    const calls = [];
+    const quick = { get: () => s, toggleMain: () => calls.push('toggleMain') };
+    const root = new FakeNode('div');
+    createMenu(root, { quick, panelOn: () => false, togglePanel() {}, openSettings() {} }).toggle();
+    const rows = root.children[0].all().filter((n) => n.className === 'subpair-mrow');
+    const row = rows.find((r) => r.children[0].textContent === t('menuShowMain'));
+    return { value: row && row.children[1].textContent, click: () => row.onclick(), calls };
+  };
+  assert.equal(rowsOf(state()).value, t('on'));
+  const hidden = rowsOf(state({ hideMain: true }));
+  assert.equal(hidden.value, t('off'));
+  hidden.click();
+  assert.deepEqual(hidden.calls, ['toggleMain']);
+});
+
 test('menu: "translate the main line instead" is under Translator, not under Second subtitle', () => {
   const tr = openView(state(), t('menuTranslator'));
   assert.ok(tr.labels.includes(t('translateInstead')));

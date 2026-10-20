@@ -178,7 +178,7 @@ export function createUI(actions) {
       lowest: window.innerHeight - WINDOW_MARGIN,
       height: textEl.offsetHeight,
       gap: profile.subtitleGap,
-      oneLineEach: (profile.mainFont + profile.subFont) * LINE_H + profile.lineGap,
+      oneLineEach: (profile.hideMain ? 0 : profile.mainFont * LINE_H + profile.lineGap) + profile.subFont * LINE_H,
     })}px`;
   }
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(() => positionText()) : null;
@@ -199,6 +199,7 @@ export function createUI(actions) {
     root.classList.toggle('subpair-overlay', onVideo);
     for (const b of BACKGROUNDS) root.classList.toggle(`subpair-bg-${b}`, b === profile.subtitleBackground);
     root.classList.toggle('subpair-color', !!profile.colorize);
+    root.classList.toggle('subpair-main-hidden', !!profile.hideMain);
     for (const [cat, color] of Object.entries(profile.colors || {})) root.style.setProperty(`--subpair-c-${cat}`, color);
     const barH = barHeight(profile), pw = panelOn() ? PANEL_W : 0;
     const bar = onVideo ? 0 : barH;                 // text on the video: nothing reserved at the bottom

@@ -118,7 +118,7 @@ test('session key: a look change keeps it, any other change breaks it', () => {
   const p = newProfile('x', 'X', ['ja'], ['ko']);
   const key = sessionKey(p);
   for (const patch of [{ mainFont: 40 }, { subFont: 30 }, { mainLines: 3 }, { textPlacement: 'bar' }, { subtitleGap: 80 }, { lineGap: 20 }, { pictureAlign: 'top' },
-    { subtitleBackground: 'solid' }, { panel: false }, { colorize: false }, { colors: { ...p.colors, noun: '#000000' } }]) {
+    { subtitleBackground: 'solid' }, { panel: false }, { colorize: false }, { colors: { ...p.colors, noun: '#000000' } }, { hideMain: true }]) {
     assert.equal(sessionKey({ ...p, ...patch }), key, JSON.stringify(patch));
   }
   for (const patch of [{ sub: ['en'] }, { main: ['ko'] }, { translate: { ...p.translate, backend: 'claude' } }, { translate: { ...p.translate, mode: 'off' } },

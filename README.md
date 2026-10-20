@@ -71,7 +71,7 @@ the optional **bridge**, a small Node.js program on your computer, translates th
 | Alt+Shift+S, or the toolbar button | turn Subpair on or off (the sites' own subtitles come back) |
 
 The gear button on the video changes languages, translator, timing, size, position and background for the video you
-are watching. Keys can be changed in the settings.
+are watching, and can hide the main line to show only the second one. Keys can be changed in the settings.
 
 ## Translation (optional)
 

@@ -110,6 +110,9 @@
   "menuPanel": {
     "message": "Transcript panel"
   },
+  "menuShowMain": {
+    "message": "Main line on the video"
+  },
   "menuMore": {
     "message": "More settings..."
   },
@@ -517,6 +520,9 @@
   },
   "optHideSpeaker": {
     "message": "Hide speaker names at the start of a line, like （田中） or (Alice)"
+  },
+  "optHideMain": {
+    "message": "Show only the second line on the video (for watching in your own language)"
   },
   "optPanelTimes": {
     "message": "Show timestamps in the transcript panel"

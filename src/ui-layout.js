@@ -31,7 +31,8 @@ export function textSides(windowWidth, panelPx) {
 
 // Height of the bottom bar: the reserved lines of both languages, the space between them, and room for the buttons.
 export function barHeight(p) {
-  return Math.max(BAR_MIN, Math.round(p.mainLines * p.mainFont * LINE_H + p.subLines * p.subFont * LINE_H + p.lineGap + BAR_PAD));
+  const main = p.hideMain ? 0 : p.mainLines * p.mainFont * LINE_H + p.lineGap;
+  return Math.max(BAR_MIN, Math.round(main + p.subLines * p.subFont * LINE_H + BAR_PAD));
 }
 
 // The stylesheet that shrinks the site's player to the area the bar and the panel leave free, from the adapter's selectors:

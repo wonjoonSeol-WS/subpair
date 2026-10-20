@@ -107,6 +107,9 @@
   "menuPanel": {
     "message": "トランスクリプトパネル"
   },
+  "menuShowMain": {
+    "message": "動画にメイン字幕を表示"
+  },
   "menuMore": {
     "message": "その他の設定..."
   },
@@ -514,6 +517,9 @@
   },
   "optHideSpeaker": {
     "message": "行頭の話者名を隠す、例: （田中） や (Alice)"
+  },
+  "optHideMain": {
+    "message": "動画には2行目の字幕だけを表示（自分の言語だけで見るとき）"
   },
   "optPanelTimes": {
     "message": "トランスクリプトパネルに時間を表示"
