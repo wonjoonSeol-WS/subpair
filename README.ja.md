@@ -28,7 +28,12 @@ flowchart LR
 
 ## インストール
 
-**ブラウザーのストアから**：Chrome Web StoreとFirefox Add-onsでの公開は近日予定です。
+**ブラウザーのストアから**（審査中）：[Chrome ウェブストア](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae)、[Firefox アドオン](https://addons.mozilla.org/firefox/addon/subpair/)。承認されるまでは、リリースからインストールしてください。
+
+**リリースから**：[最新のリリース](https://github.com/wonjoonSeol-WS/subpair/releases/latest)から、お使いのブラウザー用のzipをダウンロードします。
+
+1. Chrome、Edge、Brave：`subpair-chrome-<バージョン>.zip`を展開し、`chrome://extensions`（Edgeでは`edge://extensions`）を開いて、**デベロッパー モード**をオンにし、**パッケージ化されていない拡張機能を読み込む**をクリックして、展開したフォルダーを選びます。
+2. Firefox：`about:debugging#/runtime/this-firefox`を開き、**一時的なアドオンを読み込む**をクリックして、`subpair-firefox-<バージョン>.zip`を選びます（まだ署名されていないファイルなので、Firefoxを再起動するまでの一時的なインストールです）。
 
 **ソースから**（Chrome 111+、Edge、Brave、Firefox 128+）：
 

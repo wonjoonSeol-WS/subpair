@@ -33,7 +33,17 @@ the optional **bridge**, a small Node.js program on your computer, translates th
 
 ## Install
 
-**From the browser stores**: Chrome Web Store and Firefox Add-ons listings are coming soon.
+**From the browser stores** (in review):
+[Chrome Web Store](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae),
+[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/subpair/). Until they are approved, install a release:
+
+**From a release**: download the zip for your browser from the
+[latest release](https://github.com/wonjoonSeol-WS/subpair/releases/latest).
+
+1. Chrome, Edge or Brave: unzip `subpair-chrome-<version>.zip`, open `chrome://extensions` (Edge: `edge://extensions`),
+   switch on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
+2. Firefox: open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on** and pick
+   `subpair-firefox-<version>.zip` (the file is not signed yet, so it stays until Firefox restarts).
 
 **From source** (Chrome 111+, Edge, Brave; Firefox 128+):
 

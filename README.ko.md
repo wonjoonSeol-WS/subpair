@@ -33,7 +33,17 @@ flowchart LR
 
 ## 설치
 
-**브라우저 스토어에서**: Chrome Web Store와 Firefox Add-ons 등록은 곧 공개됩니다.
+**브라우저 스토어에서**(심사 중):
+[Chrome 웹 스토어](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae),
+[Firefox 부가 기능](https://addons.mozilla.org/firefox/addon/subpair/). 승인되기 전까지는 릴리스에서 설치하세요.
+
+**릴리스에서**: [최신 릴리스](https://github.com/wonjoonSeol-WS/subpair/releases/latest)에서 내 브라우저용 zip을
+내려받습니다.
+
+1. Chrome, Edge, Brave: `subpair-chrome-<버전>.zip`의 압축을 풀고 `chrome://extensions`(Edge는 `edge://extensions`)를
+   연 다음, **개발자 모드**를 켜고 **압축해제된 확장 프로그램을 로드합니다**를 클릭해 압축을 푼 폴더를 선택합니다.
+2. Firefox: `about:debugging#/runtime/this-firefox`를 열고 **임시 부가 기능 로드**를 클릭한 다음
+   `subpair-firefox-<버전>.zip`을 선택합니다(아직 서명되지 않은 파일이라 Firefox를 다시 시작하기 전까지만 유지됩니다).
 
 **소스에서**(Chrome 111+, Edge, Brave, Firefox 128+):
 

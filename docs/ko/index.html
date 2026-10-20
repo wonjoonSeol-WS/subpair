@@ -16,10 +16,15 @@ lang_order: 2
     <p class="lead">Netflix와 내 Jellyfin에서 배우는 언어와 모국어 자막을 한 화면에 함께 띄워요. 모국어 자막이 없는 작품은
       PC에서 돌아가는 번역 도우미가 번역해 줘요.</p>
     <div class="buttons">
-      {% if site.chrome_store_url != "" %}<a class="button primary" href="{{ site.chrome_store_url }}">Chrome에 추가</a>{% endif %}
-      {% if site.firefox_store_url != "" %}<a class="button primary" href="{{ site.firefox_store_url }}">Firefox에 추가</a>{% endif %}
-      {% if site.chrome_store_url == "" and site.firefox_store_url == "" %}<a class="button primary" href="#get-started">시작하기</a>{% endif %}
-      <a class="button" href="https://github.com/wonjoonSeol-WS/subpair">GitHub에서 보기</a>
+      {% if site.stores_in_review %}
+      <a class="button primary" href="{{ site.releases_url }}">GitHub에서 내려받기</a>
+      <a class="button" href="{{ site.chrome_store_url }}">Chrome 웹 스토어 (심사 중)</a>
+      <a class="button" href="{{ site.firefox_store_url }}">Firefox 부가 기능 (심사 중)</a>
+      {% else %}
+      <a class="button primary" href="{{ site.chrome_store_url }}">Chrome에 추가</a>
+      <a class="button primary" href="{{ site.firefox_store_url }}">Firefox에 추가</a>
+      <a class="button" href="{{ site.repo_url }}">GitHub에서 보기</a>
+      {% endif %}
     </div>
     <ul class="chips">
       <li>무료 오픈소스 (MIT)</li>
@@ -117,13 +122,13 @@ lang_order: 2
     <div class="grid steps">
       <div class="card">
         <h3>브라우저에 추가</h3>
-        {% if site.chrome_store_url != "" or site.firefox_store_url != "" %}
-        <p>브라우저 스토어에서 설치하세요.
-          {% if site.chrome_store_url != "" %}<a href="{{ site.chrome_store_url }}">Chrome 웹 스토어</a>{% endif %}
-          {% if site.firefox_store_url != "" %}<a href="{{ site.firefox_store_url }}">Firefox 부가 기능</a>{% endif %}</p>
+        {% if site.stores_in_review %}
+        <p><a href="{{ site.chrome_store_url }}">Chrome 웹 스토어</a>와 <a href="{{ site.firefox_store_url }}">Firefox 부가
+          기능</a>은 지금 심사 중이에요. 그전까지는 <a href="{{ site.releases_url }}">GitHub</a>에서 최신 버전을 내려받아
+          그 페이지의 설치 방법을 따라 주세요.</p>
         {% else %}
-        <p>Chrome 웹 스토어와 Firefox 부가 기능 등록을 준비하고 있어요. 그전까지는
-          <a href="https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#설치">GitHub에서 설치</a>할 수 있어요.</p>
+        <p>브라우저 스토어에서 설치하세요. <a href="{{ site.chrome_store_url }}">Chrome 웹 스토어</a>,
+          <a href="{{ site.firefox_store_url }}">Firefox 부가 기능</a></p>
         {% endif %}
       </div>
       <div class="card">
