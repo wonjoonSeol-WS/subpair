@@ -55,7 +55,7 @@ lang_order: 2
 | claude 명령이 실행되지 않았습니다 | Claude Code를 설치하고 `claude`를 한 번 실행해 로그인하거나, `claude.command`를 설정하세요 |
 | Anthropic API 키가 없습니다 | `ANTHROPIC_API_KEY` 또는 `api.key`를 설정한 다음 브리지를 다시 시작하세요 |
 | OpenAI 호환 번역기가 설정되지 않았습니다 | `openai.baseUrl`, `openai.model`을 설정하고, 호스팅 서비스라면 그 키도 설정하세요 |
-| ezTrans 또는 Luna 헬퍼를 찾지 못했습니다 | `eztrans` 경로 세 개를 확인하세요 |
+| ezTrans XP를 찾지 못했습니다 | `eztrans.dir`을 ezTrans XP 폴더로 설정하세요(Windows 전용) |
 | ... cmd.exe로 안전하게 실행할 수 없습니다 | `claude.command`를 `.cmd`가 아닌 `.exe`로 지정하세요 |
 | 허용되지 않은 출처 | `bridge/config.json`의 `allowedOrigins`에 지금 쓰는 Subpair가 들어 있지 않습니다. 현재 ID를 추가한 다음(확장 프로그램을 다른 폴더에서 불러오면 ID가 바뀝니다) 브리지를 다시 시작하세요 |
 

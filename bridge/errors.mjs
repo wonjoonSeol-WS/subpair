@@ -25,7 +25,7 @@ export const ERRORS = {
   pair_unsupported: '$1 only does $2, not $3 -> $4',
   needs_model: '$1 needs a model: send one with the request or set $1.model in bridge/config.json',
   backend_not_ready: '$1 is not set up',
-  eztrans_not_configured: 'ezTrans or Luna\'s helper was not found (eztrans.helper / eztrans.dir in bridge/config.json)',
+  eztrans_not_configured: 'ezTrans XP was not found: set eztrans.dir in bridge/config.json to the ezTrans XP folder (Windows only)',
   claude_missing: 'the claude command did not run (install Claude Code and log in, or set claude.command in bridge/config.json)',
   api_key_missing: 'no Anthropic API key (ANTHROPIC_API_KEY or bridge/config.json api.key)',
   openai_not_configured: 'OpenAI-compatible backend is not set up (openai.baseUrl and, for hosted services, OPENAI_API_KEY or openai.key in bridge/config.json)',

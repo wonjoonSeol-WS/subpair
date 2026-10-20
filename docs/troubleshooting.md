@@ -54,7 +54,7 @@ The player shows the bridge's errors in your language. The ones that need you:
 | the claude command did not run | install Claude Code, run `claude` once to log in, or set `claude.command` |
 | no Anthropic API key | set `ANTHROPIC_API_KEY` or `api.key`, then restart the bridge |
 | OpenAI-compatible backend is not set up | set `openai.baseUrl`, `openai.model` and, for a hosted service, its key |
-| ezTrans or Luna's helper was not found | check the three `eztrans` paths |
+| ezTrans XP was not found | set `eztrans.dir` to the ezTrans XP folder (Windows only) |
 | cannot run ... safely through cmd.exe | point `claude.command` at an `.exe`, not a `.cmd` |
 | forbidden origin | `allowedOrigins` in `bridge/config.json` does not list this copy of Subpair: add its current ID (it changes when the extension is loaded from another folder), then restart the bridge |
 

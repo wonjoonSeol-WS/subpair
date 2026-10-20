@@ -11,8 +11,9 @@ lang_order: 2
 # 브리지로 번역하기
 
 작품에 두 번째 자막 언어의 트랙이 없으면, Subpair는 컴퓨터에서 실행하는 작은 Node.js 프로그램인 **브리지**를 통해
-주 자막을 번역할 수 있습니다([설치](./#4-선택-브리지-설치) 참고). 브리지는 번역한 줄과 끝난 작품을 모두 보관하므로
-같은 번역에 비용을 두 번 내지 않으며, 이미 본 작품은 바로 불러옵니다.
+주 자막을 번역할 수 있습니다([브리지 설치](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역선택-사항)
+참고). 브리지는 번역한 줄과 끝난 작품을 모두 보관하므로 같은 번역에 비용을 두 번 내지 않으며, 이미 본 작품은 바로
+불러옵니다.
 
 ```mermaid
 sequenceDiagram
@@ -205,20 +206,28 @@ WantedBy=default.target
 
 그다음 `systemctl --user enable --now subpair-bridge`를 실행합니다.
 
-## ezTrans
+## Subpair만 허용하기
 
-ezTrans XP는 일본어를 한국어로 번역하는 Windows 프로그램입니다. 브리지는 LunaTranslator의 32비트 헬퍼
-`LunaSubProcess32.exe`를 통해 ezTrans XP와 통신합니다. `bridge/config.json`에 경로 세 개를 설정하세요.
+기본적으로 이 컴퓨터의 모든 브라우저 확장 프로그램이 브리지를 호출할 수 있으며, 브리지는 시작할 때 이를 알려 줍니다.
+Subpair만 허용하려면 `bridge/config.json`에 Subpair의 출처를 추가하고 브리지를 다시 시작하세요.
 
 ```json
-{
-  "eztrans": {
-    "helper": "C:\\Tools\\LunaTranslator\\files\\LunaSubProcess32.exe",
-    "dir": "C:\\Tools\\ezTrans XP",
-    "cwd": "C:\\Tools\\LunaTranslator"
-  }
-}
+{ "allowedOrigins": ["chrome-extension://<the ID shown on chrome://extensions>"] }
 ```
 
-`helper`에는 헬퍼 프로그램, `dir`에는 ezTrans XP 폴더, `cwd`에는 LunaTranslator 폴더를 지정합니다. macOS와
-Linux에서는 ezTrans를 설정하지 말고 다른 번역기를 쓰세요.
+Firefox에서는 `moz-extension://<about:debugging#/runtime/this-firefox에 표시되는 내부 UUID>`를 사용합니다. 확장 프로그램을
+다른 폴더에서 불러오면 ID가 바뀌며, ID를 새로 넣을 때까지 브리지는 "허용되지 않은 출처"라고 응답합니다.
+
+## ezTrans
+
+ezTrans XP는 일본어를 한국어로 번역하는 Windows 프로그램입니다. Subpair에 포함되어 있지 않으므로 직접 설치하세요.
+브리지는 LunaTranslator의 32비트 헬퍼를 통해 ezTrans XP와 통신하며, 이 헬퍼는 `bridge/vendor/lunatranslator`에
+Subpair와 함께 들어 있습니다(GPL-3.0, LunaTranslator 공식 릴리스에서 가져온 것이며 소스와 버전은 그 폴더의 README에
+있습니다). `bridge/config.json`에는 ezTrans XP 폴더만 지정하면 됩니다.
+
+```json
+{ "eztrans": { "dir": "C:/Program Files (x86)/ChangShinSoft/ezTrans XP" } }
+```
+
+함께 들어 있는 헬퍼 대신 직접 준비한 헬퍼를 쓰려면 `eztrans.helper`에 그 전체 경로를 설정하세요(다른 작업 폴더가
+필요하면 `eztrans.cwd`도 설정합니다). macOS와 Linux에서는 ezTrans를 설정하지 말고 다른 번역기를 쓰세요.

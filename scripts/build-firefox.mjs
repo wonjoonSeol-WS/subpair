@@ -25,7 +25,8 @@ const isUrl = (ref) => /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(ref);
 function manifestFiles(m) {
   const icons = (v) => (typeof v === 'string' ? [v] : Object.values(v || {}));
   return [
-    ...((m.background && m.background.scripts) || []),
+    ...((m.background && m.background.scripts) || []),                       // Firefox
+    ...(m.background && m.background.service_worker ? [m.background.service_worker] : []),   // Chrome
     ...(m.content_scripts || []).flatMap((c) => [...(c.js || []), ...(c.css || [])]),
     ...(m.options_ui ? [m.options_ui.page] : []),
     ...icons(m.icons),

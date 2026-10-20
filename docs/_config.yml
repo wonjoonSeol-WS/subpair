@@ -1,5 +1,9 @@
 title: Subpair
-description: Two subtitle lines at once on Netflix and Jellyfin
+description: Learn a language from the shows you watch. Two subtitle lines at once on Netflix and Jellyfin, with free local or AI translation. An open-source alternative to Language Reactor.
+repo_url: https://github.com/wonjoonSeol-WS/subpair
+# Store listings: fill in once published; until then the pages say "coming soon" and link the install guide.
+chrome_store_url: ""
+firefox_store_url: ""
 markdown: kramdown
 kramdown:
   input: GFM
@@ -10,3 +14,17 @@ defaults:
       layout: default
 exclude:
   - README.md
+# Text the layout shows on every page, per language.
+i18n:
+  en:
+    description: "Learn a language from the shows you watch. Two subtitle lines at once on Netflix and Jellyfin, with free local translation or AI translation. An open-source alternative to Language Reactor."
+    license: "MIT License"
+    not_affiliated: "Not affiliated with Netflix, Jellyfin or Language Reactor."
+  ko:
+    description: "즐겨 보는 작품으로 언어를 배우세요. Netflix와 Jellyfin에서 자막 두 줄을 한 번에 보여 주고, 무료 로컬 번역이나 AI 번역을 지원합니다. Language Reactor의 오픈 소스 대안입니다."
+    license: "MIT 라이선스"
+    not_affiliated: "Netflix, Jellyfin, Language Reactor와 관련이 없습니다."
+  ja:
+    description: "いつも見ている作品で語学を学べます。NetflixとJellyfinで字幕を2行同時に表示し、無料のローカル翻訳やAI翻訳に対応します。Language Reactorのオープンソースの代替です。"
+    license: "MITライセンス"
+    not_affiliated: "Netflix、Jellyfin、Language Reactorとは関係ありません。"

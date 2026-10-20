@@ -10,7 +10,7 @@ lang_order: 3
 
 # ブリッジによる翻訳
 
-作品に2行目の字幕の言語のトラックがない場合、Subpairはパソコン上で動く小さなNode.jsプログラムである**ブリッジ**を通じて、メイン字幕を翻訳できます（[セットアップ](./#4-任意ブリッジのインストール)を参照）。ブリッジは翻訳したすべての行と完了したすべての作品を保存するため、同じ翻訳に二度料金を払うことはなく、一度見た作品はすぐに読み込まれます。
+作品に2行目の字幕の言語のトラックがない場合、Subpairはパソコン上で動く小さなNode.jsプログラムである**ブリッジ**を通じて、メイン字幕を翻訳できます（[ブリッジのインストール](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ja.md#翻訳任意)を参照）。ブリッジは翻訳したすべての行と完了したすべての作品を保存するため、同じ翻訳に二度料金を払うことはなく、一度見た作品はすぐに読み込まれます。
 
 ```mermaid
 sequenceDiagram
@@ -180,18 +180,22 @@ WantedBy=default.target
 
 その後、`systemctl --user enable --now subpair-bridge`を実行します。
 
-## ezTrans
+## Subpairだけを許可する
 
-ezTrans XPは、日本語を韓国語に翻訳するWindows用のソフトウェアです。ブリッジは、LunaTranslatorの32ビット版ヘルパー`LunaSubProcess32.exe`を介してezTransとやり取りします。`bridge/config.json`に3つのパスを設定してください。
+初期設定では、このパソコンのどのブラウザー拡張機能もブリッジを呼び出せます。ブリッジは起動時にそのことを表示します。Subpairだけを許可するには、`bridge/config.json`にSubpairのオリジンを追加して、ブリッジを再起動してください。
 
 ```json
-{
-  "eztrans": {
-    "helper": "C:\\Tools\\LunaTranslator\\files\\LunaSubProcess32.exe",
-    "dir": "C:\\Tools\\ezTrans XP",
-    "cwd": "C:\\Tools\\LunaTranslator"
-  }
-}
+{ "allowedOrigins": ["chrome-extension://<the ID shown on chrome://extensions>"] }
 ```
 
-`helper`にはヘルパープログラム、`dir`にはezTrans XPのフォルダー、`cwd`にはLunaTranslatorのフォルダーを指定します。macOSとLinuxではezTransを設定せず、ほかの翻訳エンジンを使ってください。
+Firefoxでは`moz-extension://<about:debugging#/runtime/this-firefoxに表示される内部UUID>`を使います。拡張機能を別のフォルダーから読み込むとIDが変わり、IDを更新するまで、ブリッジは「許可されていないオリジン」と応答します。
+
+## ezTrans
+
+ezTrans XPは、日本語を韓国語に翻訳するWindows用のソフトウェアです。Subpairには含まれていないため、ご自身でインストールしてください。ブリッジはLunaTranslatorの32ビット版ヘルパーを介してezTransとやり取りします。このヘルパーはSubpairに同梱されており、`bridge/vendor/lunatranslator`にあります（GPL-3.0、LunaTranslatorの公式リリースから取得。ソースとバージョンはそのフォルダーのREADMEに記載）。`bridge/config.json`に必要なのはezTrans XPのフォルダーだけです。
+
+```json
+{ "eztrans": { "dir": "C:/Program Files (x86)/ChangShinSoft/ezTrans XP" } }
+```
+
+同梱のヘルパーではなく自分で用意したヘルパーを使うには、`eztrans.helper`にそのフルパスを設定してください（別の作業フォルダーが必要な場合は`eztrans.cwd`も設定します）。macOSとLinuxではezTransを設定せず、ほかの翻訳エンジンを使ってください。

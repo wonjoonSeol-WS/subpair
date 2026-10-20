@@ -15,7 +15,7 @@
   "storeDir": "",
   "allowedOrigins": [],
 
-  "//eztrans": "Windows only. helper: Luna Translator's LunaSubProcess32.exe; dir: the ezTrans XP folder; cwd: the Luna Translator folder.",
+  "//eztrans": "Windows only. dir: the ezTrans XP folder (the one setting you need). helper and cwd are optional: empty uses LunaTranslator's helper shipped in bridge/vendor/lunatranslator, run in its own folder; set them only to use another LunaSubprocess32.exe.",
   "eztrans": {
     "helper": "",
     "dir": "",

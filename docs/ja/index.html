@@ -1,0 +1,160 @@
+---
+title: いつも見ている作品で語学を学ぶ
+nav: ホーム
+home: true
+order: 1
+ref: home
+lang: ja
+language: 日本語
+lang_order: 3
+---
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Language Reactorの無料オープンソース代替</span>
+    <h1><span class="accent">いつも見ている作品</span>で語学を学びましょう</h1>
+    <p class="lead">Subpairは、Netflixとご自身のJellyfinライブラリで、学習中の言語と自分の言語の2つの字幕を同時に画面に表示します。作品に自分の言語の字幕がないときは、パソコン上の補助プログラムが翻訳します。</p>
+    <div class="buttons">
+      {% if site.chrome_store_url != "" %}<a class="button primary" href="{{ site.chrome_store_url }}">Chromeに追加</a>{% endif %}
+      {% if site.firefox_store_url != "" %}<a class="button primary" href="{{ site.firefox_store_url }}">Firefoxに追加</a>{% endif %}
+      {% if site.chrome_store_url == "" and site.firefox_store_url == "" %}<a class="button primary" href="#get-started">はじめる</a>{% endif %}
+      <a class="button" href="https://github.com/wonjoonSeol-WS/subpair">GitHubで見る</a>
+    </div>
+    <ul class="chips">
+      <li>無料、MITライセンス</li>
+      <li>アカウント不要、トラッキングなし</li>
+      <li>Netflixとご自身のJellyfin</li>
+      <li>AIまたはオフライン翻訳、保存して再利用</li>
+      <li>English, 한국어, 日本語</li>
+    </ul>
+    <p class="platforms">Chrome、Edge、Brave、Firefox、そしてWindows、macOS、Linuxで使えます。</p>
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <img src="../images/jellyfin-player.png" alt="日本語の行とその韓国語訳、トランスクリプトパネルが表示されたJellyfinの動画">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>見ながら学ぶための機能がすべてそろっています</h2>
+    <p class="section-lead">字幕をノートに書き写す必要も、動画を止めて辞書を引く必要もありません。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></div>
+        <h3>いつでも2行</h3>
+        <p>上に学習中の言語、下に自分の言語。トラックがないときのための予備の言語も指定できます。</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></div>
+        <h3>字幕がなければ翻訳</h3>
+        <p>自分の言語の字幕がありませんか？Subpairがパソコン上で、またはAIでメイン字幕を翻訳し、その翻訳を記憶します。</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></div>
+        <h3>どの行でもリピート</h3>
+        <p>キー1つで前の行、同じ行、次の行に移動でき、各行の終わりで一時停止することもできます。</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3l-6 18M15 3l6 18M6 13h12"/></svg></div>
+        <h3>クリックできる単語</h3>
+        <p>日本語は品詞ごとに色分けされます。単語をクリックすると、辞書や単語カードで使えるようにコピーされます。</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M14 4v16M17 8h1M17 12h1M17 16h1"/></svg></div>
+        <h3>全文トランスクリプト</h3>
+        <p>エピソードのすべての行をサイドパネルに表示します。行をクリックすると、その位置にすぐ移動します。</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>プライバシー重視の設計</h3>
+        <p>アカウント不要、トラッキングなし。翻訳をオンにしない限り、データがパソコンの外に出ることはありません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how-to-use">
+  <div class="wrap split">
+    <div>
+      <h2>使い方</h2>
+      <p class="section-lead">動画を再生すれば、Subpairがすぐに使えます。キー操作は動画を見たまま使えます。</p>
+      <ul class="keys">
+        <li><span class="combo"><kbd>A</kbd></span> 前の行</li>
+        <li><span class="combo"><kbd>R</kbd></span> この行をリピート</li>
+        <li><span class="combo"><kbd>D</kbd></span> 次の行</li>
+        <li><span class="combo"><kbd>Q</kbd></span> 各行の終わりで自動一時停止</li>
+        <li><span class="combo"><kbd>クリック</kbd></span> 単語をコピー</li>
+        <li><span class="combo"><kbd>Ctrl</kbd><kbd>クリック</kbd></span> 辞書形をコピー</li>
+        <li><span class="combo"><kbd>Alt</kbd><kbd>クリック</kbd></span> 行全体をコピー</li>
+        <li><span class="combo"><kbd>Alt</kbd><kbd>Shift</kbd><kbd>S</kbd></span> Subpairのオン/オフ</li>
+      </ul>
+      <p class="note">歯車ボタンで、視聴中の動画の言語、文字サイズ、位置、翻訳を変更できます。キーは設定で変更できます。</p>
+    </div>
+    <img src="../images/gear-menu.png" alt="動画の上に開いたSubpairのクイック設定メニュー">
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <img src="../images/yomitan.png" alt="Subpairでクリックした単語を調べているYomitan">
+    <div>
+      <h2>Yomitanで単語を調べる</h2>
+      <p class="section-lead">無料の辞書<a href="https://yomitan.wiki/">Yomitan</a>と組み合わせて使えます。</p>
+      <p>Yomitanの<strong>Clipboard monitor</strong>（クリップボードの監視）をオンにすると、Subpairでクリックした単語をすぐに調べられます。または、単語の上で<kbd>Shift</kbd>を押し続けると、Yomitanのポップアップが表示されます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="get-started">
+  <div class="wrap">
+    <h2>3ステップではじめる</h2>
+    <p class="section-lead">所要時間は約5分。アカウントは不要です。</p>
+    <div class="grid steps">
+      <div class="card">
+        <h3>ブラウザーに追加</h3>
+        {% if site.chrome_store_url != "" or site.firefox_store_url != "" %}
+        <p>ブラウザーのストアからSubpairをインストールしてください：
+          {% if site.chrome_store_url != "" %}<a href="{{ site.chrome_store_url }}">Chrome Web Store</a>{% endif %}
+          {% if site.firefox_store_url != "" %}<a href="{{ site.firefox_store_url }}">Firefox Add-ons</a>{% endif %}</p>
+        {% else %}
+        <p>Chrome Web StoreとFirefox Add-onsでの公開は近日予定です。それまでは<a href="https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ja.md#インストール">GitHubからインストール</a>してください。</p>
+        {% endif %}
+      </div>
+      <div class="card">
+        <h3>言語を選ぶ</h3>
+        <p>設定ページが自動的に開きます。学習中の言語と自分の言語を選んでください。</p>
+      </div>
+      <div class="card">
+        <h3>再生する</h3>
+        <p>Netflixまたはご自身のJellyfinサーバーを開いて、作品を再生してください。Jellyfinでは、「このサーバーでSubpairを使いますか?」を一度クリックします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="translators">
+  <div class="wrap">
+    <h2>翻訳は好きな方法で</h2>
+    <p class="section-lead">作品に自分の言語の字幕がないときは、パソコン上の補助プログラム（任意）が翻訳します。自分に合った方法を選んでください。</p>
+    <div class="grid">
+      <div class="card"><span class="tag">オフライン</span><h3>ezTrans</h3><p>WindowsでezTrans XPを使い、日本語を韓国語に、動画の数行先まで翻訳します。</p></div>
+      <div class="card"><span class="tag">ご自身のClaudeプラン</span><h3>Claude Code</h3><p>すでにお持ちのClaudeのサブスクリプションで、あらゆる言語の組み合わせを翻訳します。</p></div>
+      <div class="card"><span class="tag">1話あたり約$0.01</span><h3>AI API</h3><p>Anthropic、OpenAI、Gemini、DeepSeekなどを、ご自身のキーで使えます。</p></div>
+      <div class="card"><span class="tag">無料、プライベート</span><h3>ローカルAI</h3><p>ご自身のパソコンで動くOllamaやLM Studioを使います。</p></div>
+    </div>
+    <p class="note">翻訳はすべて保存されるため、一度翻訳した作品はすぐに読み込まれます。<a href="translation.html">翻訳のしくみ</a></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="callout">
+      <div>
+        <span class="label">任意、Bazarrを使うJellyfin向け</span>
+        <h3>字幕ファイルのタイミングがずれていませんか？subsync-repairを試してみてください</h3>
+        <p>Bazarrがダウンロードするすべての字幕を動画と照合してチェックする関連ツールです。一部でずれている字幕を修正し、別の話数用に作られた字幕は拒否するので、Bazarrがより良い字幕を探せます。</p>
+      </div>
+    </div>
+  </div>
+</section>

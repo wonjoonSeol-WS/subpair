@@ -1,31 +1,51 @@
 <!doctype html>
 <html lang="{{ page.lang | default: 'en' }}">
 <head>
+  {% assign t = site.i18n[page.lang] | default: site.i18n.en %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
+  <title>{% if page.home %}{{ site.title }}: {{ page.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: t.description }}">
+  <meta property="og:title" content="{{ site.title }}">
+  <meta property="og:description" content="{{ page.description | default: t.description }}">
+  <meta property="og:image" content="{{ '/images/jellyfin-player.png' | absolute_url }}">
   <link rel="icon" href="{{ '/assets/icon.svg' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
-<body>
+<body{% if page.home %} class="home"{% endif %}>
   {% assign versions = site.pages | where: "ref", page.ref | sort: "lang_order" %}
   {% assign nav = site.pages | where: "lang", page.lang | where_exp: "p", "p.nav" | sort: "order" %}
-  <header>
-    <a class="brand" href="{{ '/' | relative_url }}{% if page.lang != 'en' %}{{ page.lang }}/{% endif %}">
-      <img src="{{ '/assets/icon.svg' | relative_url }}" alt="" width="28" height="28"> {{ site.title }}
-    </a>
-    <nav>
-      {% for p in nav %}<a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav }}</a>{% endfor %}
-    </nav>
-    <nav class="languages" aria-label="Language">
-      {% for v in versions %}<a href="{{ v.url | relative_url }}" lang="{{ v.lang }}"{% if v.lang == page.lang %} aria-current="true"{% endif %}>{{ v.language }}</a>{% endfor %}
-    </nav>
+  {% assign home = nav | first %}
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="{{ home.url | relative_url }}">
+        <img src="{{ '/assets/icon.svg' | relative_url }}" alt="" width="28" height="28"><span>{{ site.title }}</span>
+      </a>
+      <nav class="site-nav">
+        {% for p in nav %}<a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav }}</a>{% endfor %}
+        <a href="{{ site.repo_url }}" class="nav-github">GitHub</a>
+      </nav>
+      <nav class="languages" aria-label="Language">
+        {% for v in versions %}<a href="{{ v.url | relative_url }}" lang="{{ v.lang }}"{% if v.lang == page.lang %} aria-current="true"{% endif %}>{{ v.language }}</a>{% endfor %}
+      </nav>
+    </div>
   </header>
-  <main>
+  <main class="{% if page.home %}landing{% else %}wrap doc{% endif %}">
     {{ content }}
   </main>
-  <footer>MIT License. Subpair is not affiliated with Netflix or Jellyfin.</footer>
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>{{ site.title }}, {{ t.license }}</span>
+      <span class="footer-links">
+        {% for p in nav %}<a href="{{ p.url | relative_url }}">{{ p.nav }}</a>{% endfor %}
+        <a href="{{ site.repo_url }}">GitHub</a>
+      </span>
+      <span class="muted">{{ t.not_affiliated }}</span>
+    </div>
+  </footer>
   <script type="module">
     const blocks = document.querySelectorAll('pre > code.language-mermaid');
     if (blocks.length) {

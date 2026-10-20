@@ -17,7 +17,7 @@ import { cacheIdFor } from '../bridge/backends/index.mjs';
 import { WorkQueue, LIVE, JOB } from '../bridge/queue.mjs';
 import { Store, migrateLegacyStore } from '../bridge/store.mjs';
 import { createBridge } from '../bridge/server.mjs';
-import { loadConfig, defaultStoreDir, BRIDGE_DIR } from '../bridge/config.mjs';
+import { loadConfig, defaultStoreDir, BRIDGE_DIR, BUNDLED_EZTRANS_HELPER } from '../bridge/config.mjs';
 import { parseSrt, toSrt } from '../src/srt.js';
 import { textsHash } from '../src/hash.js';
 import { ERRORS, fill, backendError } from '../bridge/errors.mjs';
@@ -1379,4 +1379,32 @@ test('errors: what the backends throw carries a code; the bridge answers it with
     const r = await line({ backend: 'api', texts: ['x'] });
     assert.deepEqual([r.status, r.code, r.params, r.error], [502, 'timeout', ['api', 'Anthropic API', '120000'], 'api: Anthropic API did not answer within 120000 ms']);
   });
+});
+
+test('config: ezTrans uses the bundled helper in its own folder unless told otherwise; relative paths are relative to bridge/', () => {
+  const dir = tmp();
+  const file = path.join(dir, 'config.json');
+  const load = (eztrans) => { fs.writeFileSync(file, JSON.stringify({ eztrans })); return loadConfig(file, {}).eztrans; };
+  const plain = load({ dir: 'C:\ezTrans XP' });
+  assert.equal(plain.helper, BUNDLED_EZTRANS_HELPER);
+  assert.ok(fs.existsSync(BUNDLED_EZTRANS_HELPER), 'the helper ships in bridge/vendor/lunatranslator');
+  assert.equal(plain.cwd, path.dirname(BUNDLED_EZTRANS_HELPER));
+  assert.equal(plain.dir, path.resolve(BRIDGE_DIR, 'C:\ezTrans XP'));
+  const own = load({ helper: 'D:\Luna\LunaSubProcess32.exe', cwd: 'D:\Luna', dir: 'D:\ezTrans' });     // a user's own install keeps working
+  assert.equal(own.helper, path.resolve('D:\Luna\LunaSubProcess32.exe'));
+  assert.equal(own.cwd, path.resolve('D:\Luna'));
+  const ownNoCwd = load({ helper: 'tools/luna/helper.exe' });
+  assert.equal(ownNoCwd.helper, path.join(BRIDGE_DIR, 'tools', 'luna', 'helper.exe'));
+  assert.equal(ownNoCwd.cwd, path.join(BRIDGE_DIR, 'tools', 'luna'));
+});
+
+test('ezTrans is offered only on Windows, and only once its folder is set and found', () => {
+  const dir = tmp();
+  const cfg = { helper: process.execPath, dir };
+  assert.equal(EzTrans.available(cfg, 'win32'), true);
+  assert.equal(EzTrans.available(cfg, 'linux'), false);
+  assert.equal(EzTrans.available(cfg, 'darwin'), false);
+  assert.equal(EzTrans.available({ ...cfg, dir: '' }, 'win32'), false);
+  assert.equal(EzTrans.available({ ...cfg, dir: path.join(dir, 'missing') }, 'win32'), false);
+  assert.equal(EzTrans.available({ ...cfg, helper: path.join(dir, 'missing.exe') }, 'win32'), false);
 });

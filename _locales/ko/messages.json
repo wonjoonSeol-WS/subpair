@@ -708,7 +708,7 @@
     "message": "$1이(가) 설정되지 않았습니다"
   },
   "bridgeErr_eztrans_not_configured": {
-    "message": "ezTrans 또는 Luna 헬퍼를 찾지 못했습니다 (bridge/config.json의 eztrans.helper / eztrans.dir)"
+    "message": "ezTrans XP를 찾지 못했습니다: bridge/config.json의 eztrans.dir을 ezTrans XP 폴더로 설정하세요 (Windows 전용)"
   },
   "bridgeErr_claude_missing": {
     "message": "claude 명령이 실행되지 않았습니다 (Claude Code를 설치하고 로그인하거나, bridge/config.json에 claude.command를 설정하세요)"

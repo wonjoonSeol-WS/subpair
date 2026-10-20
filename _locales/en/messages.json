@@ -711,7 +711,7 @@
     "message": "$1 is not set up"
   },
   "bridgeErr_eztrans_not_configured": {
-    "message": "ezTrans or Luna's helper was not found (eztrans.helper / eztrans.dir in bridge/config.json)"
+    "message": "ezTrans XP was not found: set eztrans.dir in bridge/config.json to the ezTrans XP folder (Windows only)"
   },
   "bridgeErr_claude_missing": {
     "message": "the claude command did not run (install Claude Code and log in, or set claude.command in bridge/config.json)"

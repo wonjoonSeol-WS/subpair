@@ -11,7 +11,8 @@ lang_order: 1
 # Translation with the bridge
 
 When a title has no subtitle track in your second-line language, Subpair can translate the main line through the
-**bridge**, a small Node.js program on your computer (see [Setup](./#4-optional-install-the-bridge)). The bridge keeps
+**bridge**, a small Node.js program on your computer (see
+[Install the bridge](https://github.com/wonjoonSeol-WS/subpair#translation-optional)). The bridge keeps
 every translated line and every finished title, so nothing is paid for twice and a title you have watched loads at once.
 
 ```mermaid
@@ -205,20 +206,28 @@ WantedBy=default.target
 
 Then `systemctl --user enable --now subpair-bridge`.
 
-## ezTrans
+## Allow only Subpair
 
-ezTrans XP is a Windows Japanese-to-Korean translator. The bridge talks to it through LunaTranslator's 32-bit helper
-`LunaSubProcess32.exe`. Set three paths in `bridge/config.json`:
+By default any browser extension on your computer may call the bridge, and the bridge says so when it starts. To allow
+only Subpair, add its origin to `bridge/config.json` and restart the bridge:
 
 ```json
-{
-  "eztrans": {
-    "helper": "C:\\Tools\\LunaTranslator\\files\\LunaSubProcess32.exe",
-    "dir": "C:\\Tools\\ezTrans XP",
-    "cwd": "C:\\Tools\\LunaTranslator"
-  }
-}
+{ "allowedOrigins": ["chrome-extension://<the ID shown on chrome://extensions>"] }
 ```
 
-`helper` is the helper program, `dir` the ezTrans XP folder, `cwd` the LunaTranslator folder. On macOS and Linux leave
-ezTrans unset and use another translator.
+For Firefox use `moz-extension://<the Internal UUID shown on about:debugging#/runtime/this-firefox>`. The ID changes when
+the extension is loaded from another folder; the bridge then answers "forbidden origin" until you update it.
+
+## ezTrans
+
+ezTrans XP is a Windows Japanese-to-Korean translator. It is not included: install it yourself. The bridge reaches it
+through LunaTranslator's 32-bit helper, which ships with Subpair in `bridge/vendor/lunatranslator` (GPL-3.0, from the
+official LunaTranslator release; source and version in that folder's README). Only the ezTrans XP folder is needed in
+`bridge/config.json`:
+
+```json
+{ "eztrans": { "dir": "C:/Program Files (x86)/ChangShinSoft/ezTrans XP" } }
+```
+
+To use your own copy of the helper instead, set `eztrans.helper` to its full path (and `eztrans.cwd` if it needs another
+working folder). On macOS and Linux leave ezTrans unset and use another translator.

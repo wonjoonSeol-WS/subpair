@@ -45,7 +45,7 @@ lang_order: 3
 | claudeコマンドが実行できませんでした | Claude Codeをインストールして`claude`を一度実行してログインするか、`claude.command`を設定してください |
 | Anthropic APIキーがありません | `ANTHROPIC_API_KEY`または`api.key`を設定し、ブリッジを再起動してください |
 | OpenAI互換の翻訳エンジンが設定されていません | `openai.baseUrl`と`openai.model`を設定し、ホスティングサービスならそのキーも設定してください |
-| ezTransまたはLunaのヘルパーが見つかりません | `eztrans`の3つのパスを確認してください |
+| ezTrans XPが見つかりません | `eztrans.dir`にezTrans XPのフォルダーを設定してください（Windowsのみ） |
 | ...をcmd.exeで安全に実行できません | `claude.command`を`.cmd`ではなく`.exe`に向けてください |
 | 許可されていないオリジン | `bridge/config.json`の`allowedOrigins`に、いま使っているSubpairが含まれていません。現在のIDを追加して（拡張機能を別のフォルダーから読み込むとIDが変わります）、ブリッジを再起動してください |
 

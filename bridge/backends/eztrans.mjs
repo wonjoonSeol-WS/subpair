@@ -30,8 +30,9 @@ export class EzTrans {
     return EZTRANS_PAIRS.includes(`${from}-${to}`);
   }
 
-  static available(cfg) {
-    return fs.existsSync(cfg.helper) && fs.existsSync(cfg.dir);
+  // Windows only: the engine is a Windows library and the helper a Windows program.
+  static available(cfg, platform = process.platform) {
+    return platform === 'win32' && !!cfg.dir && fs.existsSync(cfg.helper) && fs.existsSync(cfg.dir);
   }
 
   start() {

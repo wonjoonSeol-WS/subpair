@@ -86,3 +86,19 @@ test('build:firefox refuses to build into the source folder', async () => {
   assert.throws(() => buildFirefox(root), /refusing/);
   assert.throws(() => buildFirefox(path.dirname(root)), /refusing/);
 });
+
+test('build:chrome has the worker, the pages, the icons and every language, and nothing of the bridge', async () => {
+  const { buildExtension } = await import('../scripts/build-firefox.mjs');
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'subpair-chrome-'));
+  try {
+    buildExtension('chrome', out);
+    const m = JSON.parse(fs.readFileSync(path.join(out, 'manifest.json'), 'utf8'));
+    assert.deepEqual(m, chrome);
+    const icons = (v) => (typeof v === 'string' ? [v] : Object.values(v || {}));
+    for (const f of [chrome.background.service_worker, ...chrome.content_scripts.flatMap((c) => c.js), chrome.options_ui.page, ...icons(chrome.icons),
+      ...['en', 'ko', 'ja'].map((l) => `_locales/${l}/messages.json`), 'src/main.js', 'vendor/kuromoji/dict/base.dat.gz']) {
+      assert.ok(fs.existsSync(path.join(out, f)), `missing in the build: ${f}`);
+    }
+    for (const f of ['bridge', 'tests', 'scripts', 'node_modules', 'docs', 'store', 'manifest.firefox.json']) assert.ok(!fs.existsSync(path.join(out, f)), f);
+  } finally { fs.rmSync(out, { recursive: true, force: true }); }
+});

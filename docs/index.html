@@ -1,0 +1,167 @@
+---
+title: Learn a language from the shows you watch
+nav: Home
+home: true
+order: 1
+ref: home
+lang: en
+language: English
+lang_order: 1
+---
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Free, open-source alternative to Language Reactor</span>
+    <h1>Learn a language from the shows <span class="accent">you already watch</span></h1>
+    <p class="lead">Subpair puts two subtitles on screen at once on Netflix and your own Jellyfin library: the language you
+      are learning and your own. When a show has no subtitles in your language, a helper on your computer translates them.</p>
+    <div class="buttons">
+      {% if site.chrome_store_url != "" %}<a class="button primary" href="{{ site.chrome_store_url }}">Add to Chrome</a>{% endif %}
+      {% if site.firefox_store_url != "" %}<a class="button primary" href="{{ site.firefox_store_url }}">Add to Firefox</a>{% endif %}
+      {% if site.chrome_store_url == "" and site.firefox_store_url == "" %}<a class="button primary" href="#get-started">Get started</a>{% endif %}
+      <a class="button" href="https://github.com/wonjoonSeol-WS/subpair">View on GitHub</a>
+    </div>
+    <ul class="chips">
+      <li>Free and MIT-licensed</li>
+      <li>No account, no tracking</li>
+      <li>Netflix and your own Jellyfin</li>
+      <li>AI or offline translation, saved and reused</li>
+      <li>English, 한국어, 日本語</li>
+    </ul>
+    <p class="platforms">Chrome, Edge, Brave and Firefox. Windows, macOS and Linux.</p>
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <img src="images/jellyfin-player.png" alt="A Jellyfin video with a Japanese line, its Korean translation and the transcript panel">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Everything you need to study while you watch</h2>
+    <p class="section-lead">No copying subtitles into a notebook, no pausing to search a dictionary.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></div>
+        <h3>Two lines, always</h3>
+        <p>The language you are learning on top, your own below, with fallback languages when a track is missing.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></div>
+        <h3>No subtitles? Translated</h3>
+        <p>Missing your language? Subpair translates the main line on your computer or with AI, and remembers it.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></div>
+        <h3>Replay any line</h3>
+        <p>Jump to the previous, the same or the next line with one key, and pause at the end of every line.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3l-6 18M15 3l6 18M6 13h12"/></svg></div>
+        <h3>Words you can click</h3>
+        <p>Japanese is colored by part of speech. Click a word to copy it for your dictionary or flashcards.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M14 4v16M17 8h1M17 12h1M17 16h1"/></svg></div>
+        <h3>Full transcript</h3>
+        <p>Every line of the episode in a side panel. Click one to jump straight to it.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Private by design</h3>
+        <p>No account, no tracking. Nothing leaves your computer unless you turn on translation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how-to-use">
+  <div class="wrap split">
+    <div>
+      <h2>How to use it</h2>
+      <p class="section-lead">Play a video and Subpair is there. The keys work without leaving the video.</p>
+      <ul class="keys">
+        <li><span class="combo"><kbd>A</kbd></span> Previous line</li>
+        <li><span class="combo"><kbd>R</kbd></span> Repeat the line</li>
+        <li><span class="combo"><kbd>D</kbd></span> Next line</li>
+        <li><span class="combo"><kbd>Q</kbd></span> Auto-pause at the end of every line</li>
+        <li><span class="combo"><kbd>Click</kbd></span> Copy a word</li>
+        <li><span class="combo"><kbd>Ctrl</kbd><kbd>Click</kbd></span> Copy its dictionary form</li>
+        <li><span class="combo"><kbd>Alt</kbd><kbd>Click</kbd></span> Copy the whole line</li>
+        <li><span class="combo"><kbd>Alt</kbd><kbd>Shift</kbd><kbd>S</kbd></span> Turn Subpair on or off</li>
+      </ul>
+      <p class="note">The gear button changes languages, text size, position and translation for the video you are
+        watching. Keys can be changed in the settings.</p>
+    </div>
+    <img src="images/gear-menu.png" alt="Subpair's quick settings menu over a video">
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <img src="images/yomitan.png" alt="Yomitan looking up a word clicked in Subpair">
+    <div>
+      <h2>Look words up with Yomitan</h2>
+      <p class="section-lead">Pair Subpair with the free <a href="https://yomitan.wiki/">Yomitan</a> dictionary.</p>
+      <p>Turn on Yomitan's <strong>clipboard monitor</strong> and every word you click in Subpair is looked up at once.
+        Or hold <kbd>Shift</kbd> over a word for Yomitan's pop-up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="get-started">
+  <div class="wrap">
+    <h2>Get started in three steps</h2>
+    <p class="section-lead">About five minutes. No account needed.</p>
+    <div class="grid steps">
+      <div class="card">
+        <h3>Add it to your browser</h3>
+        {% if site.chrome_store_url != "" or site.firefox_store_url != "" %}
+        <p>Install Subpair from your browser's store:
+          {% if site.chrome_store_url != "" %}<a href="{{ site.chrome_store_url }}">Chrome Web Store</a>{% endif %}
+          {% if site.firefox_store_url != "" %}<a href="{{ site.firefox_store_url }}">Firefox Add-ons</a>{% endif %}</p>
+        {% else %}
+        <p>Chrome Web Store and Firefox Add-ons listings are coming soon. Until then,
+          <a href="https://github.com/wonjoonSeol-WS/subpair#install">install it from GitHub</a>.</p>
+        {% endif %}
+      </div>
+      <div class="card">
+        <h3>Pick your languages</h3>
+        <p>The settings page opens by itself. Choose the language you are learning and your own.</p>
+      </div>
+      <div class="card">
+        <h3>Press play</h3>
+        <p>Open Netflix or your Jellyfin server and play a show. On Jellyfin, click "Use Subpair on this server?" once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="translators">
+  <div class="wrap">
+    <h2>Translation, your way</h2>
+    <p class="section-lead">When a show has no subtitles in your language, an optional helper on your computer
+      translates them. Pick what suits you.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">Offline</span><h3>ezTrans</h3><p>Japanese to Korean on Windows with ezTrans XP, a few lines ahead of the video.</p></div>
+      <div class="card"><span class="tag">Your Claude plan</span><h3>Claude Code</h3><p>Any language pair, using the Claude subscription you already have.</p></div>
+      <div class="card"><span class="tag">About $0.01 an episode</span><h3>AI API</h3><p>Anthropic, OpenAI, Gemini, DeepSeek and others, with your own key.</p></div>
+      <div class="card"><span class="tag">Free, private</span><h3>Local AI</h3><p>Ollama or LM Studio on your own computer.</p></div>
+    </div>
+    <p class="note">Every translation is saved, so a show you have translated once loads instantly.
+      <a href="translation.html">How translation works</a></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="callout">
+      <div>
+        <span class="label">Optional, for Jellyfin with Bazarr</span>
+        <h3>Out-of-sync subtitle files? Try subsync-repair</h3>
+        <p>A companion tool that checks every subtitle Bazarr downloads against the video. It fixes subtitles that drift
+          in some parts and turns away ones made for a different episode, so Bazarr can look for a better one.</p>
+      </div>
+    </div>
+  </div>
+</section>

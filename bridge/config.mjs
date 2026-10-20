@@ -10,6 +10,8 @@ import { fileURLToPath } from 'node:url';
 
 export const BRIDGE_DIR = path.dirname(fileURLToPath(import.meta.url));
 export const LEGACY_STORE_DIR = path.join(BRIDGE_DIR, 'store');
+// LunaTranslator's 32-bit helper, shipped in bridge/vendor (see its README there): ezTrans needs only its own folder set.
+export const BUNDLED_EZTRANS_HELPER = path.join(BRIDGE_DIR, 'vendor', 'lunatranslator', 'LunaSubprocess32.exe');
 
 // Whole numbers and their allowed range. Everything numeric in the defaults file must appear here.
 const NUMBERS = {
@@ -81,6 +83,12 @@ export function loadConfig(file = path.join(BRIDGE_DIR, 'config.json'), env = pr
   // A relative storeDir in the file is relative to bridge/; one in BRIDGE_STORE to the current directory, like any path typed in a shell.
   if (env.BRIDGE_STORE) cfg.storeDir = path.resolve(env.BRIDGE_STORE);
   else cfg.storeDir = cfg.storeDir ? path.resolve(BRIDGE_DIR, cfg.storeDir) : defaultStoreDir(env);
+  // ezTrans: the bundled helper unless helper names another one, run in its own folder unless cwd names another. Relative
+  // paths are relative to bridge/, so the bridge works from any current directory.
+  const ez = cfg.eztrans;
+  ez.helper = ez.helper ? path.resolve(BRIDGE_DIR, ez.helper) : BUNDLED_EZTRANS_HELPER;
+  ez.cwd = ez.cwd ? path.resolve(BRIDGE_DIR, ez.cwd) : path.dirname(ez.helper);
+  if (ez.dir) ez.dir = path.resolve(BRIDGE_DIR, ez.dir);
 
   // Numbers may be written as text ("25"); anything else that is not a whole number in range is refused up front, because a
   // batch of 0 would loop forever and a concurrency of 0 would never start anything.
