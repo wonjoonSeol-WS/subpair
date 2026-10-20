@@ -21,6 +21,7 @@ import { loadConfig, loadDefaults, defaultStoreDir, LEGACY_STORE_DIR } from './c
 import { BridgeError, errorBody, messageOf } from './errors.mjs';
 import { Store, migrateLegacyStore } from './store.mjs';
 import { createBackends, closeBackends } from './backends/index.mjs';
+import { EZTRANS_ENGINE, findEztransDir, isEztransDir } from './backends/eztrans.mjs';
 import { WorkQueue } from './queue.mjs';
 import { createTranslator } from './translate.mjs';
 import { createLineRequests } from './lines.mjs';
@@ -85,11 +86,18 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   try {
     const cfg = loadConfig();
     if (cfg.storeDir === defaultStoreDir()) cfg.storeDir = migrateLegacyStore(LEGACY_STORE_DIR, cfg.storeDir);
+    if (process.platform === 'win32' && !cfg.eztrans.dir) cfg.eztrans.dir = findEztransDir();
     b = createBridge(cfg);
   } catch (e) { console.error(`bridge: ${messageOf(e)}`); process.exit(1); }
   b.server.on('error', (e) => { console.error(`bridge: cannot listen on 127.0.0.1:${b.cfg.port}: ${messageOf(e)}`); b.close(); process.exit(1); });
   b.server.listen(b.cfg.port, '127.0.0.1', () => {
     console.log(`bridge on http://127.0.0.1:${b.cfg.port}, saving to ${b.cfg.storeDir}`);
+    const ez = b.cfg.eztrans.dir;
+    if (process.platform === 'win32') {
+      console.log(isEztransDir(ez) ? `bridge: ezTrans XP in ${ez}`
+        : ez ? `bridge: no ezTrans XP engine (${EZTRANS_ENGINE}) in ${ez}; check eztrans.dir in bridge/config.json`
+          : 'bridge: ezTrans XP not found; set eztrans.dir in bridge/config.json if it is installed');
+    }
     if (!b.cfg.allowedOrigins.length) console.log('bridge: any browser extension may call this bridge; set allowedOrigins in bridge/config.json (see config.example.json)');
   });
   const shutdown = () => { b.close(); process.exit(0); };

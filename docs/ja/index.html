@@ -48,7 +48,7 @@ lang_order: 3
       <div class="card">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></div>
         <h3>字幕がなければ翻訳</h3>
-        <p>自分の言語の字幕がありませんか？Subpairがパソコン上で、またはAIでメイン字幕を翻訳し、その翻訳を記憶します。</p>
+        <p>自分の言語の字幕がありませんか？Subpairがパソコン上で、またはAIでメイン字幕を翻訳し、その翻訳を記憶します。Jellyfinでは視聴中に次の話を先に翻訳し、シーズン全体もワンクリックで翻訳できます。</p>
       </div>
       <div class="card">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></div>
@@ -140,10 +140,10 @@ lang_order: 3
     <div class="grid">
       <div class="card"><span class="tag">オフライン</span><h3>ezTrans</h3><p>WindowsでezTrans XPを使い、日本語を韓国語に、動画の数行先まで翻訳します。</p></div>
       <div class="card"><span class="tag">ご自身のClaudeプラン</span><h3>Claude Code</h3><p>すでにお持ちのClaudeのサブスクリプションで、あらゆる言語の組み合わせを翻訳します。</p></div>
-      <div class="card"><span class="tag">1話あたり約$0.01</span><h3>AI API</h3><p>Anthropic、OpenAI、Gemini、DeepSeekなどを、ご自身のキーで使えます。</p></div>
+      <div class="card"><span class="tag">1話あたり約1〜2円</span><h3>AI API</h3><p>Anthropic、OpenAI、Gemini、DeepSeekなどを、ご自身のキーで使えます。</p></div>
       <div class="card"><span class="tag">無料、プライベート</span><h3>ローカルAI</h3><p>ご自身のパソコンで動くOllamaやLM Studioを使います。</p></div>
     </div>
-    <p class="note">翻訳はすべて保存されるため、一度翻訳した作品はすぐに読み込まれます。<a href="translation.html">翻訳のしくみ</a></p>
+    <p class="note">翻訳はすべて保存されるため、一度翻訳した作品はすぐに読み込まれます。<a href="translation.html">翻訳の始め方</a></p>
   </div>
 </section>
 
@@ -151,9 +151,10 @@ lang_order: 3
   <div class="wrap">
     <div class="callout">
       <div>
-        <span class="label">任意、Bazarrを使うJellyfin向け</span>
+        <span class="label">任意、自分の動画ライブラリ向け</span>
         <h3>字幕ファイルのタイミングがずれていませんか？subsync-repairを試してみてください</h3>
-        <p>Bazarrがダウンロードするすべての字幕を動画と照合してチェックする関連ツールです。一部でずれている字幕を修正し、別の話数用に作られた字幕は拒否するので、Bazarrがより良い字幕を探せます。</p>
+        <p>サーバーにある字幕ファイルを、動画と1つずつ照合する関連ツールです。一部だけずれている字幕を修正し、別の話数用に作られた字幕には手を加えません。フォルダーやファイルを指定して実行することも、Bazarrが字幕をダウンロードするたびに自動で実行させることもできます。</p>
+        <p class="more"><a href="{{ site.subsync_repair_url }}">GitHubでsubsync-repairを見る</a></p>
       </div>
     </div>
   </div>

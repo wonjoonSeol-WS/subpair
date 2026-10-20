@@ -136,6 +136,7 @@ kbd { display: inline-block; min-width: 30px; padding: 3px 9px; border-radius: 7
   border-radius: var(--radius); padding: 24px; }
 .callout h3 { margin: 0 0 6px; font-size: 19px; }
 .callout p { margin: 0; color: var(--muted); }
+.callout .more { margin-top: 12px; font-weight: 600; }
 .callout .label { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 
 @media (max-width: 640px) {

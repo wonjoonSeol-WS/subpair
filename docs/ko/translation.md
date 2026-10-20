@@ -8,226 +8,73 @@ language: 한국어
 lang_order: 2
 ---
 
-# 브리지로 번역하기
+# 자막 번역하기
 
-작품에 두 번째 자막 언어의 트랙이 없으면, Subpair는 컴퓨터에서 실행하는 작은 Node.js 프로그램인 **브리지**를 통해
-주 자막을 번역할 수 있습니다([브리지 설치](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역선택-사항)
-참고). 브리지는 번역한 줄과 끝난 작품을 모두 보관하므로 같은 번역에 비용을 두 번 내지 않으며, 이미 본 작품은 바로
-불러옵니다.
+모국어 자막이 없는 작품도 괜찮아요. Subpair가 원어 자막을 번역해서 두 번째 줄에 보여 줘요. 번역은 내 PC에서 도는 작은
+프로그램인 **번역 도우미**가 맡고, 한 번 번역한 작품은 저장해 두기 때문에 다음에는 바로 떠요. Jellyfin에서는 한 화의
+번역이 끝나면 다음 화도 미리 번역해 둬요.
 
-```mermaid
-sequenceDiagram
-  participant E as Subpair (브라우저)
-  participant B as 브리지 (127.0.0.1)
-  participant T as 번역기
-  E->>B: 주 자막의 줄
-  B->>B: 이미 있는 줄은 건너뜀
-  B->>T: 새 줄 묶음과 문맥용 앞 줄 몇 개
-  T-->>B: 번역
-  B-->>E: 두 번째 자막
-  B->>B: 끝난 작품 저장
-```
+## 어떤 번역기를 쓸까요?
 
-## 설정 파일
-
-브리지는 우선순위가 낮은 것부터 다음 순서로 설정을 읽습니다.
-
-1. `bridge/config.defaults.json`: 모든 설정과 기본값입니다(코드의 일부이므로 수정하지 마세요).
-2. `bridge/config.json`: 직접 바꾼 설정입니다. `bridge/config.example.json`에서 시작하세요. API 키가 들어갈 수
-   있으므로 git에서 무시됩니다.
-3. 환경 변수: `BRIDGE_PORT`, `BRIDGE_STORE`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`.
-
-기본값 파일에 없는 설정 이름은 오류로 처리되므로, 오타가 있어도 조용히 무시되는 일이 없습니다. 설정이나 환경 변수를
-바꾼 뒤에는 브리지를 다시 시작하세요.
-
-## 번역기
-
-| 번역기 | 키 | 설정 방법 |
+| 번역기 | 이런 분께 | 비용 |
 |---|---|---|
-| ezTrans | 없음 | Windows 전용, 일본어에서 한국어로. [ezTrans](#eztrans)를 참고하세요. |
-| Claude (`claude -p`) | 없음 | [Claude Code](https://claude.com/claude-code)를 설치하고, 브리지를 실행하는 사용자와 같은 사용자로 `claude`를 한 번 실행해 로그인합니다. 번역은 Claude 요금제 사용량에 포함됩니다. |
-| Anthropic API | `ANTHROPIC_API_KEY` 또는 `api.key` | 기본 모델은 `claude-haiku-5-5`입니다. |
-| OpenAI 호환 | `OPENAI_API_KEY` 또는 `openai.key` | `openai.baseUrl`과 `openai.model`을 설정합니다. 내 컴퓨터나 로컬 네트워크의 서버는 보통 키가 필요 없습니다. |
+| **ezTrans** | 일본어 작품을 한국어로 보는 Windows 사용자 (ezTrans XP 필요) | 무료, 인터넷 없이 |
+| **Claude** | Claude를 구독 중인 분. 어떤 언어든 번역해요 | 구독에 포함 |
+| **AI API** | Anthropic, OpenAI, Gemini 등의 API 키가 있는 분 | 한 화에 약 10원 |
+| **로컬 AI** | Ollama나 LM Studio를 쓰는 분 | 무료 |
 
-`claude` 명령은 셸 없이 실행됩니다. Windows에서는 Claude Code를 네이티브 설치 프로그램으로 설치하거나(PATH에 있는
-`.exe`), `claude.command`를 `claude.exe`의 전체 경로로 설정하세요.
+따로 고르지 않아도 돼요. 기본값인 **자동**이 쓸 수 있는 번역기를 골라 주고, 일본어에서 한국어라면 ezTrans를 먼저 써요.
 
-Gemini의 OpenAI 호환 엔드포인트를 쓰는 `bridge/config.json` 예시:
+## ezTrans로 바로 시작하기 (Windows)
 
-```json
-{
-  "openai": {
-    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
-    "model": "<a Gemini model name>"
-  }
-}
-```
+1. **ezTrans XP 설치하기**: 이미 설치되어 있다면 넘어가세요. 설치 폴더는 번역 도우미가 알아서 찾아요.
+2. **Node.js 설치하기**: [nodejs.org](https://nodejs.org/ko)에서 **LTS** 버전을 받아 기본 설정 그대로 설치해요.
+3. **Subpair 받기**: [ZIP 파일 받기](https://github.com/wonjoonSeol-WS/subpair/archive/refs/heads/main.zip)를 눌러
+   받은 다음, 문서 폴더처럼 원하는 곳에 압축을 풀어요.
+4. **번역 도우미 켜기**: 압축을 푼 폴더에서 `start-bridge.cmd`를 더블클릭해요. 검은 창에 `ezTrans XP in ...`이
+   보이면 준비 끝이에요. 영상을 보는 동안에는 이 창을 열어 두세요.
+5. **작품 틀기**: 일본어 자막만 있는 작품을 틀면 두 번째 줄에 한국어 번역이 나와요.
 
-로컬 [Ollama](https://ollama.com/)의 경우:
+인터넷에서 받은 파일이라 Windows가 보안 경고를 띄울 수 있어요. 그럴 땐 **실행**을 누르세요. 파란 창이 뜨면 **추가
+정보**를 누른 다음 **실행**을 누르면 돼요.
 
-```json
-{ "openai": { "baseUrl": "http://127.0.0.1:11434/v1", "model": "<the model you pulled>" } }
-```
+### PC를 켤 때 자동으로 켜기
 
-키는 브리지를 시작하는 터미널이나 서비스에 설정합니다.
+압축을 푼 폴더의 `scripts\windows`에서 `autostart-on.cmd`를 더블클릭하세요. 그러면 Windows에 로그인할 때마다 번역
+도우미가 창 없이 켜지고, `start-bridge.cmd`는 더 이상 실행하지 않아도 돼요. 다시 끄려면 같은 폴더의
+`autostart-off.cmd`를 더블클릭하세요.
 
-| 시스템 | 이번 세션만 | 영구 |
-|---|---|---|
-| Windows PowerShell | `$env:OPENAI_API_KEY = "<key>"; npm run bridge` | `setx OPENAI_API_KEY "<key>"` 실행 후 새 터미널 열기 |
-| macOS, Linux (bash, zsh) | `OPENAI_API_KEY="<key>" npm run bridge` | `~/.zshrc` 또는 `~/.bashrc`에 `export OPENAI_API_KEY="<key>"` 추가 |
+### 잘 안 될 때
 
-launchd(macOS)나 systemd(Linux)가 시작하는 서비스는 셸 프로필을 읽지 않습니다. 키를 `bridge/config.json`이나 서비스
-정의에 넣으세요.
+- **검은 창에 `ezTrans XP not found`가 나와요**: ezTrans XP를 기본 위치에 설치했는지 확인하세요. 다른 곳에 설치했다면
+  [README의 설정 방법](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역-도우미-설정)으로 폴더를
+  지정할 수 있어요.
+- **`Node.js is not installed`가 나와요**: 2단계의 Node.js를 설치한 뒤 다시 더블클릭하세요.
+- **번역이 나오지 않아요**: 번역 도우미 창이 열려 있는지 확인하세요. 창을 닫으면 번역도 멈춰요.
 
-## 모델
+## 다른 번역기 쓰기
 
-Subpair 설정에는 번역기마다 **모델** 칸이 있습니다. 비워 두면 브리지의 기본값을 쓰며, 브리지가 실행 중일 때는 그
-값이 회색으로 표시됩니다. 이 브리지를 쓰는 모든 사용자의 기본값을 바꾸려면 `bridge/config.json`에 설정합니다. 예:
+번역 도우미를 켜는 방법(위 2~4단계)은 똑같아요. 번역기만 준비한 다음, 영상의 톱니바퀴 메뉴에서 **번역기**를 고르세요.
 
-```json
-{ "claude": { "model": "sonnet" } }
-```
+- **Claude**: [Claude Code](https://claude.com/claude-code)를 설치하고, 한 번 실행해서 로그인해 두면 끝이에요.
+- **AI API, 로컬 AI**: API 키나 주소를 설정 파일에 적어야 해요.
+  [README의 번역 도우미 설정](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역-도우미-설정)을
+  참고하세요.
 
-모델 이름에는 영문자, 숫자, `. : / - _`를 쓸 수 있습니다. 모델마다 번역이 따로 저장되므로 모델을 바꿔도 번역이
-섞이지 않습니다.
-
-## 줄을 보내는 방식
-
-줄을 보내는 방식은 번역기에 따라 다릅니다.
-
-- **ezTrans**는 영상보다 몇 줄 앞서 한 줄씩 번역합니다.
-- **언어 모델**에는 최대 40줄을 번호를 매긴 목록으로 묶어 보내고, 묶음 앞의 6줄을 문맥으로 함께 보냅니다. 작품
-  전체는 여러 묶음으로 나누며, 이미 번역한 줄(또는 반복되는 줄)은 건너뛰고, 한 번에 2개 묶음(Anthropic API는
-  3개)을 실행합니다. 잘못된 결과가 돌아온 묶음은 반으로 나누어 다시 시도하며, 그래도 실패한 한 줄은 작품 전체를
-  실패로 만드는 대신 그 줄만 빠집니다.
-
-번역기별로 `bridge/config.json`에서 `batch`, `context`, `concurrency`, `timeoutMs`를 바꿀 수 있습니다.
+macOS와 Linux에서도 번역 도우미를 쓸 수 있어요(ezTrans는 Windows 전용). 실행 방법은 README에 있어요.
 
 ## 비용
 
-Anthropic API와 Claude Haiku 5.5(`claude-haiku-5-5`, 기본값. 작성 시점 기준 입력 토큰 100만 개당 $0.10, 출력 토큰
-100만 개당 $0.50, [Anthropic 요금](https://www.anthropic.com/pricing) 참고)로 약 300줄짜리 애니메이션 한 화를
-번역할 때의 대략적인 비용입니다.
+AI API로 애니메이션 한 화(약 300줄)를 번역하면 **약 10원**, 12화짜리 시즌 하나는 **약 100~160원**이에요. 기본 모델인
+Claude Haiku 5.5 요금으로 계산한 추정치예요(2026년 10월, 1달러 약 1,330원 기준). 한 번 번역한 줄은 다시 돈이 들지
+않아요. ezTrans와 로컬 AI는 무료이고, Claude는 구독 사용량에 포함돼요.
 
-| | 한 화 | 12화 시즌 |
-|---|---|---|
-| 요청 | 약 8회(40줄 묶음) | 약 96회 |
-| 입력 | 요청당 약 1,500토큰 | |
-| 출력 | 요청당 약 1,200~2,000토큰 | |
-| **비용** | **약 $0.006~$0.01** | **약 $0.07~$0.12**(재시도 포함 시 $0.30 미만) |
+## 톱니바퀴 메뉴에서 할 수 있는 것
 
-이 값은 측정값이 아닌 추정치입니다. 일본어나 한국어 한 글자당 약 1토큰, 요청마다 250토큰 분량의 지시문과 문맥 6줄,
-`api.effort`를 `low`로 설정한 경우를 가정했습니다. 이미 번역한 줄에는 다시 비용이 들지 않습니다. Claude
-번역기(`claude -p`)는 토큰당 과금 대신 Claude 요금제를 사용하며, ezTrans와 로컬 모델은 줄마다 드는 비용이 없습니다.
+- **번역기**: 쓸 번역기와 번역 시점(자동, 실시간으로 몇 줄 앞서, 지금 작품 전체)을 골라요.
+- **이 작품 다시 번역**: 번역이 마음에 들지 않으면 새로 번역해요(두 번 클릭).
+- **시즌 전체 번역** (Jellyfin): 한 화씩 차례로 미리 번역해 둬요.
+- **대신 주 자막을 번역**: 작품에 들어 있는 모국어 자막이 이상하거나 싱크가 맞지 않을 때, 그 자막 대신 번역을 써요.
+  작품마다 기억해요.
 
-## 저장된 번역
-
-끝난 작품은 브리지의 데이터 폴더에 저장됩니다. Windows는 `%LOCALAPPDATA%\subpair`,
-macOS는 `~/Library/Application Support/subpair`,
-Linux는 `$XDG_DATA_HOME/subpair` 또는 `~/.local/share/subpair`입니다(`storeDir` 또는 `BRIDGE_STORE`로 바꿀 수 있습니다).
-
-플레이어의 톱니바퀴 메뉴에서는 다음을 할 수 있습니다.
-
-- **번역기**, **번역 시점**: 자동, 실시간 (몇 줄 앞서), 지금 작품 전체 중에서 고릅니다.
-- **번역기**, **이 작품 다시 번역**: 새로 번역해 저장된 번역을 바꿉니다(두 번 클릭).
-- **두 번째 자막**, **대신 주 자막을 번역**: 작품에 들어 있는 그 언어의 트랙을 무시합니다. 트랙이 이상하거나 싱크가
-  맞지 않을 때 씁니다. 작품마다 기억합니다.
-
-다른 Jellyfin 앱(TV, 휴대폰)에서는 저장된 번역이 보이지 않습니다.
-
-## 시작 시 브리지 실행
-
-항상 실행해 둘 브리지는 8777처럼 다른 포트를 쓰세요. 그러면 개발하는 동안에도 `npm run bridge`(8765)를 그대로 쓸 수
-있습니다. 확장 프로그램의 **브리지 주소**도 같은 포트로 설정합니다.
-
-### Windows
-
-`scripts\windows\run-bridge.ps1`은 브리지를 숨김 상태로 실행하고, 멈추면 다시 시작합니다(5초 기다리고, 대기 시간을
-두 배씩 늘려 최대 60초까지, 빠른 실패가 연속 8번이면 포기). 또한 포트마다 하나만 실행되도록 하고, 그 포트에 남아
-있던 브리지를 멈추며, 출력을 로그(기본값 `%LOCALAPPDATA%\subpair\bridge.log`)에 이어 씁니다. 로그온할 때 시작하고
-5분마다 확인하는 작업으로 작업 스케줄러에 등록하세요(PowerShell, 저장소 폴더에서 실행).
-
-```powershell
-$script   = (Resolve-Path 'scripts\windows\run-bridge.ps1').Path
-$action   = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-WindowStyle Hidden -NoProfile -ExecutionPolicy Bypass -File `"$script`" -Port 8777"
-$triggers = @(
-  New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAME"
-  New-ScheduledTaskTrigger -Once -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 5)
-)
-$settings = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Seconds 0) -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
-Register-ScheduledTask -TaskName 'Subpair bridge' -Action $action -Trigger $triggers -Settings $settings
-Start-ScheduledTask -TaskName 'Subpair bridge'
-```
-
-`Invoke-RestMethod http://127.0.0.1:8777/health`로 확인합니다. 스크립트 옵션은 `-Port`, `-Log`, `-Repo`, `-Node`, `-MaxQuickFailures`입니다.
-완전히 멈추려면 `Unregister-ScheduledTask -TaskName 'Subpair bridge'`를 실행한 다음, `bridge\server.mjs`를 실행 중인
-`node` 프로세스를 종료합니다.
-
-### macOS(테스트하지 않음)
-
-다음 내용을 `~/Library/LaunchAgents/com.subpair.bridge.plist`로 저장합니다. 경로는 내 환경에 맞게 바꾸세요(Node
-경로는 `which node`로 확인할 수 있습니다).
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>Label</key><string>com.subpair.bridge</string>
-  <key>ProgramArguments</key>
-  <array><string>/opt/homebrew/bin/node</string><string>/path/to/subpair/bridge/server.mjs</string></array>
-  <key>EnvironmentVariables</key><dict><key>BRIDGE_PORT</key><string>8777</string></dict>
-  <key>RunAtLoad</key><true/>
-  <key>KeepAlive</key><true/>
-  <key>StandardOutPath</key><string>/tmp/subpair-bridge.log</string>
-  <key>StandardErrorPath</key><string>/tmp/subpair-bridge.log</string>
-</dict>
-</plist>
-```
-
-그다음 `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.subpair.bridge.plist`를 실행합니다.
-
-### Linux(테스트하지 않음)
-
-다음 내용을 `~/.config/systemd/user/subpair-bridge.service`로 저장합니다.
-
-```ini
-[Unit]
-Description=Subpair translation bridge
-
-[Service]
-Environment=BRIDGE_PORT=8777
-ExecStart=/usr/bin/node /path/to/subpair/bridge/server.mjs
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-```
-
-그다음 `systemctl --user enable --now subpair-bridge`를 실행합니다.
-
-## Subpair만 허용하기
-
-기본적으로 이 컴퓨터의 모든 브라우저 확장 프로그램이 브리지를 호출할 수 있으며, 브리지는 시작할 때 이를 알려 줍니다.
-Subpair만 허용하려면 `bridge/config.json`에 Subpair의 출처를 추가하고 브리지를 다시 시작하세요.
-
-```json
-{ "allowedOrigins": ["chrome-extension://<the ID shown on chrome://extensions>"] }
-```
-
-Firefox에서는 `moz-extension://<about:debugging#/runtime/this-firefox에 표시되는 내부 UUID>`를 사용합니다. 확장 프로그램을
-다른 폴더에서 불러오면 ID가 바뀌며, ID를 새로 넣을 때까지 브리지는 "허용되지 않은 출처"라고 응답합니다.
-
-## ezTrans
-
-ezTrans XP는 일본어를 한국어로 번역하는 Windows 프로그램입니다. Subpair에 포함되어 있지 않으므로 직접 설치하세요.
-브리지는 LunaTranslator의 32비트 헬퍼를 통해 ezTrans XP와 통신하며, 이 헬퍼는 `bridge/vendor/lunatranslator`에
-Subpair와 함께 들어 있습니다(GPL-3.0, LunaTranslator 공식 릴리스에서 가져온 것이며 소스와 버전은 그 폴더의 README에
-있습니다). `bridge/config.json`에는 ezTrans XP 폴더만 지정하면 됩니다.
-
-```json
-{ "eztrans": { "dir": "C:/Program Files (x86)/ChangShinSoft/ezTrans XP" } }
-```
-
-함께 들어 있는 헬퍼 대신 직접 준비한 헬퍼를 쓰려면 `eztrans.helper`에 그 전체 경로를 설정하세요(다른 작업 폴더가
-필요하면 `eztrans.cwd`도 설정합니다). macOS와 Linux에서는 ezTrans를 설정하지 말고 다른 번역기를 쓰세요.
+번역은 이 PC에만 저장돼요. TV나 휴대폰의 Jellyfin 앱에서는 보이지 않아요.

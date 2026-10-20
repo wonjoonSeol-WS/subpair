@@ -49,7 +49,8 @@ lang_order: 1
       <div class="card">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg></div>
         <h3>No subtitles? Translated</h3>
-        <p>Missing your language? Subpair translates the main line on your computer or with AI, and remembers it.</p>
+        <p>Missing your language? Subpair translates the main line on your computer or with AI, and remembers it. On
+          Jellyfin it gets the next episode ready while you watch, and a whole season takes one click.</p>
       </div>
       <div class="card">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></div>
@@ -149,7 +150,7 @@ lang_order: 1
       <div class="card"><span class="tag">Free, private</span><h3>Local AI</h3><p>Ollama or LM Studio on your own computer.</p></div>
     </div>
     <p class="note">Every translation is saved, so a show you have translated once loads instantly.
-      <a href="translation.html">How translation works</a></p>
+      <a href="translation.html">How to set up translation</a></p>
   </div>
 </section>
 
@@ -157,10 +158,12 @@ lang_order: 1
   <div class="wrap">
     <div class="callout">
       <div>
-        <span class="label">Optional, for Jellyfin with Bazarr</span>
+        <span class="label">Optional, for your own video library</span>
         <h3>Out-of-sync subtitle files? Try subsync-repair</h3>
-        <p>A companion tool that checks every subtitle Bazarr downloads against the video. It fixes subtitles that drift
-          in some parts and turns away ones made for a different episode, so Bazarr can look for a better one.</p>
+        <p>A companion tool that checks the subtitle files on your server against their videos. It fixes subtitles that
+          drift in some parts and leaves alone ones made for a different episode. Run it on a folder or a single file, or
+          let Bazarr run it after every download.</p>
+        <p class="more"><a href="{{ site.subsync_repair_url }}">subsync-repair on GitHub</a></p>
       </div>
     </div>
   </div>

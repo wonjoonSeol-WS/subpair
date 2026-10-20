@@ -27,7 +27,8 @@ lang_order: 1
 The second line uses the first of your second-line languages that has a track. When none has one, the main line is
 translated, which needs the bridge. The gear menu's **Second subtitle** row says what is shown and why. Common causes:
 
-- *translation bridge is not running*: start it (`npm run bridge`) or the startup task.
+- *translation bridge is not running*: double-click `start-bridge.cmd` in the Subpair folder, or have it start with
+  Windows (see [Translation](translation.html)).
 - *no translator is ready*: the bridge's `/health` page shows which translators are set up.
 - The bridge address in the settings does not match the bridge's port.
 

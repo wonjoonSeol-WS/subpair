@@ -12,7 +12,7 @@ import { askApi } from '../bridge/backends/api.mjs';
 import { postJson, retryAfterMs } from '../bridge/backends/http.mjs';
 import { askClaude, childEnv, claudeProbe } from '../bridge/backends/claude.mjs';
 import { findCommand, spawnPlan } from '../bridge/backends/command.mjs';
-import { EzTrans } from '../bridge/backends/eztrans.mjs';
+import { EzTrans, EZTRANS_ENGINE, findEztransDir, registeredEztransDir } from '../bridge/backends/eztrans.mjs';
 import { cacheIdFor } from '../bridge/backends/index.mjs';
 import { WorkQueue, LIVE, JOB } from '../bridge/queue.mjs';
 import { Store, migrateLegacyStore } from '../bridge/store.mjs';
@@ -1398,13 +1398,34 @@ test('config: ezTrans uses the bundled helper in its own folder unless told othe
   assert.equal(ownNoCwd.cwd, path.join(BRIDGE_DIR, 'tools', 'luna'));
 });
 
-test('ezTrans is offered only on Windows, and only once its folder is set and found', () => {
-  const dir = tmp();
+const withEngine = (dir) => { fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, EZTRANS_ENGINE), ''); return dir; };
+
+test('ezTrans is offered only on Windows, and only once its folder is set and holds the engine', () => {
+  const dir = withEngine(tmp());
   const cfg = { helper: process.execPath, dir };
   assert.equal(EzTrans.available(cfg, 'win32'), true);
   assert.equal(EzTrans.available(cfg, 'linux'), false);
   assert.equal(EzTrans.available(cfg, 'darwin'), false);
   assert.equal(EzTrans.available({ ...cfg, dir: '' }, 'win32'), false);
   assert.equal(EzTrans.available({ ...cfg, dir: path.join(dir, 'missing') }, 'win32'), false);
+  assert.equal(EzTrans.available({ ...cfg, dir: tmp() }, 'win32'), false);                // a folder without the engine
   assert.equal(EzTrans.available({ ...cfg, helper: path.join(dir, 'missing.exe') }, 'win32'), false);
+});
+
+test('findEztransDir: the recorded folder, then Program Files (x86), then Program Files; only folders with the engine', () => {
+  const installed = (root) => path.join(root, 'ChangShinSoft', 'ezTrans XP');
+  const recorded = withEngine(tmp()), x86 = tmp(), plain = tmp();
+  withEngine(installed(x86));
+  withEngine(installed(plain));
+  const env = { 'ProgramFiles(x86)': x86, ProgramFiles: plain };
+  assert.equal(findEztransDir({ registered: () => recorded, env }), recorded);
+  assert.equal(findEztransDir({ registered: () => tmp(), env }), installed(x86));          // recorded, but no engine there
+  assert.equal(findEztransDir({ registered: () => '', env }), installed(x86));
+  assert.equal(findEztransDir({ registered: () => '', env: { ProgramFiles: plain } }), installed(plain));
+  assert.equal(findEztransDir({ registered: () => '', env: { ProgramFiles: tmp() } }), '');
+});
+
+test('registeredEztransDir: the recorded FilePath without its line end; nothing when the key or PowerShell is missing', () => {
+  assert.equal(registeredEztransDir(() => 'D:\\Games\\ezTrans XP\r\n'), 'D:\\Games\\ezTrans XP');
+  assert.equal(registeredEztransDir(() => { throw new Error('Cannot find path'); }), '');
 });

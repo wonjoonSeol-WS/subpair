@@ -3,9 +3,10 @@
 // length and the UTF-16LE text as two separate writes (the pipe is message mode); the reply has the same shape, length 0
 // meaning the engine failed on that line.
 // Any problem on the pipe (timeout, closed, nonsense length) kills the helper; the next call starts a fresh one.
-import { spawn } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
 import net from 'node:net';
 import fs from 'node:fs';
+import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { backendError } from '../errors.mjs';
 
@@ -13,6 +14,29 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // The language pairs the engine translates.
 export const EZTRANS_PAIRS = ['ja-ko'];
+
+// The engine library the helper loads: a folder without it cannot translate, whatever else it holds.
+export const EZTRANS_ENGINE = 'J2KEngine.dll';
+export const isEztransDir = (dir) => !!dir && fs.existsSync(path.join(dir, EZTRANS_ENGINE));
+
+// The folder ezTrans XP records for the current user (its installer, or the "path registration" script of a portable copy).
+// Read through PowerShell rather than reg.exe, which prints in the console code page and would garble a non-ASCII folder.
+export function registeredEztransDir(run = execFileSync) {
+  const script = '[Console]::OutputEncoding = [Text.Encoding]::UTF8; '
+    + "(Get-ItemProperty -LiteralPath 'HKCU:\\Software\\ChangShin\\ezTrans' -ErrorAction Stop).FilePath";
+  try {
+    return String(run('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script],
+      { encoding: 'utf8', windowsHide: true, timeout: 10000, stdio: ['ignore', 'pipe', 'ignore'] })).trim();
+  } catch { return ''; }
+}
+
+// Where ezTrans XP is when no folder is configured: the recorded folder, then the default install folders. '' if none
+// of them holds the engine.
+export function findEztransDir({ registered = registeredEztransDir, env = process.env } = {}) {
+  const installed = [env['ProgramFiles(x86)'], env.ProgramFiles].filter(Boolean)
+    .map((root) => path.join(root, 'ChangShinSoft', 'ezTrans XP'));
+  return [registered(), ...installed].find(isEztransDir) || '';
+}
 
 export class EzTrans {
   // cfg: config "eztrans". helperArgs (optional) goes before `eztrans` so tests can run a stand-in script with node.
@@ -32,7 +56,7 @@ export class EzTrans {
 
   // Windows only: the engine is a Windows library and the helper a Windows program.
   static available(cfg, platform = process.platform) {
-    return platform === 'win32' && !!cfg.dir && fs.existsSync(cfg.helper) && fs.existsSync(cfg.dir);
+    return platform === 'win32' && fs.existsSync(cfg.helper) && isEztransDir(cfg.dir);
   }
 
   start() {
