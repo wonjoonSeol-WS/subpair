@@ -337,3 +337,7 @@ Firefox에서는 `moz-extension://<about:debugging#/runtime/this-firefox에 표�
 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. MIT 라이선스입니다. `vendor/kuromoji`는 Apache-2.0,
 `bridge/vendor/lunatranslator`(ezTrans 헬퍼)는 GPL-3.0입니다. Netflix, Jellyfin, Language Reactor와 제휴 관계가
 없습니다.
+
+## 다른 프로젝트도 써 보세요
+
+마음에 드셨다면 제가 만든 다른 오픈소스도 둘러보세요. 안드로이드 앱, Claude 채팅 게임, Claude 애드온 등이 있어요: [wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/ko/?from=subpair)

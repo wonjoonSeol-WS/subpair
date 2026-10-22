@@ -336,3 +336,7 @@ the extension is loaded from another folder; the bridge then answers "forbidden 
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). MIT License. `vendor/kuromoji` is Apache-2.0 and
 `bridge/vendor/lunatranslator` (ezTrans helper) is GPL-3.0. Not affiliated with Netflix, Jellyfin or Language Reactor.
+
+## Try my other projects
+
+Like this? I make other small open source tools too: Android apps, a Claude chat game, Claude add-ons and more. See them all at [wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/?from=subpair).

@@ -275,3 +275,7 @@ Firefoxでは`moz-extension://<about:debugging#/runtime/this-firefoxに表示さ
 ## コントリビュートとライセンス
 
 [CONTRIBUTING.md](CONTRIBUTING.md)を参照してください。MITライセンスです。`vendor/kuromoji`はApache-2.0、`bridge/vendor/lunatranslator`（ezTransのヘルパー）はGPL-3.0です。Netflix、Jellyfin、Language Reactorとは提携していません。
+
+## ほかのプロジェクトもどうぞ
+
+気に入ったら、ほかのオープンソースもぜひ見てください。Androidアプリ、Claudeのチャットゲーム、Claudeのアドオンなどがあります：[wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/?from=subpair)
