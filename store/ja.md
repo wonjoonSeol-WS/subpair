@@ -28,7 +28,7 @@ Subpairにはアカウントも分析ツールも独自のサーバーもあり�
 そこから先は自分が選んだ翻訳エンジンにだけ送られます。Jellyfinでは、完成した翻訳を自分のJellyfinサーバーにも
 字幕トラックとして保存するので(その言語の字幕がない作品のみ)、テレビやスマートフォンのアプリでも表示できます。
 
-翻訳ブリッジを含むセットアップ手順: https://wonjoonseol-ws.github.io/subpair/ja/
+翻訳ブリッジを含むセットアップ手順: https://wonjoonseol.github.io/subpair/ja/
 
 スクリーンショット: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0。
 
@@ -64,7 +64,7 @@ Chrome: 教育。Firefox: 言語サポート (「写真、音楽、動画」に�
 - Firefoxのマニフェスト: `data_collection_permissions.required = ["websiteContent"]`。
 
 ## プライバシーポリシーのURL
-https://wonjoonseol-ws.github.io/subpair/ja/privacy.html
+https://wonjoonseol.github.io/subpair/ja/privacy.html
 
 ## スクリーンショットとプロモーションタイル
 [screenshots/](screenshots/)のファイル：1280x800の24ビットPNG、Jellyfinで再生したSintel（CC BY 3.0）、メニューは掲載情報の

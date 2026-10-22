@@ -31,7 +31,7 @@ is ezTrans.
 1. **Install ezTrans XP**, if it isn't already. The helper finds its folder by itself.
 2. **Install Node.js**: download the **LTS** version from [nodejs.org](https://nodejs.org/) and install it with the
    default options.
-3. **Download Subpair**: [download the ZIP](https://github.com/wonjoonSeol-WS/subpair/archive/refs/heads/main.zip) and
+3. **Download Subpair**: [download the ZIP](https://github.com/wonjoonSeol/subpair/archive/refs/heads/main.zip) and
    unzip it somewhere you like, such as your Documents folder.
 4. **Start the helper**: in the unzipped folder, double-click `start-bridge.cmd`. When the black window shows
    `ezTrans XP in ...`, you are ready. Keep that window open while you watch.
@@ -49,7 +49,7 @@ same folder.
 ### If it doesn't work
 
 - **The black window says `ezTrans XP not found`**: make sure ezTrans XP is installed in its default folder. If it is
-  somewhere else, set its folder as described in the [README's bridge setup](https://github.com/wonjoonSeol-WS/subpair#bridge-setup).
+  somewhere else, set its folder as described in the [README's bridge setup](https://github.com/wonjoonSeol/subpair#bridge-setup).
 - **It says `Node.js is not installed`**: install Node.js (step 2), then double-click the file again.
 - **No translation appears**: check that the helper window is still open. Closing it stops translation.
 
@@ -60,7 +60,7 @@ video's gear menu.
 
 - **Claude**: install [Claude Code](https://claude.com/claude-code), start it once and sign in. That's all.
 - **AI API, local AI**: an API key or an address goes into the helper's settings file. See the
-  [README's bridge setup](https://github.com/wonjoonSeol-WS/subpair#bridge-setup).
+  [README's bridge setup](https://github.com/wonjoonSeol/subpair#bridge-setup).
 
 The helper also runs on macOS and Linux (ezTrans is Windows only). How to start it there is in the README.
 

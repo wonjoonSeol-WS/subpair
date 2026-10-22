@@ -69,6 +69,6 @@ The player shows the bridge's errors in your language. The ones that need you:
 
 ## None of the above?
 
-[Open an issue on GitHub](https://github.com/wonjoonSeol-WS/subpair/issues). Say which browser and site (Netflix or
+[Open an issue on GitHub](https://github.com/wonjoonSeol/subpair/issues). Say which browser and site (Netflix or
 Jellyfin) you use, what you expected and what happened instead, and add the `[Subpair]` lines from the console or the
 bridge log if you have them.

@@ -14,7 +14,7 @@
 - **일본어 단어 색 구분**과 Yomitan을 이용한 클릭 한 번 검색.
 - **영어, 한국어, 일본어** 인터페이스.
 
-**웹사이트: [wonjoonseol-ws.github.io/subpair/ko](https://wonjoonseol-ws.github.io/subpair/ko/)**
+**웹사이트: [wonjoonseol.github.io/subpair/ko](https://wonjoonseol.github.io/subpair/ko/)**
 
 ![Jellyfin 영상 위의 일본어 줄과 한국어 줄, 그리고 대본 패널](docs/images/jellyfin-player.png)
 
@@ -36,7 +36,7 @@ flowchart LR
 **브라우저 스토어에서**: [Chrome 웹 스토어](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae). [Firefox 부가 기능](https://addons.mozilla.org/firefox/addon/subpair/)은 아직 심사 중이라,
 승인되기 전까지 Firefox에서는 릴리스에서 설치하세요.
 
-**릴리스에서**: [최신 릴리스](https://github.com/wonjoonSeol-WS/subpair/releases/latest)에서 내 브라우저용 zip을
+**릴리스에서**: [최신 릴리스](https://github.com/wonjoonSeol/subpair/releases/latest)에서 내 브라우저용 zip을
 내려받습니다.
 
 1. Chrome, Edge, Brave: `subpair-chrome-<버전>.zip`의 압축을 풀고 `chrome://extensions`(Edge는 `edge://extensions`)를
@@ -76,7 +76,7 @@ flowchart LR
 
 작품에 두 번째 자막 언어의 트랙이 없으면 **브리지**(번역 도우미, `bridge/`에 있는 작은 Node.js 프로그램)가 주 자막을
 번역합니다. 누구나 따라 할 수 있는 단계별 안내(Windows의 ezTrans부터)는
-[번역 페이지](https://wonjoonseol-ws.github.io/subpair/ko/translation.html)에 있습니다. 요약하면 다음과 같습니다.
+[번역 페이지](https://wonjoonseol.github.io/subpair/ko/translation.html)에 있습니다. 요약하면 다음과 같습니다.
 
 1. [Node.js](https://nodejs.org/) 21 이상을 설치합니다. 브리지는 Node 내장 모듈만 쓰므로 `npm install`이 필요
    없습니다.
@@ -108,7 +108,7 @@ flowchart LR
 
 번역을 켜지 않는 한 어떤 데이터도 컴퓨터 밖으로 나가지 않습니다. 번역을 켜면 자막 줄이 `127.0.0.1`의 브리지로 가고,
 거기서 선택한 번역기로 전달됩니다. Subpair는 사용하도록 설정한 Jellyfin 서버에서만 동작합니다. 전체 내용은
-[개인정보 처리방침](https://wonjoonseol-ws.github.io/subpair/ko/privacy.html)에 있습니다.
+[개인정보 처리방침](https://wonjoonseol.github.io/subpair/ko/privacy.html)에 있습니다.
 
 ## 번역 도우미 설정
 
@@ -340,4 +340,4 @@ Firefox에서는 `moz-extension://<about:debugging#/runtime/this-firefox에 표�
 
 ## 다른 프로젝트도 써 보세요
 
-마음에 드셨다면 제가 만든 다른 오픈소스도 둘러보세요. 안드로이드 앱, Claude 채팅 게임, Claude 애드온 등이 있어요: [wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/ko/?from=subpair)
+마음에 드셨다면 제가 만든 다른 오픈소스도 둘러보세요. 안드로이드 앱, Claude 채팅 게임, Claude 애드온 등이 있어요: [wonjoonseol.github.io](https://wonjoonseol.github.io/ko/?from=subpair)

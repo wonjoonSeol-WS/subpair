@@ -28,7 +28,7 @@ lang_order: 3
 
 1. **ezTrans XPをインストールする**：インストール済みなら飛ばしてください。インストール先は補助プログラムが自動で見つけます。
 2. **Node.jsをインストールする**：[nodejs.org](https://nodejs.org/ja)から**LTS**版をダウンロードし、既定の設定のままインストールします。
-3. **Subpairをダウンロードする**：[ZIPファイルをダウンロード](https://github.com/wonjoonSeol-WS/subpair/archive/refs/heads/main.zip)して、ドキュメントフォルダーなど好きな場所に展開します。
+3. **Subpairをダウンロードする**：[ZIPファイルをダウンロード](https://github.com/wonjoonSeol/subpair/archive/refs/heads/main.zip)して、ドキュメントフォルダーなど好きな場所に展開します。
 4. **補助プログラムを起動する**：展開したフォルダーの`start-bridge.cmd`をダブルクリックします。黒いウィンドウに`ezTrans XP in ...`と表示されれば準備完了です。視聴中はこのウィンドウを開いたままにしてください。
 5. **作品を再生する**：日本語字幕だけの作品を再生すると、2行目に韓国語の翻訳が表示されます。
 
@@ -40,7 +40,7 @@ lang_order: 3
 
 ### うまくいかないとき
 
-- **黒いウィンドウに`ezTrans XP not found`と表示される**：ezTrans XPが既定の場所にインストールされているか確認してください。別の場所にある場合は、[READMEのブリッジの設定](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ja.md#ブリッジの設定)の方法でフォルダーを指定できます。
+- **黒いウィンドウに`ezTrans XP not found`と表示される**：ezTrans XPが既定の場所にインストールされているか確認してください。別の場所にある場合は、[READMEのブリッジの設定](https://github.com/wonjoonSeol/subpair/blob/main/README.ja.md#ブリッジの設定)の方法でフォルダーを指定できます。
 - **`Node.js is not installed`と表示される**：手順2のNode.jsをインストールしてから、もう一度ダブルクリックしてください。
 - **翻訳が表示されない**：補助プログラムのウィンドウが開いているか確認してください。ウィンドウを閉じると翻訳も止まります。
 
@@ -49,7 +49,7 @@ lang_order: 3
 補助プログラムの起動方法（上の手順2〜4）は同じです。翻訳エンジンを準備してから、動画の歯車メニューの**翻訳エンジン**で選んでください。
 
 - **Claude**：[Claude Code](https://claude.com/claude-code)をインストールし、一度起動してサインインすれば完了です。
-- **AI API、ローカルAI**：APIキーやアドレスを設定ファイルに書く必要があります。[READMEのブリッジの設定](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ja.md#ブリッジの設定)をご覧ください。
+- **AI API、ローカルAI**：APIキーやアドレスを設定ファイルに書く必要があります。[READMEのブリッジの設定](https://github.com/wonjoonSeol/subpair/blob/main/README.ja.md#ブリッジの設定)をご覧ください。
 
 補助プログラムはmacOSとLinuxでも使えます（ezTransはWindows専用）。起動方法はREADMEにあります。
 

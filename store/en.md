@@ -28,7 +28,7 @@ Subpair has no account, no analytics and no server of its own. Subtitle text goe
 from there only to the translator you choose. On Jellyfin, a finished translation is also saved to your own Jellyfin server
 as a subtitle track (only when the title has none in that language), so its TV and phone apps can show it.
 
-Step-by-step setup, including the translation bridge: https://wonjoonseol-ws.github.io/subpair/
+Step-by-step setup, including the translation bridge: https://wonjoonseol.github.io/subpair/
 
 Screenshots: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0.
 
@@ -66,7 +66,7 @@ Shows two subtitle languages at the same time on video players (Netflix, Jellyfi
 - Firefox manifest: `data_collection_permissions.required = ["websiteContent"]`.
 
 ## Privacy policy URL
-https://wonjoonseol-ws.github.io/subpair/privacy.html
+https://wonjoonseol.github.io/subpair/privacy.html
 
 ## Screenshots and promo tiles
 Files in [screenshots/](screenshots/): 1280x800 24-bit PNG, Sintel (CC BY 3.0) playing on Jellyfin, menus in the listing's

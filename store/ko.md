@@ -28,7 +28,7 @@ Subpair에는 계정, 분석 도구, 자체 서버가 없습니다. 자막 텍�
 그 다음에는 내가 고른 번역기로만 갑니다. Jellyfin에서는 완성된 번역을 내 Jellyfin 서버에도 자막 트랙으로 저장해
 (그 언어 자막이 없는 작품만) TV와 휴대폰 앱에서도 볼 수 있습니다.
 
-번역 브리지를 포함한 단계별 설정 안내: https://wonjoonseol-ws.github.io/subpair/ko/
+번역 브리지를 포함한 단계별 설정 안내: https://wonjoonseol.github.io/subpair/ko/
 
 스크린샷: Sintel (c) copyright Blender Foundation | durian.blender.org, CC BY 3.0.
 
@@ -65,7 +65,7 @@ Chrome: 교육. Firefox: 언어 지원 ("사진, 음악 및 동영상"에도 맞
 - Firefox 매니페스트: `data_collection_permissions.required = ["websiteContent"]`.
 
 ## 개인정보처리방침 URL
-https://wonjoonseol-ws.github.io/subpair/ko/privacy.html
+https://wonjoonseol.github.io/subpair/ko/privacy.html
 
 ## 스크린샷과 프로모션 타일
 [screenshots/](screenshots/)에 있는 파일: 1280x800 24비트 PNG, Jellyfin에서 재생한 Sintel(CC BY 3.0), 메뉴는 등록 정보의

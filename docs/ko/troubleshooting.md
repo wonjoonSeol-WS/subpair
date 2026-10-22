@@ -70,5 +70,5 @@ lang_order: 2
 
 ## 위에 해당하는 것이 없을 때
 
-[GitHub에 이슈를 등록해 주세요](https://github.com/wonjoonSeol-WS/subpair/issues). 사용하는 브라우저와 사이트(Netflix 또는
+[GitHub에 이슈를 등록해 주세요](https://github.com/wonjoonSeol/subpair/issues). 사용하는 브라우저와 사이트(Netflix 또는
 Jellyfin), 기대한 동작과 실제로 일어난 일을 적고, 있으면 콘솔의 `[Subpair]` 줄이나 브리지 로그도 함께 붙여 주세요.

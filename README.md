@@ -14,7 +14,7 @@ and clickable words.
 - **Japanese word colors** and one-click lookup with Yomitan.
 - **English, Korean and Japanese** interface.
 
-**Website: [wonjoonseol-ws.github.io/subpair](https://wonjoonseol-ws.github.io/subpair/)**
+**Website: [wonjoonseol.github.io/subpair](https://wonjoonseol.github.io/subpair/)**
 
 ![Japanese and Korean lines on a Jellyfin video, with the transcript panel](docs/images/jellyfin-player.png)
 
@@ -37,7 +37,7 @@ the optional **bridge**, a small Node.js program on your computer, translates th
 until it is approved, Firefox users can install a release:
 
 **From a release**: download the zip for your browser from the
-[latest release](https://github.com/wonjoonSeol-WS/subpair/releases/latest).
+[latest release](https://github.com/wonjoonSeol/subpair/releases/latest).
 
 1. Chrome, Edge or Brave: unzip `subpair-chrome-<version>.zip`, open `chrome://extensions` (Edge: `edge://extensions`),
    switch on **Developer mode**, click **Load unpacked** and pick the unzipped folder.
@@ -76,7 +76,7 @@ are watching, and can hide the main line to show only the second one. Keys can b
 
 When a title has no subtitle in your second-line language, the **bridge** (the translation helper in `bridge/`, a small
 Node.js program) translates the main line. The step-by-step guide for everyone, starting with ezTrans on Windows, is the
-[Translation page](https://wonjoonseol-ws.github.io/subpair/translation.html). In short:
+[Translation page](https://wonjoonseol.github.io/subpair/translation.html). In short:
 
 1. Install [Node.js](https://nodejs.org/) 21 or newer. The bridge uses only Node's own modules, so it needs no
    `npm install`.
@@ -108,7 +108,7 @@ Only Windows is tested by the author.
 
 Nothing leaves your computer unless you turn on translation: then subtitle lines go to the bridge on `127.0.0.1` and on to
 the translator you chose. Subpair runs only on the Jellyfin servers you enable. Full
-[privacy policy](https://wonjoonseol-ws.github.io/subpair/privacy.html).
+[privacy policy](https://wonjoonseol.github.io/subpair/privacy.html).
 
 ## Bridge setup
 
@@ -339,4 +339,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). MIT License. `vendor/kuromoji` is Apache
 
 ## Try my other projects
 
-Like this? I make other small open source tools too: Android apps, a Claude chat game, Claude add-ons and more. See them all at [wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/?from=subpair).
+Like this? I make other small open source tools too: Android apps, a Claude chat game, Claude add-ons and more. See them all at [wonjoonseol.github.io](https://wonjoonseol.github.io/?from=subpair).

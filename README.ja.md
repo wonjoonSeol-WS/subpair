@@ -10,7 +10,7 @@
 - **日本語の単語の色分け**と、Yomitanによるワンクリック検索。
 - **英語、韓国語、日本語**のインターフェース。
 
-**Webサイト：[wonjoonseol-ws.github.io/subpair/ja](https://wonjoonseol-ws.github.io/subpair/ja/)**
+**Webサイト：[wonjoonseol.github.io/subpair/ja](https://wonjoonseol.github.io/subpair/ja/)**
 
 ![Jellyfinの動画に表示された日本語と韓国語の行、そしてトランスクリプトパネル](docs/images/jellyfin-player.png)
 
@@ -30,7 +30,7 @@ flowchart LR
 
 **ブラウザーのストアから**：[Chrome ウェブストア](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae)。[Firefox アドオン](https://addons.mozilla.org/firefox/addon/subpair/)はまだ審査中のため、承認されるまでFirefoxではリリースからインストールしてください。
 
-**リリースから**：[最新のリリース](https://github.com/wonjoonSeol-WS/subpair/releases/latest)から、お使いのブラウザー用のzipをダウンロードします。
+**リリースから**：[最新のリリース](https://github.com/wonjoonSeol/subpair/releases/latest)から、お使いのブラウザー用のzipをダウンロードします。
 
 1. Chrome、Edge、Brave：`subpair-chrome-<バージョン>.zip`を展開し、`chrome://extensions`（Edgeでは`edge://extensions`）を開いて、**デベロッパー モード**をオンにし、**パッケージ化されていない拡張機能を読み込む**をクリックして、展開したフォルダーを選びます。
 2. Firefox：`about:debugging#/runtime/this-firefox`を開き、**一時的なアドオンを読み込む**をクリックして、`subpair-firefox-<バージョン>.zip`を選びます（まだ署名されていないファイルなので、Firefoxを再起動するまでの一時的なインストールです）。
@@ -58,7 +58,7 @@ flowchart LR
 
 ## 翻訳（任意）
 
-作品に2行目の字幕の言語のトラックがない場合、**ブリッジ**（翻訳用の補助プログラム。`bridge/`にある小さなNode.jsプログラム）がメイン字幕を翻訳します。誰でも進められる手順（WindowsのezTransから）は[翻訳ページ](https://wonjoonseol-ws.github.io/subpair/ja/translation.html)にあります。要点は次のとおりです。
+作品に2行目の字幕の言語のトラックがない場合、**ブリッジ**（翻訳用の補助プログラム。`bridge/`にある小さなNode.jsプログラム）がメイン字幕を翻訳します。誰でも進められる手順（WindowsのezTransから）は[翻訳ページ](https://wonjoonseol.github.io/subpair/ja/translation.html)にあります。要点は次のとおりです。
 
 1. [Node.js](https://nodejs.org/) 21以降をインストールします。ブリッジはNodeの組み込みモジュールだけを使うので、`npm install`は不要です。
 2. 起動します。Windowsでは`start-bridge.cmd`をダブルクリックし、どのOSでも`npm run bridge`（`node bridge/server.mjs`と同じ）で起動できます。拡張機能の既定のブリッジのアドレスである`http://127.0.0.1:8765`で待ち受けます。
@@ -84,7 +84,7 @@ flowchart LR
 
 ## プライバシー
 
-翻訳をオンにしない限り、データがパソコンの外に出ることはありません。翻訳をオンにすると、字幕の行は`127.0.0.1`のブリッジに送られ、そこから選んだ翻訳エンジンに送られます。Subpairは、有効にしたJellyfinサーバーでのみ動作します。詳しくは[プライバシーポリシー](https://wonjoonseol-ws.github.io/subpair/ja/privacy.html)をご覧ください。
+翻訳をオンにしない限り、データがパソコンの外に出ることはありません。翻訳をオンにすると、字幕の行は`127.0.0.1`のブリッジに送られ、そこから選んだ翻訳エンジンに送られます。Subpairは、有効にしたJellyfinサーバーでのみ動作します。詳しくは[プライバシーポリシー](https://wonjoonseol.github.io/subpair/ja/privacy.html)をご覧ください。
 
 ## ブリッジの設定
 
@@ -278,4 +278,4 @@ Firefoxでは`moz-extension://<about:debugging#/runtime/this-firefoxに表示さ
 
 ## ほかのプロジェクトもどうぞ
 
-気に入ったら、ほかのオープンソースもぜひ見てください。Androidアプリ、Claudeのチャットゲーム、Claudeのアドオンなどがあります：[wonjoonseol-ws.github.io](https://wonjoonseol-ws.github.io/?from=subpair)
+気に入ったら、ほかのオープンソースもぜひ見てください。Androidアプリ、Claudeのチャットゲーム、Claudeのアドオンなどがあります：[wonjoonseol.github.io](https://wonjoonseol.github.io/?from=subpair)

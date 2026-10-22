@@ -29,7 +29,7 @@ lang_order: 2
 
 1. **ezTrans XP 설치하기**: 이미 설치되어 있다면 넘어가세요. 설치 폴더는 번역 도우미가 알아서 찾아요.
 2. **Node.js 설치하기**: [nodejs.org](https://nodejs.org/ko)에서 **LTS** 버전을 받아 기본 설정 그대로 설치해요.
-3. **Subpair 받기**: [ZIP 파일 받기](https://github.com/wonjoonSeol-WS/subpair/archive/refs/heads/main.zip)를 눌러
+3. **Subpair 받기**: [ZIP 파일 받기](https://github.com/wonjoonSeol/subpair/archive/refs/heads/main.zip)를 눌러
    받은 다음, 문서 폴더처럼 원하는 곳에 압축을 풀어요.
 4. **번역 도우미 켜기**: 압축을 푼 폴더에서 `start-bridge.cmd`를 더블클릭해요. 검은 창에 `ezTrans XP in ...`이
    보이면 준비 끝이에요. 영상을 보는 동안에는 이 창을 열어 두세요.
@@ -47,7 +47,7 @@ lang_order: 2
 ### 잘 안 될 때
 
 - **검은 창에 `ezTrans XP not found`가 나와요**: ezTrans XP를 기본 위치에 설치했는지 확인하세요. 다른 곳에 설치했다면
-  [README의 설정 방법](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역-도우미-설정)으로 폴더를
+  [README의 설정 방법](https://github.com/wonjoonSeol/subpair/blob/main/README.ko.md#번역-도우미-설정)으로 폴더를
   지정할 수 있어요.
 - **`Node.js is not installed`가 나와요**: 2단계의 Node.js를 설치한 뒤 다시 더블클릭하세요.
 - **번역이 나오지 않아요**: 번역 도우미 창이 열려 있는지 확인하세요. 창을 닫으면 번역도 멈춰요.
@@ -58,7 +58,7 @@ lang_order: 2
 
 - **Claude**: [Claude Code](https://claude.com/claude-code)를 설치하고, 한 번 실행해서 로그인해 두면 끝이에요.
 - **AI API, 로컬 AI**: API 키나 주소를 설정 파일에 적어야 해요.
-  [README의 번역 도우미 설정](https://github.com/wonjoonSeol-WS/subpair/blob/main/README.ko.md#번역-도우미-설정)을
+  [README의 번역 도우미 설정](https://github.com/wonjoonSeol/subpair/blob/main/README.ko.md#번역-도우미-설정)을
   참고하세요.
 
 macOS와 Linux에서도 번역 도우미를 쓸 수 있어요(ezTrans는 Windows 전용). 실행 방법은 README에 있어요.

@@ -57,4 +57,4 @@ lang_order: 3
 
 ## どれにも当てはまらないとき
 
-[GitHubでIssueを作成してください](https://github.com/wonjoonSeol-WS/subpair/issues)。使っているブラウザーとサイト（NetflixまたはJellyfin）、期待した動作と実際に起きたことを書き、あればコンソールの`[Subpair]`の行やブリッジのログも添えてください。
+[GitHubでIssueを作成してください](https://github.com/wonjoonSeol/subpair/issues)。使っているブラウザーとサイト（NetflixまたはJellyfin）、期待した動作と実際に起きたことを書き、あればコンソールの`[Subpair]`の行やブリッジのログも添えてください。
