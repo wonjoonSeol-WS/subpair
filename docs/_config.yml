@@ -2,11 +2,13 @@ title: Subpair
 description: Learn a language from the shows you watch. Two subtitle lines at once on Netflix and Jellyfin, with free local or AI translation. An open-source alternative to Language Reactor.
 repo_url: https://github.com/wonjoonSeol-WS/subpair
 subsync_repair_url: https://github.com/wonjoonSeol-WS/subsync-repair/releases/latest
-# Store listings. While stores_in_review is true the pages show them as "in review" and send people to the latest GitHub
-# release instead; set it to false once both stores have approved Subpair.
+# Store listings. While a store's *_in_review is true the pages show it as "in review" and send its users to the latest
+# GitHub release instead; set it to false once that store has approved Subpair.
 chrome_store_url: https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae
 firefox_store_url: https://addons.mozilla.org/firefox/addon/subpair/
-stores_in_review: true
+chrome_in_review: false
+firefox_in_review: true
+language_reactor_url: https://www.languagereactor.com/
 releases_url: https://github.com/wonjoonSeol-WS/subpair/releases/latest
 # GoatCounter site code (the name before .goatcounter.com) for counting visits to these pages; empty means no counter.
 goatcounter: subpair

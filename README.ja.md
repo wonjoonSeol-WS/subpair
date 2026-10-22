@@ -2,7 +2,7 @@
 
 [English](README.md) | [한국어](README.ko.md) | 日本語
 
-**Netflixとご自身のJellyfinライブラリで使える、Language Reactorの無料でオープンソースの代替**です。Subpairは学習中の言語と自分の言語の字幕2行を同時に表示し、1行リピート、自動一時停止、トランスクリプトパネル、クリックできる単語に対応します。
+**Netflixとご自身のJellyfinライブラリで使える、[Language Reactor](https://www.languagereactor.com/)の無料でオープンソースの代替**です。Subpairは学習中の言語と自分の言語の字幕2行を同時に表示し、1行リピート、自動一時停止、トランスクリプトパネル、クリックできる単語に対応します。
 
 - **無料、MITライセンス**：アカウント不要、トラッキングなし。
 - Netflixだけでなく、**ご自身のJellyfinライブラリ**にも対応しています。
@@ -28,7 +28,7 @@ flowchart LR
 
 ## インストール
 
-**ブラウザーのストアから**（審査中）：[Chrome ウェブストア](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae)、[Firefox アドオン](https://addons.mozilla.org/firefox/addon/subpair/)。承認されるまでは、リリースからインストールしてください。
+**ブラウザーのストアから**：[Chrome ウェブストア](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae)。[Firefox アドオン](https://addons.mozilla.org/firefox/addon/subpair/)はまだ審査中のため、承認されるまでFirefoxではリリースからインストールしてください。
 
 **リリースから**：[最新のリリース](https://github.com/wonjoonSeol-WS/subpair/releases/latest)から、お使いのブラウザー用のzipをダウンロードします。
 

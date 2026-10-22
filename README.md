@@ -2,7 +2,7 @@
 
 English | [한국어](README.ko.md) | [日本語](README.ja.md)
 
-**A free, open-source alternative to Language Reactor, for Netflix and your own Jellyfin library.** Subpair shows two
+**A free, open-source alternative to [Language Reactor](https://www.languagereactor.com/), for Netflix and your own Jellyfin library.** Subpair shows two
 subtitle lines at once, the language you are learning and your own, with line replay, auto-pause, a transcript panel
 and clickable words.
 
@@ -33,9 +33,8 @@ the optional **bridge**, a small Node.js program on your computer, translates th
 
 ## Install
 
-**From the browser stores** (in review):
-[Chrome Web Store](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae),
-[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/subpair/). Until they are approved, install a release:
+**From the browser stores**: [Chrome Web Store](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae). The [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/subpair/) listing is still in review;
+until it is approved, Firefox users can install a release:
 
 **From a release**: download the zip for your browser from the
 [latest release](https://github.com/wonjoonSeol-WS/subpair/releases/latest).

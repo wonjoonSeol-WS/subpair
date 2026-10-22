@@ -11,20 +11,14 @@ lang_order: 1
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Free, open-source alternative to Language Reactor</span>
+    <span class="eyebrow">Free, open-source alternative to <a href="{{ site.language_reactor_url }}">Language Reactor</a></span>
     <h1>Learn a language from the shows <span class="accent">you already watch</span></h1>
     <p class="lead">Subpair puts two subtitles on screen at once on Netflix and your own Jellyfin library: the language you
       are learning and your own. When a show has no subtitles in your language, a helper on your computer translates them.</p>
     <div class="buttons">
-      {% if site.stores_in_review %}
-      <a class="button primary" href="{{ site.releases_url }}">Download from GitHub</a>
-      <a class="button" href="{{ site.chrome_store_url }}">Chrome Web Store (in review)</a>
-      <a class="button" href="{{ site.firefox_store_url }}">Firefox Add-ons (in review)</a>
-      {% else %}
-      <a class="button primary" href="{{ site.chrome_store_url }}">Add to Chrome</a>
-      <a class="button primary" href="{{ site.firefox_store_url }}">Add to Firefox</a>
-      <a class="button" href="{{ site.repo_url }}">View on GitHub</a>
-      {% endif %}
+      {% if site.chrome_in_review %}<a class="button" href="{{ site.chrome_store_url }}">Chrome Web Store (in review)</a>{% else %}<a class="button primary" href="{{ site.chrome_store_url }}">Add to Chrome</a>{% endif %}
+      {% if site.firefox_in_review %}<a class="button" href="{{ site.firefox_store_url }}">Firefox Add-ons (in review)</a>{% else %}<a class="button primary" href="{{ site.firefox_store_url }}">Add to Firefox</a>{% endif %}
+      {% if site.chrome_in_review or site.firefox_in_review %}<a class="button" href="{{ site.releases_url }}">Download from GitHub</a>{% else %}<a class="button" href="{{ site.repo_url }}">View on GitHub</a>{% endif %}
     </div>
     <ul class="chips">
       <li>Free and MIT-licensed</li>
@@ -122,10 +116,18 @@ lang_order: 1
     <div class="grid steps">
       <div class="card">
         <h3>Add it to your browser</h3>
-        {% if site.stores_in_review %}
+        {% if site.chrome_in_review and site.firefox_in_review %}
         <p>The <a href="{{ site.chrome_store_url }}">Chrome Web Store</a> and <a href="{{ site.firefox_store_url }}">Firefox
           Add-ons</a> listings are in review. Until then, download the latest version from
           <a href="{{ site.releases_url }}">GitHub</a> and follow the install steps there.</p>
+        {% elsif site.firefox_in_review %}
+        <p>Install Subpair from the <a href="{{ site.chrome_store_url }}">Chrome Web Store</a>. The
+          <a href="{{ site.firefox_store_url }}">Firefox Add-ons</a> listing is still in review; until then, Firefox users can
+          download the latest version from <a href="{{ site.releases_url }}">GitHub</a> and follow the install steps there.</p>
+        {% elsif site.chrome_in_review %}
+        <p>Install Subpair from <a href="{{ site.firefox_store_url }}">Firefox Add-ons</a>. The
+          <a href="{{ site.chrome_store_url }}">Chrome Web Store</a> listing is still in review; until then, Chrome users can
+          download the latest version from <a href="{{ site.releases_url }}">GitHub</a> and follow the install steps there.</p>
         {% else %}
         <p>Install Subpair from your browser's store: <a href="{{ site.chrome_store_url }}">Chrome Web Store</a> or
           <a href="{{ site.firefox_store_url }}">Firefox Add-ons</a>.</p>

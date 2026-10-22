@@ -2,7 +2,7 @@
 
 [English](README.md) | 한국어 | [日本語](README.ja.md)
 
-**Netflix와 내 Jellyfin 라이브러리에서 쓰는, Language Reactor의 무료 오픈 소스 대안입니다.** Subpair는 배우고 있는
+**Netflix와 내 Jellyfin 라이브러리에서 쓰는, [Language Reactor](https://www.languagereactor.com/)의 무료 오픈 소스 대안입니다.** Subpair는 배우고 있는
 언어와 내 언어, 자막 두 줄을 동시에 보여 주며 한 줄 다시 듣기, 자동 일시정지, 대본 패널, 클릭할 수 있는 단어를
 지원합니다.
 
@@ -33,9 +33,8 @@ flowchart LR
 
 ## 설치
 
-**브라우저 스토어에서**(심사 중):
-[Chrome 웹 스토어](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae),
-[Firefox 부가 기능](https://addons.mozilla.org/firefox/addon/subpair/). 승인되기 전까지는 릴리스에서 설치하세요.
+**브라우저 스토어에서**: [Chrome 웹 스토어](https://chromewebstore.google.com/detail/ffohiiambkeeinlkdknkfnnnbpnfbpae). [Firefox 부가 기능](https://addons.mozilla.org/firefox/addon/subpair/)은 아직 심사 중이라,
+승인되기 전까지 Firefox에서는 릴리스에서 설치하세요.
 
 **릴리스에서**: [최신 릴리스](https://github.com/wonjoonSeol-WS/subpair/releases/latest)에서 내 브라우저용 zip을
 내려받습니다.

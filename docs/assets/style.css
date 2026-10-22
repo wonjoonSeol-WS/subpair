@@ -87,6 +87,7 @@ blockquote { margin: 16px 0; padding: 10px 16px; background: var(--accent-soft);
   radial-gradient(1200px 400px at 50% -120px, color-mix(in srgb, var(--accent) 22%, transparent), transparent); }
 .eyebrow { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
   font-size: 14px; font-weight: 600; margin-bottom: 18px; }
+.eyebrow a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 .hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.08; letter-spacing: -.035em; margin: 0 auto 18px; max-width: 900px; }
 .hero h1 .accent { color: var(--accent); }
 .hero .lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 auto 30px; }

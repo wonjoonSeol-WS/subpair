@@ -11,19 +11,13 @@ lang_order: 3
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Language Reactorの無料オープンソース代替</span>
+    <span class="eyebrow"><a href="{{ site.language_reactor_url }}">Language Reactor</a>の無料オープンソース代替</span>
     <h1><span class="accent">いつも見ている作品</span>で語学を学びましょう</h1>
     <p class="lead">Subpairは、Netflixとご自身のJellyfinライブラリで、学習中の言語と自分の言語の2つの字幕を同時に画面に表示します。作品に自分の言語の字幕がないときは、パソコン上の補助プログラムが翻訳します。</p>
     <div class="buttons">
-      {% if site.stores_in_review %}
-      <a class="button primary" href="{{ site.releases_url }}">GitHubからダウンロード</a>
-      <a class="button" href="{{ site.chrome_store_url }}">Chrome ウェブストア（審査中）</a>
-      <a class="button" href="{{ site.firefox_store_url }}">Firefox アドオン（審査中）</a>
-      {% else %}
-      <a class="button primary" href="{{ site.chrome_store_url }}">Chromeに追加</a>
-      <a class="button primary" href="{{ site.firefox_store_url }}">Firefoxに追加</a>
-      <a class="button" href="{{ site.repo_url }}">GitHubで見る</a>
-      {% endif %}
+      {% if site.chrome_in_review %}<a class="button" href="{{ site.chrome_store_url }}">Chrome ウェブストア（審査中）</a>{% else %}<a class="button primary" href="{{ site.chrome_store_url }}">Chromeに追加</a>{% endif %}
+      {% if site.firefox_in_review %}<a class="button" href="{{ site.firefox_store_url }}">Firefox アドオン（審査中）</a>{% else %}<a class="button primary" href="{{ site.firefox_store_url }}">Firefoxに追加</a>{% endif %}
+      {% if site.chrome_in_review or site.firefox_in_review %}<a class="button" href="{{ site.releases_url }}">GitHubからダウンロード</a>{% else %}<a class="button" href="{{ site.repo_url }}">GitHubで見る</a>{% endif %}
     </div>
     <ul class="chips">
       <li>無料、MITライセンス</li>
@@ -118,8 +112,12 @@ lang_order: 3
     <div class="grid steps">
       <div class="card">
         <h3>ブラウザーに追加</h3>
-        {% if site.stores_in_review %}
+        {% if site.chrome_in_review and site.firefox_in_review %}
         <p><a href="{{ site.chrome_store_url }}">Chrome ウェブストア</a>と<a href="{{ site.firefox_store_url }}">Firefox アドオン</a>は審査中です。それまでは<a href="{{ site.releases_url }}">GitHub</a>から最新版をダウンロードし、そのページのインストール手順に従ってください。</p>
+        {% elsif site.firefox_in_review %}
+        <p><a href="{{ site.chrome_store_url }}">Chrome ウェブストア</a>からインストールしてください。<a href="{{ site.firefox_store_url }}">Firefox アドオン</a>はまだ審査中のため、それまでFirefoxでは<a href="{{ site.releases_url }}">GitHub</a>から最新版をダウンロードし、そのページのインストール手順に従ってください。</p>
+        {% elsif site.chrome_in_review %}
+        <p><a href="{{ site.firefox_store_url }}">Firefox アドオン</a>からインストールしてください。<a href="{{ site.chrome_store_url }}">Chrome ウェブストア</a>はまだ審査中のため、それまでChromeでは<a href="{{ site.releases_url }}">GitHub</a>から最新版をダウンロードし、そのページのインストール手順に従ってください。</p>
         {% else %}
         <p>ブラウザーのストアからSubpairをインストールしてください：<a href="{{ site.chrome_store_url }}">Chrome ウェブストア</a>、<a href="{{ site.firefox_store_url }}">Firefox アドオン</a></p>
         {% endif %}
