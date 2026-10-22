@@ -26,11 +26,14 @@ i18n:
     description: "Learn a language from the shows you watch. Two subtitle lines at once on Netflix and Jellyfin, with free local translation or AI translation. An open-source alternative to Language Reactor."
     license: "MIT License"
     not_affiliated: "Not affiliated with Netflix, Jellyfin or Language Reactor."
+    more_projects: "Try my other open source projects"
   ko:
     description: "좋아하는 작품으로 외국어 공부. Netflix와 Jellyfin에서 배우는 언어와 모국어 자막을 한 화면에 띄우고, 자막이 없으면 PC나 AI로 번역해요. 무료 오픈소스 Language Reactor 대안."
     license: "MIT 라이선스"
     not_affiliated: "Netflix, Jellyfin, Language Reactor와 관련이 없습니다."
+    more_projects: "다른 오픈소스도 써 보기"
   ja:
     description: "いつも見ている作品で語学を学べます。NetflixとJellyfinで字幕を2行同時に表示し、無料のローカル翻訳やAI翻訳に対応します。Language Reactorのオープンソースの代替です。"
     license: "MITライセンス"
     not_affiliated: "Netflix、Jellyfin、Language Reactorとは関係ありません。"
+    more_projects: "ほかのオープンソースも試す"

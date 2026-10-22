@@ -45,6 +45,7 @@
       <span class="footer-links">
         {% for p in nav %}<a href="{{ p.url | relative_url }}">{{ p.nav }}</a>{% endfor %}
         <a href="{{ site.repo_url }}">GitHub</a>
+        <a href="https://wonjoonseol-ws.github.io/{% if page.lang == 'ko' %}ko/{% endif %}?from=subpair">{{ t.more_projects }}</a>
       </span>
       <span class="muted">{{ t.not_affiliated }}</span>
     </div>
